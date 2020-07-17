@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12 text-center">
+            <img src="assets/images/error.svg" width="200px" alt="404Error">
+        </div>
+        <div class="col-md-12 mt-2">
+            <p class="h4">Aradığınız sayfayı bulamadık. Silinmiş olabilir veyatta yanlış bir adrese yönlendirilmiş olabilirsiniz. Eğer bu bir sorun olucaksa bildirebilirsiniz. Sizlere daha iyi hizmet verebilmek için bunu en kısa zamanda çözmeye çalışacağız.</p>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="index.html">
+                <button class="btn btn-outline-success">Anasayfaya Dön</button>
+            </a>
+        </div>
+        <div class="col-md-6">
+            <a href="#section3">
+                <button class="btn btn-outline-danger">Hata Bildir</button>
+            </a>
+        </div>
+        <div class="col-md-12" style="height: 1000px;"></div>
+        <div class="col-md-12" id="section3">
+            <h3 class="text-center">Hata Bildirimi</h3>
+        </div>
+        <div class="col-md-6 mx-auto border p-4 shadow">
+            <form>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email Adresiniz</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <small id="emailHelp" class="form-text text-muted">Bu alan zorunlu degildir.</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Hatayı nasıl aldıgınızı kısaca açıklayınız.</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    <small id="emailHelp" class="form-text text-muted">Almış olduğunuz hatayı nasıl karşılaştıgınızı daha iyi anlayabilmek için bunu bilmemiz gerekmektedir.</small>
+                </div>
+                <div class="form-group">
+                    <label for="errorCode" class="text-danger">Hata Kodu</label>
+                    <input type="email" class="form-control" id="errorCode" value="404" disabled>
+                    <small id="errorCode" class="form-text text-muted">Bu alana bir değer girilemez.</small>
+                </div>
+                <div class="form-group">
+                    <div class="row p-1">
+                        <div class="col-md-2 bg-dark border border-primary mb-2">
+                            <p class="text-white text-center mt-2 mb-2 mx-auto h6"><span id="number1"></span> + <span id="number2"></span> </p>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="number" class="form-control" id="errorCode" oninput="controllAnswer(this.value)" placeholder="Lütfen sadece rakam ile cevaplayınız.">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" id="answerButton" class="btn btn-primary btn-block disabled">Gönder</button>
+            </form>
+        </div>
+        <div class="col-md-12" style="height: 100px;"></div>
+    </div>
+
+
+
+</div>
+
+<script>
+    var number1 = Math.floor(Math.random() * 26);
+    var number2 = Math.floor(Math.random() * 30);
+    document.getElementById("number1").innerHTML = number1;
+    document.getElementById("number2").innerHTML = number2
+
+    function controllAnswer(answer) {
+        if (number1 + number2 == answer) {
+            document.getElementById("answerButton").classList.remove("disabled");
+        } else {
+            document.getElementById("answerButton").classList.add("disabled");
+        }
+    }
+</script>

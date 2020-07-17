@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "firatkaya"
+    }
+  },
+  "defaultProject": "firatkaya",
+  "cli": {
+    "analytics": false
+  }
 }

@@ -1,0 +1,28 @@
+<div class="col-md-12">
+    <p class="h4">Son Yazılarım</p>
+    <div class="row">
+        <div class="col-md-6" *ngFor= "let post of postIndex">
+            <div class="card text-white bg-dark mb-3 mt-3">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="h5"><a [routerLink]="['/article', enChangeLink(post.post_Title)]"   routerLinkActive="active" class="text-white">{{post.post_Title}}</a></p>
+                        <a href="#" class="h5"><span class="badge badge-pill badge-danger">{{post.post_Tag}}</span></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{post.post_Header}}
+                    </p>
+                    <a href="#" class="text-white ">Okumak için tıklayın.</a>
+                </div>
+                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} Görüntülenme</span> | <span id="maxSee">{{ post.post_Max_Comment }} Yorum</span></div>
+            </div>
+        </div>
+        
+    </div>
+   
+
+</div>
+<div class="col-md-12 m-0 p-0 text-right">
+    <a href="#">Tüm yazılarımı görebilmek için tıklayınız.</a>
+</div>

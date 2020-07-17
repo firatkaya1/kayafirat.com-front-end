@@ -1,0 +1,122 @@
+
+<div class="container">
+    <form [formGroup]="myUserDetails" (ngSubmit)="ngOnSubmit()">
+        <div class="form-row mt-4 justify-content-center">
+            <div class="col-md-12 text-center">
+                <img src="assets/images/login.svg" width="180px" alt="login-image">
+            </div>
+            <div class="col-md-5 mb-2 mx-auto mt-4">
+                <label for="emailAddress">Email Adresiniz</label>
+                <input type="email" [class.is-valid]="myUserDetails.get('emailAddress').valid" [class.is-invalid]="myUserDetails.get('emailAddress').invalid && (myUserDetails.get('emailAddress').dirty || myUserDetails.get('emailAddress').touched)" class="form-control" id="emailAddress" formControlName="emailAddress">
+                
+                <div *ngIf="myUserDetails.get('emailAddress').invalid && (myUserDetails.get('emailAddress').dirty || myUserDetails.get('emailAddress').touched)" class="text-danger">
+                    <div *ngIf="myUserDetails.get('emailAddress').errors.required">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                    <div *ngIf="myUserDetails.get('emailAddress').errors.email">
+                        Email adresinizi girmek zorundasınız.
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 mb-2 mx-auto mt-4">
+                <label for="username">Kullancı Adın</label>
+                <input type="text"  [class.is-valid]="myUserDetails.get('username').valid" [class.is-invalid]="myUserDetails.get('username').invalid && (myUserDetails.get('username').dirty || myUserDetails.get('username').touched)" class="form-control" id="username" formControlName="username">
+                <div *ngIf="myUserDetails.get('username').invalid && (myUserDetails.get('username').dirty || myUserDetails.get('username').touched)" class="text-danger">
+                    <div *ngIf="myUserDetails.get('username').errors.required">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                    <div *ngIf="myUserDetails.get('username').errors.pattern">
+                        Özel karakter ve rakam kullanamazsınız.
+                    </div>
+                    <div *ngIf="myUserDetails.get('username').errors.minlength">
+                        Kullanıcı adınız minumum 5 karakter içermelidir.
+                    </div>
+                    <div *ngIf="myUserDetails.get('username').errors.maxlength">
+                        Kullanıcı adınız maksimum 15 karakter içerebilir.
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 mb-2 mx-auto mt-4">
+                <label for="password">Şifren</label>
+                <input type="password" [class.is-valid]="myUserDetails.get('password').valid" [class.is-invalid]="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="form-control" id="password" formControlName="password">
+                <div *ngIf="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="text-danger">
+                    <div *ngIf="myUserDetails.get('password').hasError('required')">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                    <div *ngIf="myUserDetails.get('password').hasError('minlength')">
+                        Şifreniz minumum 8 karakter içermelidir.
+                    </div>
+                    <div *ngIf="myUserDetails.get('password').hasError('maxlength')">
+                        Şifreniz maksimum 24 karakter içerebilir.
+                    </div>
+                    <div *ngIf="myUserDetails.get('password').hasError('lowerCaseValidator')">
+                        Şifrenizde en az bir küçük harf kullanılmalıdır.
+                    </div>
+                    <div *ngIf="myUserDetails.get('password').hasError('upperCaseValidator')">
+                        Şifrenizde en az bir büyük harf kullanılmalıdır.
+                    </div>
+                    <div *ngIf="myUserDetails.get('password').hasError('numberValidator')">
+                        Şifrenizde en az bir rakam kullanılmalıdır.
+                    </div>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 mb-2 mx-auto mt-4">
+                <label for="repassword">Şifreni Tekrar Gir</label>
+                <input type="password"  [class.is-valid]="myUserDetails.get('repassword').valid && !myUserDetails.errors?.matchPassword" [class.is-invalid]="myUserDetails.get('repassword').invalid && (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched) || myUserDetails.errors?.matchPassword" class="form-control" id="repassword" formControlName="repassword">
+                <div *ngIf="myUserDetails.get('repassword').invalid &&  (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched)" class="text-danger">
+                    <div *ngIf="myUserDetails.get('repassword').hasError('required')">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                </div>
+                <div *ngIf="myUserDetails.errors?.matchPassword" class="text-danger">
+                    Şifreniz eşleşmemektedir.
+                </div>
+                
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 mb-2 mx-auto mt-4">
+                <label for="birthdate">Doğum Tarihin</label>
+                <input type="date" class="form-control" max="2010-12-31" name="birthdate" [class.is-valid]="myUserDetails.get('birthdate').valid"  [class.is-invalid]="myUserDetails.get('birthdate').invalid" formControlName="birthdate" id="birthdate" required>
+                <div *ngIf="myUserDetails.get('birthdate').invalid" class="text-danger">
+                    <div *ngIf="myUserDetails.get('birthdate').hasError('required')">
+                        Bu alan boş bırakılamaz.
+                    </div>
+                </div>
+         
+            </div>  
+            <div class="w-100"></div>
+            <div class="col-md-5 mb-2 mx-auto mt-4 text-center">
+                <input type="checkbox" class="form-check-input" [class.is-invalid]="myUserDetails.get('userterms').invalid" id="userterms" formControlName="userterms">
+                <label class="form-check-label" for="userterms">Kullanıcı sözleşmesini kabul ediyorum.</label>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5">
+                <a  routerLink="/login" routerLinkActive="active" >
+                    <ins> Bir hesabın var mı ? Giriş yap. </ins>
+                </a>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 text-right">
+                <button class="btn btn-outline-success" [disabled]="myUserDetails.invalid" >Kayıt Ol</button>
+            </div>
+            <div class="w-100 " style="height: 250px;"></div>
+        </div>
+    </form>
+
+    <!--Comment Alerts-->
+   <div class="row">
+    <div class="col-6">
+        <div *ngIf="registerSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
+            <strong>Harika!</strong> Kayıt başarıyla gerçekleşti. Lütfen mail adresine gelen doğrulama linki ile hesabını aktive et. 5 saniye sonra giriş sayfasına yönlendiriliceksin.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+   </div>
+
+
+</div>

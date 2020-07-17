@@ -1,0 +1,251 @@
+<body [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light'" >
+     <!--Dark Thema-->
+ <div class="row d-inline ">
+    <div class="col-md-12">
+        <input type="checkbox" id="myButton" data-toggle="switchbutton" checked="isCurrentDarkMode" data-onlabel="Kapalı" data-offlabel="Açık" data-onstyle="white" (change)="openDarkMode()" data-offstyle="dark">
+       
+    </div>
+</div>
+<!--Container-->
+<div class="container">
+    <div class="row" *ngFor="let post of postInfo">
+        <div class="col-md-12 mx-auto text-center mt-2 mb-2">
+            <img src="assets/images/article.svg" width="30%" alt="main-pictures">
+        </div>
+        <div class="col-md-12">
+            <p class="h5" id="myHeader">{{post.postTitle}}</p>
+            <p> 
+                {{post.postHeader}}
+            </p>
+
+            <p>
+                {{post.postBody}}
+            </p>
+        </div>
+        <div class="col-md-12">
+            <p class="h5 text-center mt-4 mb-4">SON</p>
+        </div>
+        <div class="col-md-12 text-secondary ">
+            <p>Anahtar Kelimeler : <span>java,blog,domain,database</span>
+            </p>
+        </div>
+        <div class="col-md-12 border-top border-bottom text-secondary">
+            <p class="text-center m-0 p-2">{{post.postMaxView}} Görüntülenme | {{post.postMaxComment}} Yorum | {{post.postTime | date:'medium'}}
+                <a href="#"><img src="assets/images/linkedin.png" class="float-right" width="30px" alt="linkedin"></a>
+                <a href="#"> <img src="assets/images/twitter.svg" class="float-right" width="30px" alt="twitter"></a>
+                <a href="#"><img src="assets/images/facebook.svg" class="float-right" width="25px" alt="facebook"></a>
+            </p>
+        </div>
+        <div class="col-md-12 text-center mt-4 mb-4">
+            <p class="h5">Yorumlar</p>
+        </div>
+        <div class="col-md-12">
+            <div class="row border" *ngFor="let comment of commentInfo">
+                <div class="col-md-2 border-right">
+                    <div class="row mx-auto mt-2">
+                        <div class="col-12 text-center">
+                            <img src="assets/images/profile.svg" class="img-thumbnail" width="75px" alt="profile-picture">
+                            <p class="mb-0">
+                                <b *ngIf="comment.userId !== 'Anonymous'">
+                                    <a href="#">{{comment.userId}}</a>
+                                </b>
+                                <b *ngIf="comment.userId === 'Anonymous'">
+                                    {{comment.userId}}
+                                </b>
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <p class="p-2">{{comment.commentMessage}}</p>
+                    <p class="text-right text-secondary mb-0 p-0" style="font-size: 12px;margin-top: 50px;">{{comment.commentTime | date:'medium'}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row ">
+                <div class="col-md-12 mt-4 ">
+                    <textarea name="commentDescription" ng-trim="true" [(ngModel)]="commentMessage"  [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'" rows="3" style="width: 100%;" class="form-control mb-4 "  placeholder="Senin yorumun" id="commentDescription" required  ></textarea>
+                </div>
+                <div class="col-md-10 text-right">
+                    <input class="form-check-input " [(ngModel)]="isAnonymous" type="checkbox" id="gridCheck1">
+                    <label class="form-check-label" for="gridCheck1" id="anonimCheckbox">
+                      <p>Anonim olarak yorum yap.</p>
+                    </label>
+                </div>
+                <div class="col-md-2 text-right">
+                    <input type="submit" id="sendCommentButton" (click)="setComment()"  name="submit" value="Gönder" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
+                </div>
+            </div>
+        </div>
+
+        <!--Comment Alerts-->
+        <div class="col-6">
+            <div *ngIf="commentSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
+                <strong>Harika!</strong> Yorumun başarıyla gönderildi.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        <!--Comment Alerts-->
+        <div class="col-6">
+            <div *ngIf="!commentError" class="alert alert-danger alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
+                <strong>Hata!</strong> Yorum alanına birşeyler yazmalısın.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+        
+        <div class="col-md-12 mt-2">
+            <p class="h5 mb-2 mt-2" >Diğer yazılarım</p>
+            <div class="col-md-12 mb-0">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" [ngClass]="isCurrentDarkMode ? 'bg-light' : 'bg-dark'" id="list1" style="height: 5px;"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1" class="active" [ngClass]="isCurrentDarkMode ? 'bg-light' : 'bg-dark'" id="list2" style="height: 5px;"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2" class="active" [ngClass]="isCurrentDarkMode ? 'bg-light' : 'bg-dark'" id="list3" style="height: 5px;"></li>
+                </ol>
+            </div>
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active text-center ">
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100"></div>
+                                <a href="#" class="p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100"></div>
+                                <a href="#" class=" p-0">
+                                    Kendi Blogunu Kodla-2Kendi Blogunu Kodla-2Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100 "></div>
+                                <a href="#" class="p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100 "></div>
+                                <a href="#" class=" p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item  text-center ">
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100"></div>
+                                <a href="#" class="p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100"></div>
+                                <a href="#" class=" p-0">
+                                    Kendi Blogunu Kodla-2Kendi Blogunu Kodla-2Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100 "></div>
+                                <a href="#" class="p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100 "></div>
+                                <a href="#" class=" p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item text-center  ">
+                        <div class="row">
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100"></div>
+                                <a href="#" class="p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100"></div>
+                                <a href="#" class=" p-0">
+                                    Kendi Blogunu Kodla-2Kendi Blogunu Kodla-2Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100 "></div>
+                                <a href="#" class="p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                            <div class="col-md-3 ">
+                                <img src="assets/images/article.svg" width="100px" height="150px" class="mt-4 mx-auto" alt="yazibiradi">
+                                <div class="w-100 "></div>
+                                <a href="#" class=" p-0">
+                                    Kendi Blogunu Kodla-2
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12 mt-4 border">
+            <div class="row p-4">
+                <div class="col-md-2 text-center">
+                    <img src="assets/images/pp.jpeg" class="img-thumbnail rounded-circle border border-dark mb-2" width="120px" alt="firatkaya">
+                </div>
+                <div class="col-md-10">
+                    <p class="">Adım Fırat Kaya, Beykent Üniversitesi Bilgisayar Mühendisliği 3.Sınıfı öğrencisiyim. Öğrendiklerimi test edebilmek ve diğer insanlarla paylaşabilmek için bu platformu kurdum. Güncel yazılarımdan haberdar olabilmek için haber bültenime
+                        kayıt olabilirsiniz yada beni aşağıdaki sosyal medya hesaplarımdan takibe alabilirsiniz. Sizlere bol okumalı günler dilerim.</p>
+                </div>
+                <div class="col-md-12 text-center">
+                    <a href="https://www.linkedin.com/in/firatkaya1/">
+                        <img src="assets/images/linkedin.png" width="40px" alt="linkedin-profile">
+                    </a>
+                    <a href="https://github.com/firatkaya1">
+                        <img src="assets/images/github64.png" width="35px" alt="linkedin-profile">
+                    </a>
+                    <a href="https://twitter.com/1firatkaya">
+                        <img src="assets/images/twitter.svg" width="50px" alt="linkedin-profile">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" style="height: 100px;"></div>
+
+    </div>
+</div>
+
+<div [ngClass]=" acceptCookie ? 'd-none' : '' ">
+    <nav class="navbar  bg-dark  m-4 fixed-bottom  border border-primary" id="policiyarea" [ngClass]="isHideCookie ? 'd-none' : '' ">
+        <p class="text-right h6 p-0 m-0 text-white" id="cookiesP">Sizlere daha iyi hizmet edebilmek için çerezleri kullanıyoruz. Bunların ne tip çerezler oldugunu görebilmek için <a href="#" class="text-white"><ins>tıklayabilir</ins></a> ve güvenli bir şekilde görebilirsiniz.</p>
+        <button class="btn btn-outline-success" (click)="acceptsCookie()" value="Kabul Et">Kabul Et</button>
+        <button class="btn btn-outline-danger" (click)="hideCookie()" value="Reddet">Reddet</button>
+        <button type="button" class="close"  (click)="hideCookie()" aria-label="Close">
+            <span aria-hidden="true" >&times;</span>
+        </button>
+    </nav>
+</div>
+
+</body>
+
