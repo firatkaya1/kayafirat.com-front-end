@@ -13,7 +13,7 @@
                     <p class="card-text">
                         {{post.post_Header}}
                     </p>
-                    <a href="#" class="text-white ">Okumak için tıklayın.</a>
+                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white ">Okumak için tıklayın.</a>
                 </div>
                 <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} Görüntülenme</span> | <span id="maxSee">{{ post.post_Max_Comment }} Yorum</span></div>
             </div>

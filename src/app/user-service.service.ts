@@ -14,6 +14,8 @@ export class UserServiceService {
   private myUrl:string = "http://localhost:8080/api/v1/user";
   private urlUserById:string = "http://localhost:8080/api/v1/user/userid/";
   private addUserUrl:string = "http://localhost:8080/api/v1/user/register";
+  private sendEmail:string = "http://localhost:8080/api/v1/user/sendemail/";
+  private verifyUser:string = "http://localhost:8080/api/v1/user/verification/";
 
   constructor(private http:HttpClient) { }
 
@@ -39,5 +41,13 @@ export class UserServiceService {
    };
    this.http.post<Comment>(this.addUserUrl,body).subscribe(data => {})
  }
+ 
+ sendVerificationEmail(email:string){
+  this.http.post<any>(this.sendEmail.concat(email),'').subscribe(data => {})
+ }
+  updateUserVerification(email:string,id:string){
+    this.http.post<any>(this.verifyUser.concat(email).concat("/").concat(id),'').subscribe(data => {})
+  }
+
 
 }

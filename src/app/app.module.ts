@@ -23,6 +23,7 @@ import { ServererrorComponent } from './servererror/servererror.component';
 import { AuthorationerrorComponent } from './authorationerror/authorationerror.component';
 import { SettingsComponent } from './settings/settings.component';
 import { MenuComponent } from './menu/menu.component';
+import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { MenuComponent } from './menu/menu.component';
     ServererrorComponent,
     AuthorationerrorComponent,
     SettingsComponent,
-    MenuComponent
+    MenuComponent,
+    ConfirmaccountComponent
   ],
   imports: [
     BrowserModule,

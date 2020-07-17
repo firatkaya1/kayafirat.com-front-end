@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row mt-4">
+        <div *ngIf="!isTokenExpired">
+            <div class="col-md-12 text-center">
+                <img src="assets/images/verify.svg" width="200px" alt="verify">
+            </div>
+            
+                <div class="col-md-12 mt-2 text-center">
+                    <h1>Hesap Aktive Edildi</h1>
+                </div>
+                <div class="col-md-12 mt-2 text-center">
+                    <p class="h5">
+                        <b>Harika</b><br> Sevgili <span><ins>{{jti}}</ins></span> hesabın başarılı bir şekilde onaylandı. Hesabını aktive ettikten sonra daha güvenli bir ortama adım atmış bulundun.Teşekkür ederiz.
+                    </p>
+                </div>
+            </div>
+        <div *ngIf="isTokenExpired">
+        <div class="col-md-12 text-center">
+            <img src="assets/images/close.svg" width="200px" alt="close">
+        </div>
+        
+            <div class="col-md-12 mt-2 text-center">
+                <h1>Hesap aktive etme süresi doldu.</h1>
+            </div>
+            <div class="col-md-12 mt-2 text-center">
+                <p class="h5">
+                    Sevgili {{jti}},<br>
+                    Hesabını daha güvende tutabilmek adına sana yolladığımız hesap doğrulama linkinin ömrünü tamamlamış gözüküyor. Lütfen ayarlardan tekrardan hesap sıfırlama linki talep et. Unutma, 30 dakika içinde hesabını onaylamazsan, bu hatayı yine göreceksin.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-12 text-center">
+            <a href="index.html">
+                <button class="btn btn-outline-success">Anasayfaya Dön</button>
+            </a>
+        </div>
+        <div class="col-md-12" style="height: 100px;"></div>
+    </div>
+
+
+
+</div>
+

@@ -1,3 +1,4 @@
+import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthorationerrorComponent } from './authorationerror/authorationerror.component';
 import { ServererrorComponent } from './servererror/servererror.component';
@@ -25,6 +26,8 @@ const routes: Routes = [
   {path:'category',component:CategoryComponent },
   {path:'settings',redirectTo:'404',pathMatch: 'full' },
   {path:'settings/:username',component:SettingsComponent, },
+  {path:'confirm',redirectTo:'403',pathMatch: 'full' },
+  {path:'confirm/:token',component:ConfirmaccountComponent, },
   {path:'404',component:NotfoundComponent },
   {path:'500',component:ServererrorComponent },
   {path:'403',component:AuthorationerrorComponent },

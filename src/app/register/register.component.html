@@ -40,7 +40,7 @@
             <div class="w-100"></div>
             <div class="col-md-5 mb-2 mx-auto mt-4">
                 <label for="password">Şifren</label>
-                <input type="password" [class.is-valid]="myUserDetails.get('password').valid" [class.is-invalid]="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="form-control" id="password" formControlName="password">
+                <input type="password" [class.is-valid]="myUserDetails.get('password').valid" [class.is-invalid]="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="form-control" id="password" formControlName="password" autocomplete="on">
                 <div *ngIf="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="text-danger">
                     <div *ngIf="myUserDetails.get('password').hasError('required')">
                         Bu alan boş bırakılamaz.
@@ -65,7 +65,7 @@
             <div class="w-100"></div>
             <div class="col-md-5 mb-2 mx-auto mt-4">
                 <label for="repassword">Şifreni Tekrar Gir</label>
-                <input type="password"  [class.is-valid]="myUserDetails.get('repassword').valid && !myUserDetails.errors?.matchPassword" [class.is-invalid]="myUserDetails.get('repassword').invalid && (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched) || myUserDetails.errors?.matchPassword" class="form-control" id="repassword" formControlName="repassword">
+                <input type="password"  [class.is-valid]="myUserDetails.get('repassword').valid && !myUserDetails.errors?.matchPassword" [class.is-invalid]="myUserDetails.get('repassword').invalid && (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched) || myUserDetails.errors?.matchPassword" class="form-control" id="repassword" formControlName="repassword" autocomplete="on">
                 <div *ngIf="myUserDetails.get('repassword').invalid &&  (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched)" class="text-danger">
                     <div *ngIf="myUserDetails.get('repassword').hasError('required')">
                         Bu alan boş bırakılamaz.

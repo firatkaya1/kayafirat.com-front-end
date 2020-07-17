@@ -48,9 +48,12 @@ public registerSuccess:boolean = false;
 
   ngOnSubmit():void {
     this._userService.setUser(this.myUserDetails);
+    
     this.registerSuccess=true;
     setTimeout(() => { this.registerSuccess=false;
-                      this.router.navigateByUrl('/login');
+      this._userService.sendVerificationEmail(this.myUserDetails.get('emailAddress').value);                
+      this.router.navigateByUrl('/login');
+
     }, 5000);
   }
 
