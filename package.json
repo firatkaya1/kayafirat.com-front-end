@@ -21,6 +21,7 @@
     "@angular/router": "^9.1.12",
     "bootstrap": "^4.5.0",
     "jwt-decode": "^2.2.0",
+    "ng-recaptcha": "^5.0.0",
     "ngx-cookie-service": "^3.0.4",
     "primeicons": "^4.0.0",
     "primeng": "^9.1.3",

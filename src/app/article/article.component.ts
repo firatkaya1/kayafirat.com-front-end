@@ -1,3 +1,4 @@
+import { UserServiceService } from './../user-service.service';
 
 import { IComment } from './../Models/Comment';
 import { IPostDetail } from './../Models/PostDetails';
@@ -26,9 +27,10 @@ export class ArticleComponent implements OnInit {
   public isAnonymous:boolean=true;
   public commentSuccess:boolean=false;
   public commentError:boolean=true;
+  public validateRecaptcha:boolean = false;
   
 
-  constructor(private cookieService: CookieService,private route: ActivatedRoute,private _postService:PostService) {
+  constructor(private cookieService: CookieService,private route: ActivatedRoute,private _postService:PostService,private _userService:UserServiceService) {
               
     this.route.paramMap.subscribe(params => {
       this.posttitlerouter = this.deChangeLink(params.get('postTitle'));
@@ -41,12 +43,20 @@ export class ArticleComponent implements OnInit {
     
   }
 
+  resolved(captchaResponse:string) {
+    this._userService.validateReCaptcha(captchaResponse).subscribe(res => {
+      res['success'] == true ? this.validateRecaptcha=true : this.validateRecaptcha=false;})
+   
+  }
+
+
   setComment(){
     if(this.isAnonymous && this.commentMessage != null) {
      this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,'Anonymous');
      this.clearCommentSide();
       setTimeout(() => { this.getPost();}, 1000);
-      setTimeout(() => { this.commentSuccess=false;}, 10000);
+      setTimeout(() => { this.commentSuccess=false;
+                         this.validateRecaptcha=false}, 10000);
 
     } else {
       this.commentError = false;

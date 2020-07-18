@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClientModule} from '@angular/common/http';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +50,9 @@ import { TagComponent } from './tag/tag.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RecaptchaModule, 
+    RecaptchaFormsModule 
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

@@ -26,7 +26,7 @@ const routes: Routes = [
   {path:'category',redirectTo:'category/1',pathMatch: 'full' },
   {path:'category/:pagenumber',component:CategoryComponent },
   {path:'category/orderby/tag',redirectTo:'404',pathMatch: 'full' },
-  {path:'category/orderby/tag/:tagname:pagesorted',component:TagComponent },
+  {path:'category/orderby/tag/:tagname',component:TagComponent },
   {path:'settings',redirectTo:'404',pathMatch: 'full' },
   {path:'settings/:username',component:SettingsComponent, },
   {path:'confirm',redirectTo:'403',pathMatch: 'full' },

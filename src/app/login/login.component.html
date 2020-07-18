@@ -28,7 +28,11 @@
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 text-right">
-                <button class="btn btn-outline-success">Giriş Yap</button>
+                <re-captcha (resolved)="resolved($event)" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 text-right">
+                <button class="btn btn-outline-success" [disabled]="validateRecaptcha" >Giriş Yap</button>
             </div>
         </div>
     </form>

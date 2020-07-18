@@ -67,13 +67,24 @@
                 <div class="col-md-12 mt-4 ">
                     <textarea name="commentDescription" ng-trim="true" [(ngModel)]="commentMessage"  [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'" rows="3" style="width: 100%;" class="form-control mb-4 "  placeholder="Senin yorumun" id="commentDescription" required  ></textarea>
                 </div>
-                <div class="col-md-10 text-right">
+                <div class="col-md-12">
+                  <p class="text-danger">
+                    *Bu alana yorum yapabilmek için bot olmadığınızı kanıtlamak zorundasınız. Doğruladıktan sonra yorumunuzu yollayabilirsiniz.
+                  </p>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2">
+                    <re-captcha (resolved)="resolved($event)" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
+                </div>
+                <div class="col-md-5"></div>
+                <div class="w-100"></div>
+                <div class="col-md-10 text-right" *ngIf="validateRecaptcha">
                     <input class="form-check-input " [(ngModel)]="isAnonymous" type="checkbox" id="gridCheck1">
                     <label class="form-check-label" for="gridCheck1" id="anonimCheckbox">
                       <p>Anonim olarak yorum yap.</p>
                     </label>
                 </div>
-                <div class="col-md-2 text-right">
+                <div class="col-md-2 text-right" *ngIf="validateRecaptcha">
                     <input type="submit" id="sendCommentButton" (click)="setComment()"  name="submit" value="Gönder" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
                 </div>
             </div>

@@ -22,12 +22,12 @@
                 </div>
                 <div class="col-md-4 text-right">
                     <select class="custom-select" (change)="ngOnChangeOrderBy($event.target.value)">
-                        <option value="post_Time-desc" selected>Yeniden Eskiye Göre Sırala</option>
-                        <option value="post_Time-asc">Eskiden Yeniye Göre Sırala</option>
-                        <option value="post_Max_Comment-desc">En Çok Yorum Alana Göre Sırala</option>
-                        <option value="post_Max_Comment-asc">En Az Yorum Alana Göre Sırala</option>
-                        <option value="post_Max_View-desc">En Çok Görüntülene Göre Sırala</option>
-                        <option value="post_Max_View-asc">En Az Görüntülene Göre Sırala</option>
+                        <option value="post_time-desc" selected>Yeniden Eskiye Göre Sırala</option>
+                        <option value="post_time-asc">Eskiden Yeniye Göre Sırala</option>
+                        <option value="post_max_comment-desc">En Çok Yorum Alana Göre Sırala</option>
+                        <option value="post_max_comment-asc">En Az Yorum Alana Göre Sırala</option>
+                        <option value="post_max_view-desc">En Çok Görüntülene Göre Sırala</option>
+                        <option value="post_max_view-asc">En Az Görüntülene Göre Sırala</option>
                       </select>
                 </div>
                 <div class="col-xs-12 col-12 col-md-1 text-right" (click)="orderBy()">
@@ -56,10 +56,9 @@
         <div class="col-md-12">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                   
-                    <li class="page-item" *ngFor="let p of pages;let i=index">
-                        <a class="page-link" [routerLink]="['/category/', i+1]" (click)="setPage(i)" >
-                            {{i+1}}
+                    <li class="page-item" *ngFor="let p of pages;let i=index" [class.active]="pagenumber == i+1 ? true : false">
+                        <a class="page-link active" [routerLink]="['/category/', i+1]" (click)="setPage(i)" >
+                                {{i+1}}
                         </a>
                     </li>
                 </ul>
