@@ -1,3 +1,4 @@
+import { TagComponent } from './tag/tag.component';
 import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
 import { SettingsComponent } from './settings/settings.component';
 import { AuthorationerrorComponent } from './authorationerror/authorationerror.component';
@@ -7,7 +8,6 @@ import { ProfileComponent } from './profile/profile.component';
 import { CategoryComponent } from './category/category.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { PostsComponent } from './posts/posts.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
@@ -23,7 +23,10 @@ const routes: Routes = [
   {path:'article',redirectTo:'404',pathMatch: 'full' },
   {path:'article/:postTitle',component:ArticleComponent },
   {path:'profile',component:ProfileComponent },
-  {path:'category',component:CategoryComponent },
+  {path:'category',redirectTo:'category/1',pathMatch: 'full' },
+  {path:'category/:pagenumber',component:CategoryComponent },
+  {path:'category/orderby/tag',redirectTo:'404',pathMatch: 'full' },
+  {path:'category/orderby/tag/:tagname:pagesorted',component:TagComponent },
   {path:'settings',redirectTo:'404',pathMatch: 'full' },
   {path:'settings/:username',component:SettingsComponent, },
   {path:'confirm',redirectTo:'403',pathMatch: 'full' },

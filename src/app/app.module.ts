@@ -4,13 +4,10 @@ import { NgModule } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
 import {HttpClientModule} from '@angular/common/http';
 
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './posts/posts.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { PosttagsComponent } from './posttags/posttags.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -24,13 +21,13 @@ import { AuthorationerrorComponent } from './authorationerror/authorationerror.c
 import { SettingsComponent } from './settings/settings.component';
 import { MenuComponent } from './menu/menu.component';
 import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
+import { TagComponent } from './tag/tag.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostsComponent,
     WelcomeComponent,
-    PosttagsComponent,
     SearchBarComponent,
     LoginComponent,
     RegisterComponent,
@@ -43,7 +40,8 @@ import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.compone
     AuthorationerrorComponent,
     SettingsComponent,
     MenuComponent,
-    ConfirmaccountComponent
+    ConfirmaccountComponent,
+    TagComponent
   ],
   imports: [
     BrowserModule,

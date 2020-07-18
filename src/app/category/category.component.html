@@ -1,61 +1,14 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 mt-4">
-            <div class="row ">
-                <div class="col-md-12 p-2">
-                    <p class="text-secondary">Aşağıda yazdığım konuların genel etiketlerini bulabilirsiniz.</p>
-                </div>
-                <div class="col-md-6 p-2">
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">JAVA</a>
-                            <span class="badge badge-primary badge-pill">14</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">HTML</a>
-                            <span class="badge badge-primary badge-pill">2</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">CSS</a>
-                            <span class="badge badge-primary badge-pill">2</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">JavaScript</a>
-                            <span class="badge badge-primary badge-pill">2</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-6 p-2">
-                    <ul class="list-group">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">BOOTSTRAP</a>
-                            <span class="badge badge-primary badge-pill">11</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">Database</a>
-                            <span class="badge badge-primary badge-pill">2</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">Linux</a>
-                            <span class="badge badge-primary badge-pill">4</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <a href="#" class="text-dark">Clean Code</a>
-                            <span class="badge badge-primary badge-pill">3</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+
+<div class="container ">
+    <div class="row mt-4">
         <div class="col-md-12">
             <div class="row ">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <p class="h4">Tüm Yazılarım</p>
                 </div>
                 <div class="col-md-3 text-right mb-2">
-                    <select class="custom-select">
-                        <option selected>Konu Sayısı</option>
-                        <option value="10">10</option>
+                    <select class="custom-select" (change)="ngOnChange($event.target.value)" [(ngModel)]="selectedPageSize">
+                        <option value="10" selected>10</option>
                         <option value="20">20</option>
                         <option value="30">30</option>
                         <option value="40">40</option>
@@ -67,73 +20,58 @@
                         <option value="100">100</option>
                       </select>
                 </div>
-                <div class="col-md-3 text-right">
-                    <select class="custom-select">
-                        <option selected>Tarihe Göre Sırala</option>
-                        <option value="1">En Çok Yorum Alana Göre Sırala</option>
-                        <option value="2">En Az Yorum Alana Göre Sırala</option>
-                        <option value="3">En Çok Görüntülene Göre Sırala</option>
-                        <option value="3">En Az Görüntülene Göre Sırala</option>
+                <div class="col-md-4 text-right">
+                    <select class="custom-select" (change)="ngOnChangeOrderBy($event.target.value)">
+                        <option value="post_Time-desc" selected>Yeniden Eskiye Göre Sırala</option>
+                        <option value="post_Time-asc">Eskiden Yeniye Göre Sırala</option>
+                        <option value="post_Max_Comment-desc">En Çok Yorum Alana Göre Sırala</option>
+                        <option value="post_Max_Comment-asc">En Az Yorum Alana Göre Sırala</option>
+                        <option value="post_Max_View-desc">En Çok Görüntülene Göre Sırala</option>
+                        <option value="post_Max_View-asc">En Az Görüntülene Göre Sırala</option>
                       </select>
                 </div>
+                <div class="col-xs-12 col-12 col-md-1 text-right" (click)="orderBy()">
+                    <button class="btn btn-success">Ara</button>
+                </div>
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" *ngFor= "let post of postInfo">
             <div class="card text-white bg-dark mb-3 mt-3">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <p class="h5"><a href="#" class="text-white">Kendi Blogunu Kodla-1</a></p>
-                        <a href="#" class="h5"><span class="badge badge-pill badge-danger">Java</span></a>
+                        <p class="h5"><a [routerLink]="['/article', enChangeLink(post.post_Title)]"   routerLinkActive="active" class="text-white">{{post.post_Title}}</a></p>
+                        <a href="#" class="h5"><span class="badge badge-pill badge-danger">{{post.post_Tag}}</span></a>
                     </div>
                 </div>
                 <div class="card-body">
                     <p class="card-text">
-                        Kişisel blogunu kodlamaya devam et.
+                        {{post.post_Header}}
                     </p>
-                    <a href="#" class="text-white ">Okumak için tıklayın.</a>
+                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white ">Okumak için tıklayın.</a>
                 </div>
-                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">2345 Görüntülenme</span> | <span id="maxSee">34 Yorum</span></div>
+                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} Görüntülenme</span> | <span id="maxSee">{{ post.post_Max_Comment }} Yorum</span></div>
             </div>
         </div>
-        <div class="col-md-6">
-            <div class="card text-white bg-dark mb-3 mt-3">
-                <div class="card-header">
-                    <div class="d-flex justify-content-between">
-                        <p class="h5"><a href="#" class="text-white">Kendi Blogunu Kodla-1</a></p>
-                        <a href="#" class="h5"><span class="badge badge-pill badge-danger">Java</span></a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p class="card-text">
-                        Kişisel blogunu kodlamaya devam et.
-                    </p>
-                    <a href="#" class="text-white ">Okumak için tıklayın.</a>
-                </div>
-                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">2345 Görüntülenme</span> | <span id="maxSee">34 Yorum</span></div>
-            </div>
-        </div>
-
 
         <div class="col-md-12">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
+                   
+                    <li class="page-item" *ngFor="let p of pages;let i=index">
+                        <a class="page-link" [routerLink]="['/category/', i+1]" (click)="setPage(i)" >
+                            {{i+1}}
                         </a>
                     </li>
                 </ul>
             </nav>
         </div>
-
+         <!--Comment Alerts-->
+        <div *ngIf="orderSuccess" class="col-md-3 alert alert-success alert-dismissible fade show fixed-top mt-4 border-dark" role="alert">
+            <strong>Başarılı!</strong> İşleminiz tamamlandı.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
 
         <div class="col-md-12" style="height: 100px;"></div>
     </div>

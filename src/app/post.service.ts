@@ -13,6 +13,7 @@ export class PostService {
   private myPost:string = "http://localhost:8080/api/v1/post/postTitle/";
   private addCommentUrl:string = "http://localhost:8080/api/v1/comment/";
   private addPageView:string = "http://localhost:8080/api/v1/post/updateview";
+  private orderByDate:string = "http://localhost:8080/api/v1/post/";
 
   constructor(private http:HttpClient) { }
 
@@ -22,6 +23,17 @@ export class PostService {
   getPost(postTitle:string): Observable<IPostDetail[]> {
     return this.http.get<IPostDetail[]>(this.myPost.concat(postTitle));
   }
+  
+  getPostByTag(postTag:string): Observable<IPostDetail[]> {
+    return this.http.get<IPostDetail[]>(this.myPost.concat(postTag));
+  }
+
+  getPostOrderBy(pageNumber:string,pageSize:string,sortedName:string,orderby:string){
+    return this.http.get<IPost[]>(this.orderByDate.concat(pageNumber).concat("/")
+    .concat(pageSize).concat("/sorted/").concat(sortedName).concat("/orderby/").concat(orderby));
+  }
+
+
   getIpAddress(){
     return this.http.get<string>("http://api.ipify.org/?format=json");
   }
