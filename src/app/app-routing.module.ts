@@ -1,3 +1,6 @@
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { SearchBarComponent } from './search-bar/search-bar.component';
 import { TagComponent } from './tag/tag.component';
 import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
 import { SettingsComponent } from './settings/settings.component';
@@ -23,6 +26,7 @@ const routes: Routes = [
   {path:'article',redirectTo:'404',pathMatch: 'full' },
   {path:'article/:postTitle',component:ArticleComponent },
   {path:'profile',component:ProfileComponent },
+  {path:'search',component:SearchBarComponent },
   {path:'category',redirectTo:'category/1',pathMatch: 'full' },
   {path:'category/:pagenumber',component:CategoryComponent },
   {path:'category/orderby/tag',redirectTo:'404',pathMatch: 'full' },
@@ -30,7 +34,10 @@ const routes: Routes = [
   {path:'settings',redirectTo:'404',pathMatch: 'full' },
   {path:'settings/:username',component:SettingsComponent, },
   {path:'confirm',redirectTo:'403',pathMatch: 'full' },
-  {path:'confirm/:token',component:ConfirmaccountComponent, },
+  {path:'confirm/:token',component:ConfirmaccountComponent },
+  {path:'forgotpassword',component:ForgotpasswordComponent },
+  {path:'forgotpassword/reset',redirectTo:'404',pathMatch: 'full' },
+  {path:'forgotpassword/reset/:token',component:ResetpasswordComponent },
   {path:'404',component:NotfoundComponent },
   {path:'500',component:ServererrorComponent },
   {path:'403',component:AuthorationerrorComponent },

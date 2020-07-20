@@ -1,1 +1,32 @@
-<p>tag works!</p>
+
+<div class="container ">
+    <div class="row mt-4">
+        <div class="col-md-12">
+            <p class="h4">Yazılarım</p>
+            <p>Aranılan kategori adı : <span class="text-danger">{{tagname}}</span></p>
+            <p>Toplam bulunan konu sayısı: <span class="text-info">{{maxTag}}</span></p>
+        </div>
+        
+        <div class="col-md-6"  *ngFor= "let post of postInfo">
+            <div class="card text-white bg-dark mb-3 mt-3">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <p class="h5"><a [routerLink]="['/article', enChangeLink(post.post_Title)]"   routerLinkActive="active" class="text-white">{{post.post_Title}}</a></p>
+                        <a href="#" class="h5"><span class="badge badge-pill badge-danger">{{post.post_Tag}}</span></a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">
+                        {{post.post_Header}}
+                    </p>
+                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white ">Okumak için tıklayın.</a>
+                </div>
+                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} Görüntülenme</span> | <span id="maxSee">{{ post.post_Max_Comment }} Yorum</span></div>
+            </div>
+        </div>
+        <div *ngIf="maxTag > 0 ? false : true">
+            <p><b>Üzgünüm.</b> Aramaya çalıştığın konu etiketiyle ilgili bir yazı bulunmuyor. </p>
+        </div>
+        <div class="col-md-12" style="height: 100px;"></div>
+    </div>
+</div>

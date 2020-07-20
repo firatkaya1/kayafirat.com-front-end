@@ -24,6 +24,8 @@ import { SettingsComponent } from './settings/settings.component';
 import { MenuComponent } from './menu/menu.component';
 import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
 import { TagComponent } from './tag/tag.component';
+import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { TagComponent } from './tag/tag.component';
     SettingsComponent,
     MenuComponent,
     ConfirmaccountComponent,
-    TagComponent
+    TagComponent,
+    ForgotpasswordComponent,
+    ResetpasswordComponent
   ],
   imports: [
     BrowserModule,

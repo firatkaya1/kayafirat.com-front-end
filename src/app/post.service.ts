@@ -9,11 +9,12 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
 
-  private myPosts:string = "http://localhost:8080/api/v1/post/lastposts/10/asc";
+  private myPosts:string = "http://localhost:8080/api/v1/post/lastposts/10/desc";
   private myPost:string = "http://localhost:8080/api/v1/post/postTitle/";
   private addCommentUrl:string = "http://localhost:8080/api/v1/comment/";
   private addPageView:string = "http://localhost:8080/api/v1/post/updateview";
   private orderByDate:string = "http://localhost:8080/api/v1/post/";
+  private postTagUrl:string = "http://localhost:8080/api/v1/post/postTag/";
 
   constructor(private http:HttpClient) { }
 
@@ -24,7 +25,7 @@ export class PostService {
     return this.http.get<IPostDetail[]>(this.myPost.concat(postTitle));
   }
   
-  getPostByTag(postTag:string): Observable<IPostDetail[]> {
+  getPostByTitle(postTag:string): Observable<IPostDetail[]> {
     return this.http.get<IPostDetail[]>(this.myPost.concat(postTag));
   }
 
@@ -32,7 +33,9 @@ export class PostService {
     return this.http.get<IPost[]>(this.orderByDate.concat(pageNumber).concat("/")
     .concat(pageSize).concat("/sorted/").concat(sortedName).concat("/orderby/").concat(orderby));
   }
-
+  getPostByTag(postTag:string):Observable<IPost[]> {
+    return this.http.get<IPost[]>(this.postTagUrl.concat(postTag));
+  }
 
   getIpAddress(){
     return this.http.get<string>("http://api.ipify.org/?format=json");

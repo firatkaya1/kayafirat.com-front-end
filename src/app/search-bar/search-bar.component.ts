@@ -1,4 +1,6 @@
+import { UserServiceService } from './../user-service.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _userService:UserServiceService,private router:Router) { }
+
+  public searchResult:string[];
+  public searchWord:string="";
+  public searchSuccess:boolean=false;
 
   ngOnInit(): void {
   }
+
+  redirect(link:string){
+    this.router.navigateByUrl('/article/'+link.replace(/\s+/g,'-'));
+  }
+
+
+  getSearch(){
+    if(this.searchWord.length > 0) {
+      this._userService.getSearchs(this.searchWord).subscribe(data => { 
+        this.searchResult = data;
+        data.length > 0 ? this.searchSuccess=true : this.searchSuccess=false;
+      });
+    } else {
+      this.searchSuccess = false;
+    }
+  }
+
+
 
 }

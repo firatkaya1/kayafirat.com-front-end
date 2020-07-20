@@ -40,7 +40,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <p class="h5"><a [routerLink]="['/article', enChangeLink(post.post_Title)]"   routerLinkActive="active" class="text-white">{{post.post_Title}}</a></p>
-                        <a href="#" class="h5"><span class="badge badge-pill badge-danger">{{post.post_Tag}}</span></a>
+                        <a [routerLink]="['/category/orderby/tag', post.post_Tag]" class="h5"><span class="badge badge-pill badge-danger">{{post.post_Tag}}</span></a>
                     </div>
                 </div>
                 <div class="card-body">

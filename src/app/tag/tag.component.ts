@@ -1,3 +1,4 @@
+import { IPost } from './../Models/Post';
 import { PostService } from './../post.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
@@ -11,6 +12,8 @@ import { ActivatedRoute} from '@angular/router';
 export class TagComponent implements OnInit {
 
   public tagname:string;
+  public maxTag:number;
+  public postInfo:IPost[];
 
   constructor(private route: ActivatedRoute,private _postService:PostService) {
               
@@ -21,7 +24,14 @@ export class TagComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("tagname:"+this.tagname);
+    this._postService.getPostByTag(this.tagname).subscribe(
+      res => {
+        this.postInfo = res;
+        this.maxTag=res.length;
+      });
   }
 
+  enChangeLink(str:string):string{
+    return str.replace(/\s+/g,'-');
+  }
 }

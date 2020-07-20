@@ -1,4 +1,5 @@
 import { UserServiceService } from './../user-service.service';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { IComment } from './../Models/Comment';
 import { IPostDetail } from './../Models/PostDetails';
@@ -30,7 +31,14 @@ export class ArticleComponent implements OnInit {
   public validateRecaptcha:boolean = false;
   
 
-  constructor(private cookieService: CookieService,private route: ActivatedRoute,private _postService:PostService,private _userService:UserServiceService) {
+  constructor(
+    private cookieService: CookieService,
+    private route: ActivatedRoute,
+    private _postService:PostService,
+    private _userService:UserServiceService,
+    private titleService: Title,
+    private metaService: Meta) 
+    {
               
     this.route.paramMap.subscribe(params => {
       this.posttitlerouter = this.deChangeLink(params.get('postTitle'));
@@ -40,15 +48,17 @@ export class ArticleComponent implements OnInit {
   
   ngOnInit(): void {
     this.getPost();
+    this.addMetaTags();
     
   }
-
   resolved(captchaResponse:string) {
     this._userService.validateReCaptcha(captchaResponse).subscribe(res => {
       res['success'] == true ? this.validateRecaptcha=true : this.validateRecaptcha=false;})
    
   }
-
+  handleReset(){
+    console.log("calisti:");
+  }
 
   setComment(){
     if(this.isAnonymous && this.commentMessage != null) {
@@ -93,6 +103,16 @@ export class ArticleComponent implements OnInit {
   clearCommentSide(){
     this.commentMessage="";
     this.commentSuccess=true;
+  }
+  addMetaTags(){
+    console.log("calisti :");
+    this.titleService.setTitle(this.posttitlerouter);
+    this.metaService.addTags([
+      {name: 'keywords', content: 'Angular, Universal, Example'},
+      {name: 'description', content: 'Angular Universal Example'},
+      {name: 'robots', content: 'index, follow'}
+    ]);
+
   }
   
 

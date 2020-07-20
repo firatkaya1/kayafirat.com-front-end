@@ -15,8 +15,11 @@ export class UserServiceService {
   private urlUserById:string = "http://localhost:8080/api/v1/user/userid/";
   private addUserUrl:string = "http://localhost:8080/api/v1/user/register";
   private sendEmail:string = "http://localhost:8080/api/v1/user/sendemail/";
+  private sendResetPassEmail:string = "http://localhost:8080/api/v1/user/sendResetEmail/";
   private verifyUser:string = "http://localhost:8080/api/v1/user/verification/";
   private validaterecaptcha:string = "http://localhost:8080/api/v1/user/validaterecaptcha/";
+  private searchURL:string = "http://localhost:8080/api/v1/post/search/";
+  private updatePassword:string = "http://localhost:8080/api/v1/user/reset/"
 
   constructor(private http:HttpClient) { }
 
@@ -46,8 +49,16 @@ export class UserServiceService {
     sendVerificationEmail(email:string){
       this.http.post<any>(this.sendEmail.concat(email),'').subscribe(data => {})
     }
+    sendResetPasswordEmail(email:string){
+      this.http.post<any>(this.sendResetPassEmail.concat(email),'').subscribe(data => {})
+    }
     updateUserVerification(email:string,id:string){
         this.http.post<any>(this.verifyUser.concat(email).concat("/").concat(id),'').subscribe(data => {})
+    }
+
+    updateUserPassword(email:string,password:string){
+      this.http.post<any>(this.updatePassword.concat(email).concat("/").concat(password),'').subscribe(data => {})
+
     }
 
     validateReCaptcha(response:string) {
@@ -55,6 +66,9 @@ export class UserServiceService {
       
   }
 
+  getSearchs(word:string) {
+    return this.http.get<string[]>(this.searchURL.concat(word)).pipe(catchError(this.errorHandler));
+  }
 
 
 }

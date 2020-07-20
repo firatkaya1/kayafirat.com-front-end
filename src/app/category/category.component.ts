@@ -1,7 +1,7 @@
 import { IPost } from './../Models/Post';
 import { PostService } from './../post.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute,Router} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-category',
@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
   public orderSuccess:boolean;
 
 
-  constructor(private route: ActivatedRoute,private _postService:PostService,private router: Router) {
+  constructor(private route: ActivatedRoute,private _postService:PostService) {
     
     this.route.paramMap.subscribe(params => {
       this.pagenumber = params.get('pagenumber');
@@ -35,7 +35,7 @@ export class CategoryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //pageNumber:string,pageSize:string,sortedName:string,orderby:string
+
     this._postService.getPostOrderBy(this.pagenumber,this.selectedPageSize,this.selectedOrderBy,this.selectedOrderType).subscribe(
       res => {
         this.postInfo = res['content'];
