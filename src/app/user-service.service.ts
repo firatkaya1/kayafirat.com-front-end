@@ -66,8 +66,9 @@ export class UserServiceService {
       
   }
 
-  getSearchs(word:string) {
-    return this.http.get<string[]>(this.searchURL.concat(word)).pipe(catchError(this.errorHandler));
+  getSearchs(word:string,pageNumber:string,pageSize:string,sortedName:string,orderby:string) {
+    return this.http.get<string[]>(this.searchURL.concat(word).concat("/").concat(pageNumber).concat("/")
+    .concat(pageSize).concat("/sorted/").concat(sortedName).concat("/orderby/").concat(orderby));
   }
 
 
