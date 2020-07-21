@@ -48,7 +48,7 @@ export class ArticleComponent implements OnInit {
   
   ngOnInit(): void {
     this.getPost();
-    this.addMetaTags();
+  
     
   }
   resolved(captchaResponse:string) {
@@ -56,22 +56,22 @@ export class ArticleComponent implements OnInit {
       res['success'] == true ? this.validateRecaptcha=true : this.validateRecaptcha=false;})
    
   }
-  handleReset(){
-    console.log("calisti:");
-  }
-
-  setComment(){
+   setComment(){
     if(this.isAnonymous && this.commentMessage != null) {
      this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,'Anonymous');
      this.clearCommentSide();
-      setTimeout(() => { this.getPost();}, 1000);
+    
+      
       setTimeout(() => { this.commentSuccess=false;
-                         this.validateRecaptcha=false}, 10000);
+        this.validateRecaptcha=false}, 10000);
+        
+        setTimeout(() => { this.getPost();}, 1000);
 
     } else {
       this.commentError = false;
       setTimeout(() => { this.commentError=true;}, 10000);
     }
+    
     
   }
   acceptsCookie() {

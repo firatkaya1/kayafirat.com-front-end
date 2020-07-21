@@ -46,11 +46,11 @@
                         <div class="col-12 text-center">
                             <img src="assets/images/profile.svg" class="img-thumbnail" width="75px" alt="profile-picture">
                             <p class="mb-0">
-                                <b *ngIf="comment.userId !== 'Anonymous'">
-                                    <a href="#">{{comment.userId}}</a>
+                                <b *ngIf="comment.username !== 'Anonymous'">
+                                    <a href="#">{{comment.username}}</a>
                                 </b>
-                                <b *ngIf="comment.userId === 'Anonymous'">
-                                    {{comment.userId}}
+                                <b *ngIf="comment.username === 'Anonymous'">
+                                    {{comment.username}}
                                 </b>
                         </p>
                         </div>
@@ -73,8 +73,9 @@
                   </p>
                 </div>
                 <div class="col-md-5"></div>
+                
                 <div class="col-md-2">
-                    <re-captcha (resolved)="resolved($event)" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC" (reset)="handleReset()"> </re-captcha>
+                    <re-captcha (resolved)="resolved($event)"  siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
                 </div>
                 <div class="col-md-5"></div>
                 <div class="w-100"></div>
