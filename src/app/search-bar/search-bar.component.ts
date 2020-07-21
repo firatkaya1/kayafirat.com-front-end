@@ -13,7 +13,7 @@ export class SearchBarComponent implements OnInit {
 
   public searchResult:string[];
   public searchWord:string="";
-  public searchSuccess:boolean=false;
+  public searchSuccess:boolean;
 
   ngOnInit(): void {
   }
