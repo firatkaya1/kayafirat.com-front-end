@@ -1,3 +1,4 @@
+import { IUserPermissions } from './../Models/UserPermissions';
 import { IUser } from './../Models/User';
 import { HttpClient } from '@angular/common/http';
 import { UserServiceService } from './../user-service.service';
@@ -19,6 +20,7 @@ export class SettingsComponent implements OnInit {
   public users:IUser[];
   public errormessage:ErrorHandler;
 
+ 
 
   myUserPermissions = new FormGroup({
     username: new FormControl(),
@@ -33,9 +35,11 @@ export class SettingsComponent implements OnInit {
     userLinkedinAddress:new FormControl()
   
   }); 
+
+
+
   constructor(private route: ActivatedRoute,
-              private _userService: UserServiceService,
-              private _route:Router) { 
+              private _userService: UserServiceService) { 
 
    this.route.paramMap.subscribe(params => {
     this.usernamerouter = params.get('username');
@@ -43,23 +47,60 @@ export class SettingsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  this._userService.getUserById(this.usernamerouter).subscribe(
-    res => {
-      this.users = res;
-      this.myUserPermissions.controls['username'].setValue(this.users[0].userPermissions.nameShow);
-      this.myUserPermissions.controls['userAboutMe'].setValue(this.users[0].userPermissions.aboutmeShow);
-      this.myUserPermissions.controls['userRegisterDate'].setValue(this.users[0].userPermissions.registerdateShow);
-      this.myUserPermissions.controls['userMailAdress'].setValue(this.users[0].userPermissions.contactShow);
-      this.myUserPermissions.controls['userLastSeen'].setValue(this.users[0].userPermissions.lastSeenShow);
-      this.myUserPermissions.controls['userShowAllComment'].setValue(this.users[0].userPermissions.allCommentShow);
-      this.myUserPermissions.controls['userShowAllFav'].setValue(this.users[0].userPermissions.allFavShow);
-      this.myUserPermissions.controls['userGithubAddress'].setValue(this.users[0].userPermissions.githubShow);
-      this.myUserPermissions.controls['userLinkedinAddress'].setValue(this.users[0].userPermissions.linkedinShow);});
-
-      
+    this.getUserPermissions();      
 }
 
+  ngOnSubmit():void {
+    let body = {
+      userEmail: "",
+      nameShow: false,
+      aboutmeShow: this.myUserPermissions.controls['userAboutMe'].value,
+      registerdateShow:this.myUserPermissions.controls['userRegisterDate'].value,
+      birthdateShow: this.myUserPermissions.controls['userBirthDate'].value,
+      contactShow: this.myUserPermissions.controls['userMailAdress'].value,
+      lastSeenShow:this.myUserPermissions.controls['userLastSeen'].value,
+      allCommentShow:  this.myUserPermissions.controls['userShowAllComment'].value,
+      allFavShow: this.myUserPermissions.controls['userShowAllFav'].value,
+      githubShow: this.myUserPermissions.controls['userGithubAddress'].value,
+      linkedinShow:this.myUserPermissions.controls['userLinkedinAddress'].value
+  };
+  this._userService.updateUserPermissions(this.usernamerouter,body);
 
+}
 
-  ngOnSubmit():void {} 
+  getUserPermissions(){
+    this._userService.getUserByUsername(this.usernamerouter).subscribe(
+      res => {
+        this.users = res;
+        this.myUserPermissions.controls['username'].setValue(this.users[0].userPermissions.nameShow);
+        this.myUserPermissions.controls['userAboutMe'].setValue(this.users[0].userPermissions.aboutmeShow);
+        this.myUserPermissions.controls['userRegisterDate'].setValue(this.users[0].userPermissions.registerdateShow);
+        this.myUserPermissions.controls['userBirthDate'].setValue(this.users[0].userPermissions.birthdateShow);
+        this.myUserPermissions.controls['userMailAdress'].setValue(this.users[0].userPermissions.contactShow);
+        this.myUserPermissions.controls['userLastSeen'].setValue(this.users[0].userPermissions.lastSeenShow);
+        this.myUserPermissions.controls['userShowAllComment'].setValue(this.users[0].userPermissions.allCommentShow);
+        this.myUserPermissions.controls['userShowAllFav'].setValue(this.users[0].userPermissions.allFavShow);
+        this.myUserPermissions.controls['userGithubAddress'].setValue(this.users[0].userPermissions.githubShow);
+        this.myUserPermissions.controls['userLinkedinAddress'].setValue(this.users[0].userPermissions.linkedinShow);});
+  }
+
+  updateUserGithubAddres(githubaddress:string){
+    console.log("test:"+githubaddress);
+  }
+  updateUserLinkedinAddress(linkedinaddress:string){
+    console.log("test:"+linkedinaddress);
+    
+  }
+  updateUserBirthDate(birthdate:string){
+    console.log("test:"+birthdate);
+
+  }
+  updateUserPass(pass:string){
+    console.log("test"+pass);
+  }
+
+  updateUserUsername(username:string){
+    console.log("test"+username);
+  }
+
 }
