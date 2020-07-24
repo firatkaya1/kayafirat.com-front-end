@@ -131,11 +131,18 @@
                         <tr>
                             <td class="text-warning">Hesap Durumu</td>
                             <td>
-                                <div *ngIf="user.verification">
-                                    <span class="text-success">Onaylandı</span>
-                                </div>
-                                <div *ngIf="!user.verification">
-                                    <span class="text-info">Onaylanmadı.</span>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div *ngIf="user.verification">
+                                            <span class="text-success">Onaylandı</span>
+                                        </div>
+                                        <div *ngIf="!user.verification">
+                                            <span class="text-info">Onaylanmadı.</span>
+                                        </div>                                    
+                                    </div>
+                                    <div class="col-md-4">
+                                     <button class="btn btn-danger btn-sm" [disabled]="!sendVerifyButton" (click)="sendUserVerificationMail(user.userEmail)">Tekrar Yolla</button>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -144,10 +151,10 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control bg-dark text-white border-0"  maxlength="20" value="{{user.userName}}" placeholder="İsim Soyisim" id="nameSurname">                                     
+                                        <input type="text" class="form-control bg-dark text-white border-0" #username  maxlength="20" value="{{user.userName}}" placeholder="İsim Soyisim" id="nameSurname">                                     
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success" (click)="updateUserUsername(user.userName)" >Güncelle</button>
+                                     <button class="btn btn-success" (click)="updateUserUsername(user.userEmail,username.value)" >Güncelle</button>
                                     </div>
                                 </div>
                             </td>
@@ -158,11 +165,10 @@
                             <td>
                                <div class="row">
                                    <div class="col-md-8">
-                                    <input type="password" class="form-control bg-dark text-white border-0" value="12345678" id="accountPassword">
-                                    
+                                    <input type="password" class="form-control bg-dark text-white border-0" #pass id="accountPassword">
                                    </div>
                                    <div class="col-md-4">
-                                    <button class="btn btn-success" (click)="updateUserPass(user.userName)">Güncelle</button>
+                                    <button class="btn btn-success" (click)="updateUserPass(user.userEmail,pass.value)">Güncelle</button>
                                    </div>
                                </div>
                             </td>
@@ -171,11 +177,11 @@
                             <td class="text-warning">Doğum Tarihi</td>
                             <td>
                                 <div class="row">
-                                    <div class="col-md-8">{{user.userBirthdayDate}}
-                                        <input type="date" class="form-control bg-dark text-white border-0" max="2010-12-31" value="{{user.userBirthdayDate |  date:'yyyy-MM-dd'}}"  id="birthdate" required>
+                                    <div class="col-md-8">
+                                        <input type="date" class="form-control bg-dark text-white border-0" #birthdate max="2010-12-31" value="{{user.userBirthdayDate |  date:'yyyy-MM-dd'}}"  id="birthdate" required>
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success"   (click)="updateUserBirthDate(user.userName)">Güncelle</button>
+                                     <button class="btn btn-success"   (click)="updateUserBirthDate(user.userEmail,birthdate.value)">Güncelle</button>
                                     </div>
                                 </div>
                             </td>
@@ -183,7 +189,7 @@
                         <tr>
                             <td class="text-warning">Hesap Email Adresi</td>
                             <td>
-                                <input type="email" disabled class="form-control bg-dark text-white border-0" value="{{user.userEmail}}" placeholder="Hesap Email Adresi" id="acountEmailAddress">
+                                <input type="email" disabled  class="form-control bg-dark text-white border-0"  value="{{user.userEmail}}" placeholder="Hesap Email Adresi" id="acountEmailAddress">
                             </td>  
                         </tr>
                         <tr>
@@ -191,10 +197,10 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control bg-dark text-white border-0" value="{{user.userProfile.userGithub}}" placeholder="{{user.userProfile.userGithub}}" id="userGithubAddress">
+                                        <input type="text" class="form-control bg-dark text-white border-0" #githubLink value="{{user.userProfile.userGithub}}" placeholder="{{user.userProfile.userGithub}}" id="userGithubAddress">
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success">Güncelle</button>
+                                     <button class="btn btn-success" (click)="updateUserGithubAddres(user.userEmail,githubLink.value)">Güncelle</button>
                                     </div>
                                 </div>
                             </td>
@@ -204,19 +210,43 @@
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control bg-dark text-white border-0" value="{{user.userProfile.userLinkedin}}" placeholder="{{user.userProfile.userLinkedin}}" id="userLinkedinAddress">
+                                        <input type="text" class="form-control bg-dark text-white border-0"  #linkedinlink value="{{user.userProfile.userLinkedin}}" placeholder="{{user.userProfile.userLinkedin}}" id="userLinkedinAddress">
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success">Güncelle</button>
+                                     <button class="btn btn-success"  (click)="updateUserLinkedinAddress(user.userEmail,linkedinlink.value)">Güncelle</button>
                                     </div>
                                 </div>
                             </td>
 
                         </tr>
+                        <tr>
+                            <td class="text-warning">Profil Resmi </td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <input type="file" max-size="1024" enctype="multipart/form-data" accept="image/*" (change)="onFileChanged($event)"  #fileVal required>
+                                    </div>
+                                    <div class="col-md-4">
+                                     <button class="btn btn-success"  (click)="updateUserProfilPhoto(user.userId)">Güncelle</button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </form>
+         <!--Comment Alerts-->
+        <div class="row">
+            <div class="col-6">
+                <div *ngIf="success" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
+                    <strong>Harika!</strong> Güncelleme işlemi başarıyla gerçekleşti.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="col-md-12" style="height: 150px;"></div>
     </div>
 </div>

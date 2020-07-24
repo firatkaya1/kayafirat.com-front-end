@@ -40,7 +40,14 @@ export class ResetpasswordComponent implements OnInit {
       numberValidator])}); 
 
   ngOnInit(): void {
-    
+    var current_time = new Date().getTime() / 1000;
+    if(current_time < jwt_decode(this.token).exp) {
+      this.isTokenExpired=false;
+      console.log("dolmadı:");
+    } else {
+      this.isTokenExpired=true;
+      console.log("doldu:");
+    }
   }
 
   ngOnSubmit():void{

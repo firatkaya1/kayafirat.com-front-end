@@ -19,7 +19,9 @@ export class SettingsComponent implements OnInit {
   public usernamerouter:string;
   public users:IUser[];
   public errormessage:ErrorHandler;
-
+  public success:boolean = false;
+  public sendVerifyButton:boolean = true;
+  public selectedImage:File;
  
 
   myUserPermissions = new FormGroup({
@@ -39,7 +41,7 @@ export class SettingsComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private _userService: UserServiceService) { 
+              private _userService: UserServiceService,private router: Router) { 
 
    this.route.paramMap.subscribe(params => {
     this.usernamerouter = params.get('username');
@@ -65,12 +67,16 @@ export class SettingsComponent implements OnInit {
       linkedinShow:this.myUserPermissions.controls['userLinkedinAddress'].value
   };
   this._userService.updateUserPermissions(this.usernamerouter,body);
+  this.success=true;
+  setTimeout(() => {
+    this.success=false;
+  }, 5000);
 
-}
+} 
 
   getUserPermissions(){
     this._userService.getUserByUsername(this.usernamerouter).subscribe(
-      res => {
+      res => {  
         this.users = res;
         this.myUserPermissions.controls['username'].setValue(this.users[0].userPermissions.nameShow);
         this.myUserPermissions.controls['userAboutMe'].setValue(this.users[0].userPermissions.aboutmeShow);
@@ -81,26 +87,98 @@ export class SettingsComponent implements OnInit {
         this.myUserPermissions.controls['userShowAllComment'].setValue(this.users[0].userPermissions.allCommentShow);
         this.myUserPermissions.controls['userShowAllFav'].setValue(this.users[0].userPermissions.allFavShow);
         this.myUserPermissions.controls['userGithubAddress'].setValue(this.users[0].userPermissions.githubShow);
-        this.myUserPermissions.controls['userLinkedinAddress'].setValue(this.users[0].userPermissions.linkedinShow);});
+        this.myUserPermissions.controls['userLinkedinAddress'].setValue(this.users[0].userPermissions.linkedinShow);
+      }, 
+      error => {
+        this.router.navigateByUrl('/404');
+      }  
+        
+        );
   }
 
-  updateUserGithubAddres(githubaddress:string){
-    console.log("test:"+githubaddress);
+  updateUserGithubAddres(email:string,githubaddress:string){
+    this._userService.updateUserGithubAddress(email,githubaddress);
+    setTimeout(() => {
+      this.getUserPermissions();
+    }, 1000);
+
+    this.success=true;
+    setTimeout(() => {
+      this.success=false;
+    }, 5000);
   }
-  updateUserLinkedinAddress(linkedinaddress:string){
-    console.log("test:"+linkedinaddress);
+  updateUserLinkedinAddress(email:string,linkedinaddress:string){
+    this._userService.updateUserLinkedinAddress(email,linkedinaddress);
+    setTimeout(() => {
+      this.getUserPermissions();
+    }, 1000);
+
+    this.success=true;
+    setTimeout(() => {
+      this.success=false;
+    }, 5000);
     
   }
-  updateUserBirthDate(birthdate:string){
-    console.log("test:"+birthdate);
+  updateUserBirthDate(email:string,birthdate:string){
+    this._userService.updateUserBirthDate(email,birthdate);
+    setTimeout(() => {
+      this.getUserPermissions();
+    }, 1000);
+
+
+  this.success=true;
+  setTimeout(() => {
+    this.success=false;
+  }, 5000);
 
   }
-  updateUserPass(pass:string){
-    console.log("test"+pass);
+  updateUserPass(email:string,pass:string){
+    this._userService.updateUserPassword(email,pass);
+    setTimeout(() => {
+      this.getUserPermissions();
+      
+    }, 1000);
+
+    this.success=true;
+  setTimeout(() => {
+    this.success=false;
+  }, 5000);
   }
 
-  updateUserUsername(username:string){
-    console.log("test"+username);
+  updateUserUsername(email:string,username:string){
+    this._userService.updateUserName(email,username);
+    setTimeout(() => {
+      this.getUserPermissions();
+      this.router.navigateByUrl('/settings/'+username);
+    }, 1000);
+
+
+    this.success=true;
+      setTimeout(() => {
+        this.success=false;
+      }, 5000);
   }
+
+ sendUserVerificationMail(email:string){
+   this._userService.sendVerificationEmail(email);
+   this.sendVerifyButton=false;
+   this.success=true;
+      setTimeout(() => {
+        this.success=false;
+      }, 5000);
+
+      setTimeout(() => {
+        this.sendVerifyButton=true;
+      }, 30000);
+ }
+
+ updateUserProfilPhoto(userId:string){
+   console.log("calisti :"+userId);
+   this._userService.updateUserProfilPhoto(userId,this.selectedImage);
+ }
+ onFileChanged(event) {
+  this.selectedImage = event.target.files[0]
+  console.log("selected:"+this.selectedImage);
+}
 
 }

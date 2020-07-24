@@ -15,13 +15,20 @@ export class UserServiceService {
   private myUrl:string = "http://localhost:8080/api/v1/user";
   private urlUserByUsername:string = "http://localhost:8080/api/v1/user/username/";
   private addUserUrl:string = "http://localhost:8080/api/v1/user/register";
+
   private sendEmail:string = "http://localhost:8080/api/v1/user/sendemail/";
-  private sendResetPassEmail:string = "http://localhost:8080/api/v1/user/sendResetEmail/";
-  private verifyUser:string = "http://localhost:8080/api/v1/user/verification/";
+
+  private sendResetPassEmail:string = "http://localhost:8080/api/v1/user/sendResetEmail";
+  private verifyUser:string = "http://localhost:8080/api/v1/user/verification";
   private validaterecaptcha:string = "http://localhost:8080/api/v1/user/validaterecaptcha/";
   private searchURL:string = "http://localhost:8080/api/v1/post/search/";
+
   private updatePassword:string = "http://localhost:8080/api/v1/user/reset/"
+
   private updateUserPermission:string = "http://localhost:8080/api/v1/user/update/userpermissions/";
+  private updateUser:string = "http://localhost:8080/api/v1/user/update";
+  private updateProfilPhoto:string = "http://localhost:8080/api/v1/user/updatepicture/";
+
 
   constructor(private http:HttpClient) { }
 
@@ -51,24 +58,84 @@ export class UserServiceService {
     this.http.post<Comment>(this.addUserUrl,body).subscribe(data => {})
   }
   sendVerificationEmail(email:string){
-    this.http.post<any>(this.sendEmail.concat(email),'').subscribe(data => {})
+    let body = {
+      email:email
+    }
+    this.http.post<any>(this.sendEmail,body).subscribe(data => {})
   }
-  sendResetPasswordEmail(email:string){
-    this.http.post<any>(this.sendResetPassEmail.concat(email),'').subscribe(data => {})
+  sendResetPasswordEmail(emailAddress:string){  
+    let body = {
+      email : emailAddress
+    };
+    this.http.post<any>(this.sendResetPassEmail,body).subscribe(data => {})
   }
 
   updateUserVerification(email:string,id:string){
-      this.http.post<any>(this.verifyUser.concat(email).concat("/").concat(id),'').subscribe(data => {})
+    let body = {
+      email:email,
+      id:id
+    }
+      this.http.post<any>(this.verifyUser,body).subscribe(data => {})
   }
-  updateUserPassword(email:string,password:string){
-    this.http.post<any>(this.updatePassword.concat(email).concat("/").concat(password),'').subscribe(data => {})
+  updateUserPassword(emailAddress:string,password:string){
+    let body = {
+      email : emailAddress,
+      password : password
+    }
+    this.http.post<any>(this.updatePassword,body).subscribe(data => {})
 
   }
   updateUserPermissions(username:string,body){
     this.http.put<any>(this.updateUserPermission.concat(username),body).subscribe(data => {})
 
   }
-  
+  updateUserGithubAddress(email:string,githubaddress:string){
+    let body = {
+      key:"githubaddress",
+      email:email,
+      githubaddress:githubaddress
+    }
+    this.http.put<any>(this.updateUser,body).subscribe(data => {})
+  }
+  updateUserLinkedinAddress(email:string,linkedinaddress:string){
+    let body = {
+      key:"linkedinaddress",
+      email:email,
+      linkedinaddress:linkedinaddress
+    }
+    this.http.put<any>(this.updateUser,body).subscribe(date => {})
+
+  }
+  updateUserBirthDate(email:string,birthdate:string){
+    let body = {
+      key:"birthdate",
+      email:email,
+      birthdate:birthdate
+    }
+    this.http.put<any>(this.updateUser,body).subscribe(date => {})
+  }
+  updateUserName(email:string,username:string){
+    let body = {
+      key:"username",
+      email:email,
+      username:username
+    }
+    this.http.put<any>(this.updateUser,body).subscribe(date => {})
+
+  }
+
+  updateUserProfilPhoto(userId:string,profilphoto:File  ){
+    const formData = new FormData();
+    formData.append('file', profilphoto);
+    this.http.post<any>(this.updateProfilPhoto.concat(userId),formData).subscribe(date => {})
+
+  }
+
+
+
+
+
+
 
   validateReCaptcha(response:string) {
      return this.http.get<string>(this.validaterecaptcha.concat(response));

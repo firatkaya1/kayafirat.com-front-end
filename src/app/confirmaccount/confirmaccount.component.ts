@@ -1,3 +1,4 @@
+import { catchError } from 'rxjs/operators';
 import { UserServiceService } from './../user-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute} from '@angular/router';
