@@ -175,6 +175,10 @@ export class SettingsComponent implements OnInit {
  updateUserProfilPhoto(userId:string){
    console.log("calisti :"+userId);
    this._userService.updateUserProfilPhoto(userId,this.selectedImage);
+   this.success=true;
+      setTimeout(() => {
+        this.success=false;
+      }, 5000);
  }
  onFileChanged(event) {
   this.selectedImage = event.target.files[0]

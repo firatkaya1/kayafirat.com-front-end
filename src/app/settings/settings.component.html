@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" *ngFor="let user of users ">
         <div class="col-md-12 text-center mt-4">
-            <img src="{{user.userProfilPhoto}}" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
+            <img [src]="user.userProfilPhoto" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
         </div>
         <div class="col-md-12 text-center mt-2">
             <p class="h4"><b>Profil Ayarları</b></p>
