@@ -3,7 +3,7 @@ import { Title, Meta } from '@angular/platform-browser';
 
 import { IComment } from './../../Core/Model/Comment';
 import { IPostDetail } from './../../Core/Model/PostDetails';
-import { PostService } from './../../Core/Service/post.service';
+import { PostService } from '../../Core/Service/PostService/post.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';

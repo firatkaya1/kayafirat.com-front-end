@@ -1,5 +1,5 @@
-import { IPostDetail } from './Models/PostDetails';
-import { IPost } from './Models/Post';
+import { IPostDetail } from './../../Model/PostDetails';
+import { IPost } from './../../Model/Post';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';

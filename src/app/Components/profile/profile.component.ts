@@ -1,8 +1,7 @@
-import { IUser } from '../../Models/User';
-import { UserServiceService } from '../../user-service.service';
+import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
+import { IUser } from './../../Core/Model/User';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-profile',

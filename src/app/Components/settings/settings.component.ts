@@ -1,8 +1,5 @@
-import { IUserPermissions } from '../../Models/UserPermissions';
-import { IUser } from '../../Models/User';
-import { HttpClient } from '@angular/common/http';
-import { UserServiceService } from '../../user-service.service';
-
+import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
+import { IUser } from './../../Core/Model/User';
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router} from '@angular/router';

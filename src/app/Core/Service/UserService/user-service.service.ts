@@ -1,6 +1,5 @@
-import { IUserPermissions } from './Models/UserPermissions';
+import { IUser } from './../../Model/User';
 import { FormGroup } from '@angular/forms';
-import { IUser } from './Models/User';
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
