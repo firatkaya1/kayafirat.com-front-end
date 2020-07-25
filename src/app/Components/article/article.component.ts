@@ -1,14 +1,13 @@
-import { UserServiceService } from '../../user-service.service';
+import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { IComment } from '../../Models/Comment';
-import { IPostDetail } from '../../Models/PostDetails';
-import { PostService } from '../../post.service';
+import { IComment } from './../../Core/Model/Comment';
+import { IPostDetail } from './../../Core/Model/PostDetails';
+import { PostService } from './../../Core/Service/post.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
 import { v4 as uuid } from 'uuid';
-
 
 @Component({
   selector: 'app-article',
