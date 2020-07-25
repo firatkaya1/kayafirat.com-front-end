@@ -1,5 +1,4 @@
-import { IPost } from './../Models/Post';
-import { UserServiceService } from './../user-service.service';
+import { UserServiceService } from '../../user-service.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 

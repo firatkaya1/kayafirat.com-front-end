@@ -1,5 +1,5 @@
-import { IUser } from './../Models/User';
-import { UserServiceService } from './../user-service.service';
+import { IUser } from '../../Models/User';
+import { UserServiceService } from '../../user-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 

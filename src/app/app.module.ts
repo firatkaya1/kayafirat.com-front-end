@@ -8,23 +8,23 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PostsComponent } from './posts/posts.component';
-import { WelcomeComponent } from './welcome/welcome.component';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { FooterComponent } from './footer/footer.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ArticleComponent } from './article/article.component';
-import { CategoryComponent } from './category/category.component';
+import { PostsComponent } from './Components/posts/posts.component';
+import { WelcomeComponent } from './Components/welcome/welcome.component';
+import { SearchBarComponent } from './Components/search-bar/search-bar.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegisterComponent } from './Components/register/register.component';
+import { FooterComponent } from './Components/footer/footer.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { ArticleComponent } from './Components/article/article.component';
+import { CategoryComponent } from './Components/category/category.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ServererrorComponent } from './servererror/servererror.component';
 import { AuthorationerrorComponent } from './authorationerror/authorationerror.component';
-import { SettingsComponent } from './settings/settings.component';
-import { MenuComponent } from './menu/menu.component';
-import { ConfirmaccountComponent } from './confirmaccount/confirmaccount.component';
+import { SettingsComponent } from './Components/settings/settings.component';
+import { MenuComponent } from './Components/menu/menu.component';
+import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';
 import { TagComponent } from './tag/tag.component';
-import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
+import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 
 @NgModule({

@@ -1,7 +1,7 @@
-import { IUserPermissions } from './../Models/UserPermissions';
-import { IUser } from './../Models/User';
+import { IUserPermissions } from '../../Models/UserPermissions';
+import { IUser } from '../../Models/User';
 import { HttpClient } from '@angular/common/http';
-import { UserServiceService } from './../user-service.service';
+import { UserServiceService } from '../../user-service.service';
 
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';

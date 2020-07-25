@@ -1,9 +1,9 @@
-import { UserServiceService } from './../user-service.service';
+import { UserServiceService } from '../../user-service.service';
 import { Title, Meta } from '@angular/platform-browser';
 
-import { IComment } from './../Models/Comment';
-import { IPostDetail } from './../Models/PostDetails';
-import { PostService } from './../post.service';
+import { IComment } from '../../Models/Comment';
+import { IPostDetail } from '../../Models/PostDetails';
+import { PostService } from '../../post.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router} from '@angular/router';
