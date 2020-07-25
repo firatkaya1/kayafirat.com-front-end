@@ -56,18 +56,3 @@
 
 
 </div>
-
-<script>
-    var number1 = Math.floor(Math.random() * 26);
-    var number2 = Math.floor(Math.random() * 30);
-    document.getElementById("number1").innerHTML = number1;
-    document.getElementById("number2").innerHTML = number2
-
-    function controllAnswer(answer) {
-        if (number1 + number2 == answer) {
-            document.getElementById("answerButton").classList.remove("disabled");
-        } else {
-            document.getElementById("answerButton").classList.add("disabled");
-        }
-    }
-</script>

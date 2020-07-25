@@ -1,4 +1,4 @@
-import { UserServiceService } from './../Core/Service/UserService/user-service.service';
+import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,AbstractControl } from '@angular/forms';
@@ -27,9 +27,7 @@ export class ResetpasswordComponent implements OnInit {
       this.sub =jwt_decode(this.token).sub;
       });
    }
-
- 
-
+   
   myUserDetails = new FormGroup({
     password: new FormControl(null,[
       Validators.required,

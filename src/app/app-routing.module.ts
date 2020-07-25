@@ -1,15 +1,15 @@
+import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
+import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
+import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
 import { SearchtagComponent } from './Components/searchtag/searchtag.component';
-import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';
 import { SettingsComponent } from './Components/settings/settings.component';
-import { AuthorationerrorComponent } from './authorationerror/authorationerror.component';
 import { ServererrorComponent } from './servererror/servererror.component';
 import { ArticleComponent } from './Components/article/article.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { CategoryComponent } from './Components/category/category.component';
-import { NotfoundComponent } from './/notfound/notfound.component';
 import { WelcomeComponent } from './Components/welcome/welcome.component';
 import { RegisterComponent } from './Components/register/register.component';
 import { LoginComponent } from './Components/login/login.component';
@@ -40,9 +40,9 @@ const routes: Routes = [
   {path:'forgotpassword',component:ForgotpasswordComponent },
   {path:'forgotpassword/reset',redirectTo:'404',pathMatch: 'full' },
   {path:'forgotpassword/reset/:token',component:ResetpasswordComponent },
-  {path:'404',component:NotfoundComponent },
+  {path:'404',component:NotfounderrorComponent },
   {path:'500',component:ServererrorComponent },
-  {path:'403',component:AuthorationerrorComponent },
+  {path:'403',component: AuthenticationerrorComponent},
   {path: '**', redirectTo: '/404'}
 ];
 
