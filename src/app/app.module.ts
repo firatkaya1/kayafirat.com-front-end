@@ -23,9 +23,9 @@ import { AuthorationerrorComponent } from './authorationerror/authorationerror.c
 import { SettingsComponent } from './Components/settings/settings.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';
-import { TagComponent } from './tag/tag.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
+import { SearchtagComponent } from './Components/searchtag/searchtag.component';
 
 @NgModule({
   declarations: [
@@ -45,9 +45,9 @@ import { ResetpasswordComponent } from './resetpassword/resetpassword.component'
     SettingsComponent,
     MenuComponent,
     ConfirmaccountComponent,
-    TagComponent,
     ForgotpasswordComponent,
-    ResetpasswordComponent
+    ResetpasswordComponent,
+    SearchtagComponent
   ],
   imports: [
     BrowserModule,

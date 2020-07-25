@@ -1,7 +1,7 @@
+import { SearchtagComponent } from './Components/searchtag/searchtag.component';
 import { ResetpasswordComponent } from './resetpassword/resetpassword.component';
 import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
-import { TagComponent } from './tag/tag.component';
 import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';
 import { SettingsComponent } from './Components/settings/settings.component';
 import { AuthorationerrorComponent } from './authorationerror/authorationerror.component';
@@ -32,7 +32,7 @@ const routes: Routes = [
   {path:'category',redirectTo:'category/1',pathMatch: 'full' },
   {path:'category/:pagenumber',component:CategoryComponent },
   {path:'category/orderby/tag',redirectTo:'404',pathMatch: 'full' },
-  {path:'category/orderby/tag/:tagname',component:TagComponent },
+  {path:'category/orderby/tag/:tagname',component:SearchtagComponent },
   {path:'settings',redirectTo:'404',pathMatch: 'full' },
   {path:'settings/:username',component:SettingsComponent, },
   {path:'confirm',redirectTo:'403',pathMatch: 'full' },
