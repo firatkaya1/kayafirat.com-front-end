@@ -6,7 +6,7 @@ import { ActivatedRoute} from '@angular/router';
 @Component({
   selector: 'app-category',
   templateUrl: './category.component.html',
-  styleUrls: ['./category.component.css']
+  styles: []
 })
 export class CategoryComponent implements OnInit {
 

@@ -9,7 +9,7 @@ import * as jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-resetpassword',
   templateUrl: './resetpassword.component.html',
-  styleUrls: ['./resetpassword.component.css']
+  styles: []
 })
 export class ResetpasswordComponent implements OnInit {
 

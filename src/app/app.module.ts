@@ -1,3 +1,4 @@
+import { ServererrorComponent } from './Components/servererror/servererror.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +19,6 @@ import { FooterComponent } from './Components/footer/footer.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { ArticleComponent } from './Components/article/article.component';
 import { CategoryComponent } from './Components/category/category.component';
-import { ServererrorComponent } from './servererror/servererror.component';
 import { SettingsComponent } from './Components/settings/settings.component';
 import { MenuComponent } from './Components/menu/menu.component';
 import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';

@@ -6,7 +6,7 @@ import * as jwt_decode from "jwt-decode";
 @Component({
   selector: 'app-confirmaccount',
   templateUrl: './confirmaccount.component.html',
-  styleUrls: ['./confirmaccount.component.css']
+  styles: []
 })
 export class ConfirmaccountComponent implements OnInit {
 

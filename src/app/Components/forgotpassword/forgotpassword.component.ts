@@ -6,7 +6,7 @@ import { FormGroup, FormControl, Validators,AbstractControl } from '@angular/for
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
-  styleUrls: ['./forgotpassword.component.css']
+  styles: []
 })
 export class ForgotpasswordComponent implements OnInit {
 

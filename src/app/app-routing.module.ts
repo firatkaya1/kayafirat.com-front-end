@@ -1,3 +1,4 @@
+import { ServererrorComponent } from './Components/servererror/servererror.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
 import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
@@ -6,7 +7,6 @@ import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassw
 import { SearchBarComponent } from './Components/search-bar/search-bar.component';
 import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';
 import { SettingsComponent } from './Components/settings/settings.component';
-import { ServererrorComponent } from './servererror/servererror.component';
 import { ArticleComponent } from './Components/article/article.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { CategoryComponent } from './Components/category/category.component';
