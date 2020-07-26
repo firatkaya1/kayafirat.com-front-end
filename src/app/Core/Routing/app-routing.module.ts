@@ -1,21 +1,21 @@
-import { ServererrorComponent } from './Components/servererror/servererror.component';
-import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
-import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
-import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
-import { SearchtagComponent } from './Components/searchtag/searchtag.component';
-import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassword.component';
-import { SearchBarComponent } from './Components/search-bar/search-bar.component';
-import { ConfirmaccountComponent } from './Components/confirmaccount/confirmaccount.component';
-import { SettingsComponent } from './Components/settings/settings.component';
-import { ArticleComponent } from './Components/article/article.component';
-import { ProfileComponent } from './Components/profile/profile.component';
-import { CategoryComponent } from './Components/category/category.component';
-import { WelcomeComponent } from './Components/welcome/welcome.component';
-import { RegisterComponent } from './Components/register/register.component';
-import { LoginComponent } from './Components/login/login.component';
+import { LoginComponent } from './../../Components/login/login.component';
+import { ServererrorComponent } from './../../Components/servererror/servererror.component';
+import { ResetpasswordComponent } from '../../Components/resetpassword/resetpassword.component';
+import { NotfounderrorComponent } from '../../Components/notfounderror/notfounderror.component';
+import { AuthenticationerrorComponent } from '../../Components/authenticationerror/authenticationerror.component';
+import { SearchtagComponent } from '../../Components/searchtag/searchtag.component';
+import { ForgotpasswordComponent } from '../../Components/forgotpassword/forgotpassword.component';
+import { SearchBarComponent } from '../../Components/search-bar/search-bar.component';
+import { ConfirmaccountComponent } from '../../Components/confirmaccount/confirmaccount.component';
+import { SettingsComponent } from '../../Components/settings/settings.component';
+import { ArticleComponent } from '../../Components/article/article.component';
+import { ProfileComponent } from '../../Components/profile/profile.component';
+import { CategoryComponent } from '../../Components/category/category.component';
+import { WelcomeComponent } from '../../Components/welcome/welcome.component';
+import { RegisterComponent } from '../../Components/register/register.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 

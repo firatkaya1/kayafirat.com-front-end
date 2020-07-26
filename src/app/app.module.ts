@@ -1,14 +1,16 @@
+import { HttpInterceptorService } from './Core/interceptor/httpInterceptor';
+import { ErrorInterceptor } from './Core/interceptor/ErrorInterceptor';
 import { ServererrorComponent } from './Components/servererror/servererror.component';
 import { ResetpasswordComponent } from './Components/resetpassword/resetpassword.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './Core/Routing/app-routing.module';
 import { AppComponent } from './app.component';
 import { PostsComponent } from './Components/posts/posts.component';
 import { WelcomeComponent } from './Components/welcome/welcome.component';
@@ -58,7 +60,9 @@ import { NotfounderrorComponent } from './Components/notfounderror/notfounderror
     RecaptchaModule, 
     RecaptchaFormsModule 
   ],
-  providers: [CookieService],
+  providers: [CookieService,
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient,HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { timeStamp } from 'console';
 
 
 @Injectable({
@@ -19,7 +20,7 @@ export class UserServiceService {
 
   private sendResetPassEmail:string = "http://localhost:8080/api/v1/user/sendResetEmail";
   private verifyUser:string = "http://localhost:8080/api/v1/user/verification";
-  private validaterecaptcha:string = "http://localhost:8080/api/v1/user/validaterecaptcha/";
+  private validaterecaptcha:string = "http://localhost:8080/api/v1/user/validaterecaptcha";
   private searchURL:string = "http://localhost:8080/api/v1/post/search/";
 
   private updatePassword:string = "http://localhost:8080/api/v1/user/reset/"
@@ -27,6 +28,7 @@ export class UserServiceService {
   private updateUserPermission:string = "http://localhost:8080/api/v1/user/update/userpermissions/";
   private updateUser:string = "http://localhost:8080/api/v1/user/update";
   private updateProfilPhoto:string = "http://localhost:8080/api/v1/user/updatepicture/";
+  private userPhoto:string = "http://localhost:8080/api/v1/user/username/photo";
 
 
   constructor(private http:HttpClient) { }
@@ -35,16 +37,19 @@ export class UserServiceService {
     return this.http.get<IUser[]>(this.myUrl);
   }
   getUserByUsername(username:string): Observable<IUser[]> {
-    return this.http.get<IUser[]>(this.urlUserByUsername.concat(username)).pipe(catchError(this.errorHandler));
+    return this.http.get<IUser[]>(this.urlUserByUsername.concat(username));
   }
   getSearchs(word:string,pageNumber:string,pageSize:string,sortedName:string,orderby:string) {
     return this.http.get<string[]>(this.searchURL.concat(word).concat("/").concat(pageNumber).concat("/")
     .concat(pageSize).concat("/sorted/").concat(sortedName).concat("/orderby/").concat(orderby));
   }
-  errorHandler(error: HttpErrorResponse) {
-    return Observable.throw(error.message || "server error."+error.status);
-}
-
+  getUserPhoto(username:string){
+    const body = {
+      username:username
+    }
+    return this.http.post(this.userPhoto,body,{ responseType: "text"});
+    
+  }
   setUser(registerForm:FormGroup){
     //this.form.controls['your form control name'].value
     const body = 
@@ -129,15 +134,11 @@ export class UserServiceService {
     this.http.post<any>(this.updateProfilPhoto.concat(userId),formData).subscribe(date => {})
 
   }
-
-
-
-
-
-
-
   validateReCaptcha(response:string) {
-     return this.http.get<string>(this.validaterecaptcha.concat(response));
+    const body = {
+      key : response
+    }
+     return this.http.post<any>(this.validaterecaptcha,body);
       
   }
   
