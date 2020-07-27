@@ -23,7 +23,8 @@ export class MenuComponent implements OnInit {
   ngOnInit(): void {
     if(this.authenticateService.isUserLoggedIn()){
       this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
-      this._userService.getUserPhoto(this.username).subscribe(data => { this.userprofilphoto=data });
+      this._userService.getUserPhoto(this.username).subscribe(data => {  this.userprofilphoto=data[1],this.username=data[0]; });
+      
     }
     
    

@@ -1,7 +1,7 @@
 import { IUser } from './../../Model/User';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpErrorResponse} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
@@ -45,7 +45,7 @@ export class UserServiceService {
     const body = {
       username:username
     }
-    return this.http.post(this.userPhoto,body,{ responseType: "text"});
+    return this.http.post<string[]>(this.userPhoto,body);
     
   }
   setUser(registerForm:FormGroup){
@@ -127,9 +127,12 @@ export class UserServiceService {
   }
 
   updateUserProfilPhoto(userId:string,profilphoto:File){
+    let headers = new HttpHeaders({
+      'photo' : '' });
+    let options = { headers: headers };
     let formData = new FormData();
     formData.append('file', profilphoto);
-    this.http.post<any>(this.updateProfilPhoto.concat(userId),formData).subscribe(data => {})
+    this.http.post<any>(this.updateProfilPhoto.concat(userId),formData,options).subscribe(data => {})
 
   }
   validateReCaptcha(response:string) {

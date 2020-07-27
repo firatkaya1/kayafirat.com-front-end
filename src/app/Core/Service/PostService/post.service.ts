@@ -1,7 +1,7 @@
 import { IPostDetail } from './../../Model/PostDetails';
 import { IPost } from './../../Model/Post';
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -38,10 +38,15 @@ export class PostService {
   }
 
   getIpAddress(){
-    return this.http.get<string>("http://api.ipify.org/?format=json");
+    let headers = new HttpHeaders({
+      'skip' : '' });
+    let options = { headers: headers };
+    return this.http.get<string>("http://api.ipify.org/?format=json",options);
   }
   setPageView(postId:string,temporaryCode:string,ipAddress:string){
-    this.http.post<Comment>(this.addPageView, { ipAddress:ipAddress,temporaryCode:temporaryCode,postId:postId }).subscribe(data => {}) 
+    const body = { ipAddress:ipAddress,temporaryCode:temporaryCode,postId:postId }
+    
+    this.http.post<Comment>(this.addPageView, body).subscribe(data => {}) 
   }
   setCommentAnonymous(postId:string,comment:string,username:string):void {
     this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment }).subscribe(data => {}) 
