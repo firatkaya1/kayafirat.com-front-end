@@ -43,8 +43,8 @@ export class PostService {
   setPageView(postId:string,temporaryCode:string,ipAddress:string){
     this.http.post<Comment>(this.addPageView, { ipAddress:ipAddress,temporaryCode:temporaryCode,postId:postId }).subscribe(data => {}) 
   }
-  setCommentAnonymous(postId:string,comment:string,userId:string):void {
-    this.http.post<Comment>(this.addCommentUrl.concat(postId), { userId:userId,commentMessage:comment }).subscribe(data => {}) 
+  setCommentAnonymous(postId:string,comment:string,username:string):void {
+    this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment }).subscribe(data => {}) 
         
   }
 

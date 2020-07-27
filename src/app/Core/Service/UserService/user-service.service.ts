@@ -3,8 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpErrorResponse} from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { timeStamp } from 'console';
 
 
 @Injectable({
@@ -128,10 +126,10 @@ export class UserServiceService {
 
   }
 
-  updateUserProfilPhoto(userId:string,profilphoto:File  ){
-    const formData = new FormData();
+  updateUserProfilPhoto(userId:string,profilphoto:File){
+    let formData = new FormData();
     formData.append('file', profilphoto);
-    this.http.post<any>(this.updateProfilPhoto.concat(userId),formData).subscribe(date => {})
+    this.http.post<any>(this.updateProfilPhoto.concat(userId),formData).subscribe(data => {})
 
   }
   validateReCaptcha(response:string) {

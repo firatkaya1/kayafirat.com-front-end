@@ -1,5 +1,7 @@
+import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { Title, Meta } from '@angular/platform-browser';
+import * as jwt_decode from "jwt-decode";
 
 import { IComment } from './../../Core/Model/Comment';
 import { IPostDetail } from './../../Core/Model/PostDetails';
@@ -28,6 +30,7 @@ export class ArticleComponent implements OnInit {
   public commentSuccess:boolean=false;
   public commentError:boolean=true;
   public validateRecaptcha:boolean = false;
+  public isAuthenticate:boolean = false;
   
 
   constructor(
@@ -35,6 +38,7 @@ export class ArticleComponent implements OnInit {
     private route: ActivatedRoute,
     private _postService:PostService,
     private _userService:UserServiceService,
+    private _authenticateService:AuthenticateService,
     private titleService: Title,
     private metaService: Meta) 
     {
@@ -42,6 +46,9 @@ export class ArticleComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       this.posttitlerouter = this.deChangeLink(params.get('postTitle'));
       });
+      if(this._authenticateService.isUserLoggedIn()) {
+        this.isAuthenticate = true;
+      }
               
   }
   
@@ -55,7 +62,7 @@ export class ArticleComponent implements OnInit {
       res['success'] == true ? this.validateRecaptcha=true : this.validateRecaptcha=false;})
    
   }
-   setComment(){
+  setCommentAnonymous(){
     if(this.isAnonymous && this.commentMessage != null) {
      this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,'Anonymous');
      this.clearCommentSide();
@@ -71,7 +78,23 @@ export class ArticleComponent implements OnInit {
       setTimeout(() => { this.commentError=true;}, 10000);
     }
     
-    
+    //
+  }
+  setCommentAuthenticate(){
+    if(this.commentMessage != null) {
+      let username = jwt_decode(this._authenticateService.getLoggedInUserName()).sub;
+      console.log("username:"+username);
+      this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,username);
+      this.clearCommentSide();
+       setTimeout(() => { this.commentSuccess=false;
+         this.validateRecaptcha=false}, 10000);
+         
+         setTimeout(() => { this.getPost();}, 1000);
+ 
+     } else {
+       this.commentError = false;
+       setTimeout(() => { this.commentError=true;}, 10000);
+     }
   }
   acceptsCookie() {
     this.cookieService.set('acceptCookie','true',5);

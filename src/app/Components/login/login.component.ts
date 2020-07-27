@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       this._authService.registerSuccessfulLogin(result);
       setTimeout(() => {
        
-        this.router.navigate(["/settings/"+username]);
+        this.router.navigate(["/"]);
       }, 1000);
     }, (error) => {
       this.invalidLogin = true;
