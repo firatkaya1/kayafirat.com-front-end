@@ -31,6 +31,9 @@ export class AuthenticateService {
     registerSuccessfulLogin(username) {
       sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
     }
+    isAdmin(username:string){
+      console.log("");
+    }
 
     logout() {
       sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
