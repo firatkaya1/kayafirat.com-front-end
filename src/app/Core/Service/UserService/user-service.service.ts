@@ -28,7 +28,6 @@ export class UserServiceService {
   private updateProfilPhoto:string = "http://localhost:8080/api/v1/user/updatepicture/";
   private userPhoto:string = "http://localhost:8080/api/v1/user/username/photo";
 
-
   constructor(private http:HttpClient) { }
 
   getUser(): Observable<IUser[]> {
@@ -60,10 +59,13 @@ export class UserServiceService {
     this.http.post<Comment>(this.addUserUrl,body).subscribe(data => {})
   }
   sendVerificationEmail(email:string){
+    let headers = new HttpHeaders({
+      'skip' : '' });
+    let options = { headers: headers };
     let body = {
       email:email
     }
-    this.http.post<any>(this.sendEmail,body).subscribe(data => {})
+    this.http.post<any>(this.sendEmail,body,options).subscribe(data => {})
   }
   sendResetPasswordEmail(emailAddress:string){  
     let body = {
@@ -79,10 +81,12 @@ export class UserServiceService {
     }
       this.http.post<any>(this.verifyUser,body).subscribe(data => {})
   }
-  updateUserPassword(emailAddress:string,password:string){
+  updateUserPassword(emailAddress:string,password:string,ipaddress:string,useragent:string){
     let body = {
       email : emailAddress,
-      password : password
+      password : password,
+      ipaddress:ipaddress,
+      useragent:useragent 
     }
     this.http.post<any>(this.updatePassword,body).subscribe(data => {})
 
@@ -142,7 +146,12 @@ export class UserServiceService {
      return this.http.post<any>(this.validaterecaptcha,body);
       
   }
-  
+  getIpAddress(){
+    let headers = new HttpHeaders({
+      'skip' : '' });
+    let options = { headers: headers };
+    return this.http.get<string>("http://api.ipify.org/?format=json",options);
+  }
 
 
 }

@@ -140,7 +140,7 @@
                                             <span class="text-info">Onaylanmadı.</span>
                                         </div>                                    
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-4" *ngIf="!user.verification">
                                      <button class="btn btn-danger btn-sm" [disabled]="!sendVerifyButton" (click)="sendUserVerificationMail(user.userEmail)">Tekrar Yolla</button>
                                     </div>
                                 </div>

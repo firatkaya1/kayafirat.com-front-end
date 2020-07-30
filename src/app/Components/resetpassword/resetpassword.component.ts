@@ -3,6 +3,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators,AbstractControl } from '@angular/forms';
 import * as jwt_decode from "jwt-decode";
+import * as Bowser from "bowser";
 
 
 
@@ -18,6 +19,7 @@ export class ResetpasswordComponent implements OnInit {
   public isTokenExpired:boolean;
   public jti:string;
   public sub:string;
+  public userAgent:string;
 
   constructor(private route: ActivatedRoute,private _userService:UserServiceService,private router: Router) {
 
@@ -51,7 +53,10 @@ export class ResetpasswordComponent implements OnInit {
   ngOnSubmit():void{
     var current_time = new Date().getTime() / 1000;
     if(current_time < jwt_decode(this.token).exp) {
-      this._userService.updateUserPassword(this.jti,this.myUserDetails.controls['password'].value);
+      this._userService.getIpAddress().subscribe(data => {
+        this._userService.updateUserPassword(this.jti,this.myUserDetails.controls['password'].value,data,this.userAgent);
+      });
+      
       this.isTokenExpired=false;
       this.resetSuccess=true;
 
@@ -60,10 +65,8 @@ export class ResetpasswordComponent implements OnInit {
     } else {
       this.isTokenExpired=true;
     }
-
-
-
   }
+
 
 }
 // İs value include an uppercase ?

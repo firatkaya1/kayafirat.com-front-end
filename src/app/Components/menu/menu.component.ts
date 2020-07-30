@@ -17,7 +17,11 @@ export class MenuComponent implements OnInit {
 
 
   constructor(private authenticateService:AuthenticateService,private router:Router,private  _userService:UserServiceService) {
-    
+    if(this.authenticateService.isUserLoggedIn()){
+      this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
+      this._userService.getUserPhoto(this.username).subscribe(data => {  this.userprofilphoto=data[1],this.username=data[0]; });
+      
+    }
   }
 
   ngOnInit(): void {
@@ -26,12 +30,12 @@ export class MenuComponent implements OnInit {
       this._userService.getUserPhoto(this.username).subscribe(data => {  this.userprofilphoto=data[1],this.username=data[0]; });
       
     }
-    
-   
   }
 
    logout(){
      this.authenticateService.logout();
+     this.username="";
+     this.userprofilphoto="";
      this.router.navigate(["/"]);
    }
 

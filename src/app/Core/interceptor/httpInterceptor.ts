@@ -31,6 +31,7 @@ export class HttpInterceptorService implements HttpInterceptor {
             return next.handle(authReq);
         }
         else if (this.authenticationService.isUserLoggedIn() && req.url.indexOf('basicauth') === -1 ) {
+        
             let authReq = req.clone({
                 headers: new HttpHeaders({
                     'Content-Type': 'application/json',

@@ -3,6 +3,7 @@ import { IUser } from './../../Core/Model/User';
 import { Component, OnInit, ErrorHandler } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router} from '@angular/router';
+import * as Bowser from "bowser";
 
 
 @Component({
@@ -131,16 +132,15 @@ export class SettingsComponent implements OnInit {
 
   }
   updateUserPass(email:string,pass:string){
-    this._userService.updateUserPassword(email,pass);
-    setTimeout(() => {
-      this.getUserPermissions();
-      
-    }, 1000);
-
+    const userAgent = Bowser.parse(window.navigator.userAgent).browser.name +" Version:"+ Bowser.parse(window.navigator.userAgent).browser.version +" "+Bowser.parse(window.navigator.userAgent).os.name;
+    console.log("useragent:"+userAgent);
+    this._userService.getIpAddress().subscribe((data:any) => {
+      this._userService.updateUserPassword(email,pass,data.ip,userAgent);
+    });
+    
+    setTimeout(() => {this.getUserPermissions();}, 1000);
     this.success=true;
-  setTimeout(() => {
-    this.success=false;
-  }, 5000);
+    setTimeout(() => {this.success=false;},5000);
   }
 
   updateUserUsername(email:string,username:string){
@@ -169,9 +169,7 @@ export class SettingsComponent implements OnInit {
         this.sendVerifyButton=true;
       }, 30000);
  }
-
  updateUserProfilPhoto(userId:string){
-   console.log("calisti :"+userId);
    this._userService.updateUserProfilPhoto(userId,this.selectedImage);
    this.success=true;
       setTimeout(() => {
