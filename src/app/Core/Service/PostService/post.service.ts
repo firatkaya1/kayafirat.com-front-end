@@ -49,7 +49,10 @@ export class PostService {
     this.http.post<Comment>(this.addPageView, body).subscribe(data => {}) 
   }
   setCommentAnonymous(postId:string,comment:string,username:string):void {
-    this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment }).subscribe(data => {}) 
+    let headers = new HttpHeaders({
+      'skip' : '' });
+    let options = { headers: headers };
+    this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment },options).subscribe(data => {}) 
         
   }
 

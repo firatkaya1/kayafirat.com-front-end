@@ -1,9 +1,8 @@
 
-export interface IUserProfile { 
+export class IUserProfile    { 
     userEmail: string;
     userAboutme: string;
     userGithub:string;
     userLinkedin:string;
-  
 }
 

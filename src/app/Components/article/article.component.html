@@ -44,7 +44,7 @@
                 <div class="col-md-2 border-right">
                     <div class="row mx-auto mt-2"> 
                         <div class="col-12 text-center">
-                            <img src="{{comment.userProfilPhoto}}" class="img-thumbnail" width="75px" alt="profile-picture">
+                            <img src="{{comment.userProfilePhoto}}" class="img-thumbnail" width="75px" alt="profile-picture">
                             <p class="mb-0">
                                 <b *ngIf="comment.username !== 'Anonymous'">
                                     <a  [routerLink]="['/profile/',comment.username]">{{comment.username}}</a>
@@ -85,11 +85,11 @@
                       <p>Anonim olarak yorum yap.</p>
                     </label>
                 </div> 
-                <!--
+                
                 <div class="col-md-2 text-right" *ngIf="validateRecaptcha && !isAuthenticate">
                     <input type="submit" id="sendCommentButton" (click)="setCommentAnonymous()"  name="submit" value="Gönder" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
                 </div>
-                -->
+                
                 <div class="col-md-2 text-right" *ngIf="validateRecaptcha && isAuthenticate">
                     <input type="submit" id="sendCommentButton" (click)="setCommentAuthenticate()"  name="submit" value="Gönder" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
                 </div>

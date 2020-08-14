@@ -19,7 +19,6 @@ export class ResetpasswordComponent implements OnInit {
   public isTokenExpired:boolean;
   public jti:string;
   public sub:string;
-  public userAgent:string;
 
   constructor(private route: ActivatedRoute,private _userService:UserServiceService,private router: Router) {
 
@@ -39,22 +38,21 @@ export class ResetpasswordComponent implements OnInit {
       lowerCaseValidator,
       numberValidator])}); 
 
-  ngOnInit(): void {
+  ngOnInit(): void {  
     var current_time = new Date().getTime() / 1000;
-    if(current_time < jwt_decode(this.token).exp) {
+    if(current_time < jwt_decode(this.token).exp && jwt_decode(this.token).xts === "F562S1WFASXE") {
       this.isTokenExpired=false;
-      console.log("dolmadı:");
     } else {
       this.isTokenExpired=true;
-      console.log("doldu:");
     }
   }
 
   ngOnSubmit():void{
     var current_time = new Date().getTime() / 1000;
-    if(current_time < jwt_decode(this.token).exp) {
-      this._userService.getIpAddress().subscribe(data => {
-        this._userService.updateUserPassword(this.jti,this.myUserDetails.controls['password'].value,data,this.userAgent);
+    if(current_time < jwt_decode(this.token).exp && jwt_decode(this.token).xts === "F562S1WFASXE" ) {
+      const userAgent = Bowser.parse(window.navigator.userAgent).browser.name +" Version:"+ Bowser.parse(window.navigator.userAgent).browser.version +" "+Bowser.parse(window.navigator.userAgent).os.name;
+      this._userService.getIpAddress().subscribe((data:any) => {
+        this._userService.updateUserPassword(this.jti,this.sub,this.myUserDetails.controls['password'].value,data.ip ,userAgent);
       });
       
       this.isTokenExpired=false;

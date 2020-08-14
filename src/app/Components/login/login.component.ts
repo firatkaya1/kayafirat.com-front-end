@@ -15,35 +15,27 @@ export class LoginComponent implements OnInit {
   public loginSuccess:boolean = false;
   public validateRecaptcha:boolean = true;
  
-
-
   constructor(private _userService:UserServiceService,private _authService:AuthenticateService,private router:Router) { }
 
-  
-
   ngOnInit(): void {
+    if(this._authService.isUserLoggedIn()){
+      this.router.navigateByUrl("/");
+    }
   }
-
   ngOnSubmit(username:string,password:string) {
-    console.log("auth service yönlendirildi");
     this._authService.login(username,password)
     .subscribe((result) => {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this._authService.registerSuccessfulLogin(result);
-      setTimeout(() => {
-       
-        this.router.navigate(["/"]);
-      }, 1000);
+      setTimeout(() => {    window.location.reload();}, 1000);
     }, (error) => {
       this.invalidLogin = true;
       this.loginSuccess = false;
-      console.log("error:"+error);
     }
     
     );
   }
-
   resolved(captchaResponse:string) {
     this._userService.validateReCaptcha(captchaResponse).subscribe(res => {
       res['success'] == true ? this.validateRecaptcha=false : this.validateRecaptcha=true; })

@@ -1,7 +1,8 @@
-<div class="container">
-    <div class="row" *ngFor="let user of userInfo">
-        <div class="col-md-12 text-center mt-4">
-            <img src="{{user.userProfilPhoto}}" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
+<div class="container " *ngIf="isUserLogged">
+    <div class="row" *ngFor = "let user of users">
+      
+        <div class="col-md-12 text-center mt-4" >
+            <img src="{{ user.userProfilePhoto }}" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
         </div>
         <div class="col-md-8 mx-auto mt-2">
             <table class="table table-striped table-dark shadow">
@@ -115,12 +116,15 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-md-12 text-center">
+        <!--   
+        <div class="col-md-12 text-center" *ngIf="isSameUser !== user.userEmail">
             <button class="btn btn-danger" data-toggle="modal" data-target="#profileModal">Profili Bildir</button>
         </div>
+        -->
         <div class="col-md-12" style="height: 150px;"></div>
     </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="profileModal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">

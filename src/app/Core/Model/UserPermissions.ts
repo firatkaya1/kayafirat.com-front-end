@@ -1,4 +1,5 @@
-export interface IUserPermissions {
+
+export class IUserPermissions    {
     userEmail: string;
     aboutmeShow: string;
     allCommentShow: string;
@@ -10,4 +11,5 @@ export interface IUserPermissions {
     linkedinShow: string;
     nameShow: string;
     registerdateShow: string;
+
 }

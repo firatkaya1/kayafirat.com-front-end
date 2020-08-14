@@ -3,6 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -10,7 +11,6 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  private myUrl:string = "http://localhost:8080/api/v1/user";
   private urlUserByUsername:string = "http://localhost:8080/api/v1/user/username/";
   private addUserUrl:string = "http://localhost:8080/api/v1/user/register";
 
@@ -26,14 +26,17 @@ export class UserServiceService {
   private updateUserPermission:string = "http://localhost:8080/api/v1/user/update/userpermissions/";
   private updateUser:string = "http://localhost:8080/api/v1/user/update";
   private updateProfilPhoto:string = "http://localhost:8080/api/v1/user/updatepicture/";
-  private userPhoto:string = "http://localhost:8080/api/v1/user/username/photo";
+  private userPhoto:string = "http://localhost:8080/api/v1/user/email/photo";
 
   constructor(private http:HttpClient) { }
 
-  getUser(): Observable<IUser[]> {
-    return this.http.get<IUser[]>(this.myUrl);
+  getUser(username:string): Observable<IUser> {
+
+    return this.http.get<IUser>(this.urlUserByUsername.concat(username));
   }
+
   getUserByUsername(username:string): Observable<IUser[]> {
+
     return this.http.get<IUser[]>(this.urlUserByUsername.concat(username));
   }
   getSearchs(word:string,pageNumber:string,pageSize:string,sortedName:string,orderby:string) {
@@ -42,7 +45,7 @@ export class UserServiceService {
   }
   getUserPhoto(username:string){
     const body = {
-      username:username
+      email:username
     }
     return this.http.post<string[]>(this.userPhoto,body);
     
@@ -81,9 +84,10 @@ export class UserServiceService {
     }
       this.http.post<any>(this.verifyUser,body).subscribe(data => {})
   }
-  updateUserPassword(emailAddress:string,password:string,ipaddress:string,useragent:string){
+  updateUserPassword(emailAddress:string,userid:string,password:string,ipaddress:string,useragent:string){
     let body = {
       email : emailAddress,
+      userid:userid,
       password : password,
       ipaddress:ipaddress,
       useragent:useragent 

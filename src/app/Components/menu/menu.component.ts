@@ -17,17 +17,20 @@ export class MenuComponent implements OnInit {
 
 
   constructor(private authenticateService:AuthenticateService,private router:Router,private  _userService:UserServiceService) {
-    if(this.authenticateService.isUserLoggedIn()){
-      this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
-      this._userService.getUserPhoto(this.username).subscribe(data => {  this.userprofilphoto=data[1],this.username=data[0]; });
-      
-    }
+
   }
 
   ngOnInit(): void {
     if(this.authenticateService.isUserLoggedIn()){
       this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
-      this._userService.getUserPhoto(this.username).subscribe(data => {  this.userprofilphoto=data[1],this.username=data[0]; });
+      this._userService.getUserPhoto(this.username).subscribe(data => { this.username=data[0],this.userprofilphoto=data[1];  });
+      
+    }
+  }
+  ngOnChange(){
+    if(this.authenticateService.isUserLoggedIn()){
+      this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
+      this._userService.getUserPhoto(this.username).subscribe(data => {  this.username=data[0],this.userprofilphoto=data[1];  });
       
     }
   }

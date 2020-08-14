@@ -42,7 +42,6 @@ export class ArticleComponent implements OnInit {
     private titleService: Title,
     private metaService: Meta) 
     {
-              
     this.route.paramMap.subscribe(params => {
       this.posttitlerouter = this.deChangeLink(params.get('postTitle'));
       });

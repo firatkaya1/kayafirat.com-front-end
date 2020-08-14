@@ -13,14 +13,12 @@ export class HttpInterceptorService implements HttpInterceptor {
         const skipIntercept = req.headers.has('skip');
         const photoIntercept = req.headers.has('photo');
          if(skipIntercept){
-             console.log("bu method skipe sahiptir.");
             req = req.clone({
                 headers: req.headers.delete('skip')
             });
             return next.handle(req);
         }
         else if(photoIntercept) {
-            console.log("photo interceptor.")
             let authReq = req.clone({
                 headers: new HttpHeaders({
                     'Authorization': `Bearer ${this.authenticationService.getLoggedInUserName()}`

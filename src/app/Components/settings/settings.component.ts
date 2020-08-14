@@ -16,7 +16,7 @@ import * as Bowser from "bowser";
 export class SettingsComponent implements OnInit {
 
   public usernamerouter:string;
-  public users:IUser[];
+  public users:IUser[] = [];
   public errormessage:ErrorHandler;
   public success:boolean = false;
   public sendVerifyButton:boolean = true;
@@ -74,9 +74,9 @@ export class SettingsComponent implements OnInit {
 } 
 
   getUserPermissions(){
-    this._userService.getUserByUsername(this.usernamerouter).subscribe(
+    this._userService.getUser(this.usernamerouter).subscribe(
       res => {  
-        this.users = res;
+        this.users[0] = res;
         this.myUserPermissions.controls['username'].setValue(this.users[0].userPermissions.nameShow);
         this.myUserPermissions.controls['userAboutMe'].setValue(this.users[0].userPermissions.aboutmeShow);
         this.myUserPermissions.controls['userRegisterDate'].setValue(this.users[0].userPermissions.registerdateShow);
@@ -94,7 +94,6 @@ export class SettingsComponent implements OnInit {
         
         );
   }
-
   updateUserGithubAddres(email:string,githubaddress:string){
     this._userService.updateUserGithubAddress(email,githubaddress);
     setTimeout(() => {
@@ -131,18 +130,17 @@ export class SettingsComponent implements OnInit {
   }, 5000);
 
   }
-  updateUserPass(email:string,pass:string){
+  updateUserPass(email:string,userid:string,pass:string){
     const userAgent = Bowser.parse(window.navigator.userAgent).browser.name +" Version:"+ Bowser.parse(window.navigator.userAgent).browser.version +" "+Bowser.parse(window.navigator.userAgent).os.name;
-    console.log("useragent:"+userAgent);
+    console.log("useragent:"+userid);
     this._userService.getIpAddress().subscribe((data:any) => {
-      this._userService.updateUserPassword(email,pass,data.ip,userAgent);
+      this._userService.updateUserPassword(email,userid,pass,data.ip,userAgent);
     });
     
     setTimeout(() => {this.getUserPermissions();}, 1000);
     this.success=true;
     setTimeout(() => {this.success=false;},5000);
   }
-
   updateUserUsername(email:string,username:string){
     this._userService.updateUserName(email,username);
     setTimeout(() => {
