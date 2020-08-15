@@ -58,9 +58,35 @@
                 </div>
                 <div class="col-md-10">
                     <p class="p-2">{{comment.commentMessage}}</p>
-                    <p class="text-right text-secondary mb-0 p-0" style="font-size: 12px;margin-top: 50px;">{{comment.commentTime | date:'medium'}}</p>
+                    <p class="text-right text-secondary mb-0 p-0" style="font-size: 12px;margin-top: 50px;"> 
+                        {{comment.commentTime | date:'medium'}}
+
+                        <a  data-toggle="collapse" href="{{ '#'+comment.commentId}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise" fill="dark" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
+                                <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
+                            </svg>
+                        </a>
+                        
+                        <a [routerLink]="" >
+                            <svg width="1.8em" height="1.8em" viewBox="0 0 16 16" class="bi bi-trash ml-1 mb-1" fill="dark" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </a>
+                    </p>
+                </div>
+                <div class="col-12 border-top p-0 m-0">
+                    <div id="{{comment.commentId}}" class="collapse" >
+                        <div class="card-body">
+                            <textarea name="commentDescription" ng-trim="true"  rows="6" style="width: 100%;" class="form-control" [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'"  placeholder="Senin yorumun"></textarea>
+                            <button class="btn btn-md btn-success float-right mt-2 mb-2" (click)="updateComment()">Güncelle</button>
+                            <button class="btn btn-md btn-danger float-right mt-2 mb-2 mr-2" data-toggle="modal" data-target="#deleteCommentModal">Yorumu Sil</button>
+                        </div>
+                    </div>
                 </div>
             </div>
+            
         </div>
         <div class="col-md-12">
             <div class="row ">
@@ -114,7 +140,28 @@
                 </button>
             </div>
         </div>
-        
+        <!--Delete Comment Modal-->
+        <div class="modal fade" id="deleteCommentModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+       
+                <div class="modal-dialog modal-dialog-centered">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+        </div>
+
         <div class="col-md-12 mt-2">
             <p class="h5 mb-2 mt-2" >Diğer yazılarım</p>
             <div class="col-md-12 mb-0">

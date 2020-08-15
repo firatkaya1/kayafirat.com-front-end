@@ -44,6 +44,7 @@ export class SearchBarComponent implements OnInit {
 
   getSearch(){
     if(this.searchWord.length > 0) {
+     this.searchWord = this.searchWord.replace(/\s*$/, "");
       this._userService.getSearchs(this.searchWord,this.pagenumber,this.selectedPageSize,this.selectedOrderBy,this.selectedOrderType).subscribe(
         res => { 
         this.searchResult = res['content'];

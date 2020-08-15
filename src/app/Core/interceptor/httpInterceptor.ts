@@ -13,6 +13,7 @@ export class HttpInterceptorService implements HttpInterceptor {
         const skipIntercept = req.headers.has('skip');
         const photoIntercept = req.headers.has('photo');
          if(skipIntercept){
+             console.log("skipe sahiptir");
             req = req.clone({
                 headers: req.headers.delete('skip')
             });

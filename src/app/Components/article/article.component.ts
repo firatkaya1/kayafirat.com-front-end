@@ -13,8 +13,7 @@ import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-article',
-  templateUrl: './article.component.html',
-  styles: []
+  templateUrl: './article.component.html'
 })
 export class ArticleComponent implements OnInit {
 
@@ -82,7 +81,6 @@ export class ArticleComponent implements OnInit {
   setCommentAuthenticate(){
     if(this.commentMessage != null) {
       let username = jwt_decode(this._authenticateService.getLoggedInUserName()).sub;
-      console.log("username:"+username);
       this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,username);
       this.clearCommentSide();
        setTimeout(() => { this.commentSuccess=false;
@@ -136,5 +134,14 @@ export class ArticleComponent implements OnInit {
 
   }
   
+  updateComment(){
+    console.log("tiklandi");
+  }
+
+  deleteComment(){
+    console.log("tiklandi");
+  }
+
+
 
 }
