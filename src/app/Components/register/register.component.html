@@ -2,10 +2,19 @@
 <div class="container">
     <form [formGroup]="myUserDetails" (ngSubmit)="ngOnSubmit()">
         <div class="form-row mt-4 justify-content-center">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center mb-2">
                 <img src="assets/images/login.svg" width="180px" alt="login-image">
             </div>
-            <div class="col-md-5 mb-2 mx-auto mt-4">
+            <div class="col-md-5">
+                <div  *ngIf="errorCode == 0">
+                    <p class="text-danger">Bu email adresine kayıtlı bir hesap bulunmaktadır.</p>
+                </div>
+                <div  *ngIf="errorCode == 1">
+                    <p class="text-danger">Bu kullanıcı adına kayıtlı bir hesap bulunmaktadır.</p>
+                </div>
+            </div>
+            <div class="w-100"></div>
+            <div class="col-md-5 mb-2 mx-auto">
                 <label for="emailAddress">Email Adresiniz</label>
                 <input type="email" [class.is-valid]="myUserDetails.get('emailAddress').valid" [class.is-invalid]="myUserDetails.get('emailAddress').invalid && (myUserDetails.get('emailAddress').dirty || myUserDetails.get('emailAddress').touched)" class="form-control" id="emailAddress" formControlName="emailAddress">
                 
@@ -49,7 +58,7 @@
                         Şifreniz minumum 8 karakter içermelidir.
                     </div>
                     <div *ngIf="myUserDetails.get('password').hasError('maxlength')">
-                        Şifreniz maksimum 24 karakter içerebilir.
+                        Şifreniz maksimum 36 karakter içerebilir.
                     </div>
                     <div *ngIf="myUserDetails.get('password').hasError('lowerCaseValidator')">
                         Şifrenizde en az bir küçük harf kullanılmalıdır.
@@ -61,20 +70,6 @@
                         Şifrenizde en az bir rakam kullanılmalıdır.
                     </div>
                 </div>
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-5 mb-2 mx-auto mt-4">
-                <label for="repassword">Şifreni Tekrar Gir</label>
-                <input type="password"  [class.is-valid]="myUserDetails.get('repassword').valid && !myUserDetails.errors?.matchPassword" [class.is-invalid]="myUserDetails.get('repassword').invalid && (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched) || myUserDetails.errors?.matchPassword" class="form-control" id="repassword" formControlName="repassword" autocomplete="on">
-                <div *ngIf="myUserDetails.get('repassword').invalid &&  (myUserDetails.get('repassword').dirty || myUserDetails.get('repassword').touched)" class="text-danger">
-                    <div *ngIf="myUserDetails.get('repassword').hasError('required')">
-                        Bu alan boş bırakılamaz.
-                    </div>
-                </div>
-                <div *ngIf="myUserDetails.errors?.matchPassword" class="text-danger">
-                    Şifreniz eşleşmemektedir.
-                </div>
-                
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 mb-2 mx-auto mt-4">

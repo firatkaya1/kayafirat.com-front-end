@@ -1,3 +1,4 @@
+import { throwError } from 'rxjs';
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { Router } from '@angular/router';
 
@@ -13,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   public registerSuccess:boolean = false;
   public validateRecaptcha:boolean = true;
+  public errorCode:number;
     
   constructor(private _userService:UserServiceService,private router: Router) { }
 
@@ -29,17 +31,15 @@ export class RegisterComponent implements OnInit {
     password: new FormControl(null,[
       Validators.required,
       Validators.minLength(8),
-      Validators.maxLength(24),
+      Validators.maxLength(36),
       upperCaseValidator,
       lowerCaseValidator,
       numberValidator]),
-    repassword: new FormControl(null,[
-      Validators.required]),
     birthdate: new FormControl('2000-01-01',[
       Validators.required]),  
     userterms:new FormControl(true,[
       Validators.requiredTrue
-    ])},{validators:matchPassword}); 
+    ])}); 
 
   ngOnInit(): void {
     
@@ -52,14 +52,23 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnSubmit():void {
-    this._userService.setUser(this.myUserDetails);
-    
-    this.registerSuccess=true;
-    setTimeout(() => { this.registerSuccess=false;
-      this._userService.sendVerificationEmail(this.myUserDetails.get('emailAddress').value);                
-      this.router.navigateByUrl('/login');
+     this._userService.setUser(this.myUserDetails).subscribe(
+       data => { this.errorCode = -1 
+        if(this.errorCode === -1) {
+          console.log("işlem başarıyla tamamlandı.");
+          this.registerSuccess=true;
+          setTimeout(() => { this.registerSuccess=false;
+            this._userService.sendVerificationEmail(this.myUserDetails.get('emailAddress').value);                
+            this.router.navigateByUrl('/login');
+      
+          }, 5000);
+        }
+      },
+       error => {this.errorCode = error;});
 
-    }, 5000);
+     
+    
+     
   }
 
 }
@@ -90,16 +99,5 @@ function numberValidator(control: AbstractControl):{[key: string]: boolean} | nu
   return null;
 }
 
-//İs password and rePassword match ?
-function matchPassword(control: AbstractControl) {
-  let password = control.get('password').value;
-  let confirmPassword = control.get('repassword').value;
-
-  if (password != confirmPassword) {
-    return { ConfirmPassword: true };
-  } else {
-      return null
-  }
-}
 
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 
 @Injectable({ providedIn: 'root' })
@@ -8,6 +9,8 @@ export class AuthenticateService {
     public username:string;
     public password:string;
     USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
+    USER_NAME_SESSION_PROFİLE_PHOTO = 'xs34rfdkwJJ'
+    USER_NAME_SESSION_USER_NAME = 'tSC31DGH51'
 
     constructor(private http: HttpClient) {}
 
@@ -25,14 +28,20 @@ export class AuthenticateService {
       return 'Basic ' + window.btoa(username + ":" + password)
     }
     registerSuccessfulLogin(username) {
-      sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username)
+      //add JWT 
+      sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
     }
-    isAdmin(username:string){
-      console.log("");
+    setPhotoandUser(username:string,photoPath:string){
+       //add user photo url
+       sessionStorage.setItem(this.USER_NAME_SESSION_PROFİLE_PHOTO,photoPath);
+       //add username
+       sessionStorage.setItem(this.USER_NAME_SESSION_USER_NAME,username);
     }
 
     logout() {
       sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+      sessionStorage.removeItem(this.USER_NAME_SESSION_USER_NAME);
+      sessionStorage.removeItem(this.USER_NAME_SESSION_PROFİLE_PHOTO);
       this.username = null;
       this.password = null;
     }
@@ -50,5 +59,11 @@ export class AuthenticateService {
       return user
     }
 
+    getUserPhoto(){
+      return sessionStorage.getItem(this.USER_NAME_SESSION_PROFİLE_PHOTO);
+    }
+    getUserName(){
+      return sessionStorage.getItem(this.USER_NAME_SESSION_USER_NAME);
+    }
 
 }

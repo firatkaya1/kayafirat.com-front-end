@@ -21,18 +21,10 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.authenticateService.isUserLoggedIn()){
-      this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
-      this._userService.getUserPhoto(this.username).subscribe(data => { this.username=data[0],this.userprofilphoto=data[1];  });
-      
-    }
+    this.getPhotoAndUsername();
   }
   ngOnChange(){
-    if(this.authenticateService.isUserLoggedIn()){
-      this.username=jwt_decode(this.authenticateService.getLoggedInUserName()).sub;
-      this._userService.getUserPhoto(this.username).subscribe(data => {  this.username=data[0],this.userprofilphoto=data[1];  });
-      
-    }
+    this.getPhotoAndUsername();
   }
 
    logout(){
@@ -45,6 +37,13 @@ export class MenuComponent implements OnInit {
    isAuthentication(){
     if(this.authenticateService.isUserLoggedIn()) return true;
     return false;
+   }
+
+   getPhotoAndUsername(){
+    if(this.authenticateService.isUserLoggedIn()){
+      this.username = this.authenticateService.getUserName();
+      this.userprofilphoto = this.authenticateService.getUserPhoto();
+    }
    }
 
 }

@@ -8,12 +8,13 @@ import { IPostDetail } from './../../Core/Model/PostDetails';
 import { PostService } from '../../Core/Service/PostService/post.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute} from '@angular/router';
 import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-article',
-  templateUrl: './article.component.html'
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
 
@@ -25,8 +26,13 @@ export class ArticleComponent implements OnInit {
   public isHideCookie:boolean = false;
   public isCurrentDarkMode:boolean = false;
   public commentMessage:string;
+  public commentUpdateMessage:string;
   public isAnonymous:boolean=true;
+  public commentId:string;
+  public postId:string;
   public commentSuccess:boolean=false;
+  public commentUpdateSuccess:boolean=false;
+  public commentDeleteSuccess:boolean=false;
   public commentError:boolean=true;
   public validateRecaptcha:boolean = false;
   public isAuthenticate:boolean = false;
@@ -102,6 +108,7 @@ export class ArticleComponent implements OnInit {
   }
   openDarkMode() {
     this.isCurrentDarkMode = this.isCurrentDarkMode ? false : true; 
+   
   }
   deChangeLink(str:string):string {
     return str.replace(/-/g, ' ');
@@ -134,12 +141,33 @@ export class ArticleComponent implements OnInit {
 
   }
   
-  updateComment(){
-    console.log("tiklandi");
+  updateComment(commentId:string){
+    this._postService.updateComment(commentId,this.commentUpdateMessage);
+    this.commentUpdateSuccess = true;
+    setTimeout(() => { this.getPost(); this.commentUpdateSuccess = false;}, 2000);
   }
 
+  setCommentId(commentId:string,postId:string){
+    this.commentId = commentId;
+    this.postId = postId;
+  }
+  clearModalCommentId(){
+    this.commentId = "";
+    this.postId = "";
+  }
   deleteComment(){
-    console.log("tiklandi");
+    this._postService.deleteComment(this.commentId,this.postId);
+    this.commentDeleteSuccess = true;
+    setTimeout(() => { this.getPost(); this.commentDeleteSuccess = false;}, 2000);
+
+  }
+
+  isSameUser(username:string):boolean {
+    if(username === this._authenticateService.getUserName())
+      {
+        return true;
+      }
+    return false;
   }
 
 

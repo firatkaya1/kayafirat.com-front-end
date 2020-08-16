@@ -16,6 +16,9 @@ export class PostService {
   private orderByDate:string = "http://localhost:8080/api/v1/post/";
   private postTagUrl:string = "http://localhost:8080/api/v1/post/postTag/";
 
+  private updateCommentURL:string =  "http://localhost:8080/api/v1/comment";
+  private deleteCommentURL:string = "http://localhost:8080/api/v1/comment/";
+
   constructor(private http:HttpClient) { }
 
   getPostIndex(): Observable<IPost[]> {
@@ -54,6 +57,22 @@ export class PostService {
     let options = { headers: headers };
     this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment },options).subscribe(data => {}) 
         
+  }
+
+  updateComment(_commentId:string,_commentMessage:string){
+    let body = 
+    {
+      commentId:_commentId,
+      commentMessage:_commentMessage
+      
+    };
+    this.http.put<Comment>(this.updateCommentURL,body).subscribe(data => {}) ;
+
+  }
+  deleteComment(_commentId:string,_postId:string){
+    this.http.delete<Comment>(this.deleteCommentURL.concat(_postId).concat("/").concat(_commentId)).subscribe(
+      data => {},
+      error => {console.log("error : "+error)} );
   }
 
 }

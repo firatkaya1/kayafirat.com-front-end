@@ -1,0 +1,10 @@
+.btn-update {
+    fill:#000;
+}
+.btn-update:hover {
+    fill: #04A8FF;
+}
+.btn-update:focus {
+    fill:#04A8FF;
+}
+

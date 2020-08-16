@@ -1,9 +1,8 @@
 import { IUser } from './../../Model/User';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, filter, catchError, mergeMap } from 'rxjs/operators';
 
 
 @Injectable({
@@ -51,15 +50,16 @@ export class UserServiceService {
     
   }
   setUser(registerForm:FormGroup){
-    //this.form.controls['your form control name'].value
     const body = 
     { 
           userEmail: registerForm.controls['emailAddress'].value,
           userName: registerForm.controls['username'].value,
           userPassword: registerForm.controls['password'].value,
-          userBirthdayDate: registerForm.controls['birthdate'].value
+          userBirthdayDate: registerForm.controls['birthdate'].value,
+          userProfilePhoto:"assets/images/profile.svg"
     };
-    this.http.post<Comment>(this.addUserUrl,body).subscribe(data => {})
+   return this.http.post(this.addUserUrl,body);
+      
   }
   sendVerificationEmail(email:string){
     let headers = new HttpHeaders({
