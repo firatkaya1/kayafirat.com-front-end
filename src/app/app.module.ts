@@ -28,6 +28,7 @@ import { ForgotpasswordComponent } from './Components/forgotpassword/forgotpassw
 import { SearchtagComponent } from './Components/searchtag/searchtag.component';
 import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
 import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
+import { GithubComponent } from './Components/github/github.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { NotfounderrorComponent } from './Components/notfounderror/notfounderror
     ResetpasswordComponent,
     SearchtagComponent,
     AuthenticationerrorComponent,
-    NotfounderrorComponent
+    NotfounderrorComponent,
+    GithubComponent
   ],
   imports: [
     BrowserModule,

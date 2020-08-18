@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import * as jwt_decode from "jwt-decode";
 
 
 @Injectable({ providedIn: 'root' })
@@ -23,8 +23,15 @@ export class AuthenticateService {
     
 
     }
+    loginGithub(code:string) {
+      const body = {
+        code:code
+      }
+       return this.http.post("http://localhost:8080/api/v1/user/auth/github",body,{ responseType: "text"});
+    
+
+    }
     createBasicAuthToken(username: String, password: String) {
-      console.log("created token");
       return 'Basic ' + window.btoa(username + ":" + password)
     }
     registerSuccessfulLogin(username) {
@@ -65,5 +72,7 @@ export class AuthenticateService {
     getUserName(){
       return sessionStorage.getItem(this.USER_NAME_SESSION_USER_NAME);
     }
-
+    getJWTEmail(jwt:any){
+      return jwt_decode(jwt).sub;
+    }
 }

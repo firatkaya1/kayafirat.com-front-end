@@ -4,7 +4,6 @@ import { IUser } from './../../Core/Model/User';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import * as jwt_decode from "jwt-decode";
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-profile',

@@ -7,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styles: []
+  styleUrls: ['./login.component.css']
+
 })
 export class LoginComponent implements OnInit {
 
@@ -28,11 +29,11 @@ export class LoginComponent implements OnInit {
       this.invalidLogin = false;
       this.loginSuccess = true;
       this._authService.registerSuccessfulLogin(result);
-     this._userService.getUserPhoto(username).subscribe(data => 
-      {
-        this._authService.setPhotoandUser(data[0],data[1])
-      }
-      );
+        this._userService.getUserPhoto(username).subscribe(data => 
+          {
+            this._authService.setPhotoandUser(data[0],data[1])
+          });
+      
       setTimeout(() => {    window.location.reload();}, 1000);
     }, (error) => {
       this.invalidLogin = true;
@@ -46,5 +47,18 @@ export class LoginComponent implements OnInit {
       res['success'] == true ? this.validateRecaptcha=false : this.validateRecaptcha=true; })
     
   }
-
+  /* Sign in with social media accounts */
+  signInGithub() {
+    console.log("signUp Github");
+    window.location.href="https://github.com/login/oauth/authorize?client_id=1766cc6e638422eeaa65";
+  }
+  signInGoogle() {
+    console.log("signUp Google");
+  }
+  signInFacebook() {
+    console.log("signUp Facebook");
+  }
+  signInTwitter() {
+    console.log("signUp Twitter");
+  }
 }

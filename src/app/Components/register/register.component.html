@@ -83,6 +83,12 @@
          
             </div>  
             <div class="w-100"></div>
+            <div class="col-md-5">
+                <a  routerLink="/login" routerLinkActive="active" >
+                    <ins> Bir hesabın var mı ? Giriş yap. </ins>
+                </a>
+            </div>
+            <div class="w-100"></div>
             <div class="col-md-5 mx-auto">
                 <re-captcha (resolved)="resolved($event)" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
             </div>
@@ -90,20 +96,70 @@
             <div class="col-md-5 mb-2 mx-auto mt-4 text-center">
                 <input type="checkbox" class="form-check-input" [class.is-invalid]="myUserDetails.get('userterms').invalid" id="userterms" formControlName="userterms">
                 <label class="form-check-label" for="userterms">Kullanıcı sözleşmesini kabul ediyorum.</label>
-            </div>
-            <div class="w-100"></div>
-            <div class="col-md-5">
-                <a  routerLink="/login" routerLinkActive="active" >
-                    <ins> Bir hesabın var mı ? Giriş yap. </ins>
-                </a>
-            </div>
+            </div>          
             <div class="w-100"></div>
             <div class="col-md-5 text-right">
-                <button class="btn btn-outline-success" [disabled]="myUserDetails.invalid || validateRecaptcha" >Kayıt Ol</button>
+                <button class="btn btn-outline-success btn-block" [disabled]="myUserDetails.invalid || validateRecaptcha" >Kayıt Ol</button>
             </div>
-            <div class="w-100 " style="height: 250px;"></div>
+            <div class="w-100"></div>
+
+            <!--Desktop Fixed Right Menu-->
+            <div class="rightside " id="rightMenu">
+                <a id="github" (click)="signUpGithub()"> 
+                    <p class=" text-dark" >Sign up with Github</p>
+                    <img src="assets/images/github.svg" width="35px" height="35px" alt="github">
+                </a>
+                <a id="google" (click)="signUpGoogle()"> 
+                    <p class=" text-dark d-inline" >Sign up with Google</p>
+                    <img src="assets/images/google.svg" width="35px" height="35px" alt="github">
+                </a>
+                <a id="facebook"  (click)="signUpFacebook()"> 
+                    <p class=" text-dark d-inline">Sign upwith Facebook</p>
+                    <img src="assets/images/facebookl.svg" width="35px" height="35px" alt="github">
+                </a>
+                <a id="twitter" (click)="signUpTwitter()" > 
+                    <p class=" text-dark d-inline ">Sign up with Twitter</p>
+                    <img src="assets/images/twitterl.svg" width="35px" height="35px" alt="github">
+                </a>
+            </div>
         </div>
     </form>
+    
+    <!--Mobile Buttons For Sign İn via Social Medias-->
+    <div class="row">
+        <div class="col-md-5" id="mobile-social-buttons">
+            <div class="row">
+                <div class="col-12 mt-2">
+                    <button class="btn btn-light border border-dark btn-block" (click)="signUpGithub()">
+                        <img src="assets/images/github.svg" width="30px" height="30px" alt="github">
+                        Sign up with Github
+                    </button>
+                </div>
+                <div class="w-100 mt-2"></div>
+                <div class="col-12">
+                    <button class="btn btn-light border border-dark btn-block" (click)="signUpGoogle()">
+                        <img src="assets/images/google.svg" width="30px" height="30px" alt="google">
+                        Sign up with Google
+                    </button>
+                </div>
+                <div class="w-100 mt-2"></div>
+                <div class="col-12">
+                    <button class="btn btn-light border border-dark btn-block" (click)="signUpFacebook()">
+                        <img src="assets/images/facebookl.svg" width="30px" height="30px" alt="facebook">
+                        Sign up with Facebook
+                    </button>
+               </div>
+                <div class="w-100 mt-2"></div>
+                <div class="col-12">
+                    <button class="btn btn-light border border-dark btn-block" (click)="signUpTwitter()">
+                        <img src="assets/images/twitterl.svg" width="30px" height="30px" alt="twitter">
+                        Sign up with Twitter
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="w-100" style="height: 100px;"></div>
+    </div>
 
     <!--Comment Alerts-->
    <div class="row">

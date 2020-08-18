@@ -2,7 +2,6 @@ import { UserServiceService } from './../../Core/Service/UserService/user-servic
 import { Router } from '@angular/router';
 import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
 import { Component, OnInit } from '@angular/core';
-import * as jwt_decode from "jwt-decode";
 
 
 @Component({

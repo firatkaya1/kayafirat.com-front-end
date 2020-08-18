@@ -13,12 +13,12 @@
                 </div>
             </div>
             <div class="w-100"></div>
-            <div class="col-md-5 mb-2 mx-auto mt-1">
+            <div class="col-md-5  mx-auto mt-1">
                 <label for="emailAddress">Email Adresiniz</label>
                 <input type="text" class="form-control" #username id="emailAddress" required>
             </div>
             <div class="w-100"></div>
-            <div class="col-md-5 mb-3 mx-auto mt-4">
+            <div class="col-md-5 mb-3 mx-auto mt-2">
                 <label for="password">Şifreniz</label>
                 <input type="password" class="form-control" #pass id="password" required autocomplete="on">
             </div>
@@ -46,14 +46,65 @@
             </div>
             <div class="w-100"></div>
             
-            <div class="col-md-5 text-right">
+            <div class="col-md-3 mb-2 mt-2">
                 <re-captcha (resolved)="resolved($event)" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
             </div>
-            
-        
             <div class="w-100"></div>
             <div class="col-md-5 text-right">
-                <button class="btn btn-outline-success" [disabled]="validateRecaptcha"  (click)="ngOnSubmit(username.value,pass.value)" >Giriş Yap</button>
+                <button class="btn btn-outline-success btn-block" [disabled]="validateRecaptcha"  (click)="ngOnSubmit(username.value,pass.value)" >Giriş Yap</button>
+            </div>
+            <div class="w-100"></div>
+
+            <!--Desktop Fixed Right Menu-->
+            <div class="rightside " id="rightMenu">
+                <a id="github" (click)="signInGithub()"> 
+                    <p class=" text-dark" >Sign in with Github</p>
+                    <img src="assets/images/github.svg" width="35px" height="35px" alt="github">
+                </a>
+                <a id="google" (click)="signInGoogle()"> 
+                    <p class=" text-dark d-inline" >Sign in with Google</p>
+                    <img src="assets/images/google.svg" width="35px" height="35px" alt="github">
+                </a>
+                <a id="facebook"  (click)="signInFacebook()"> 
+                    <p class=" text-dark d-inline">Sign in with Facebook</p>
+                    <img src="assets/images/facebookl.svg" width="35px" height="35px" alt="github">
+                </a>
+                <a id="twitter" (click)="signInTwitter()" > 
+                    <p class=" text-dark d-inline ">Sign in with Twitter</p>
+                    <img src="assets/images/twitterl.svg" width="35px" height="35px" alt="github">
+                </a>
+            </div>
+            <!--Mobile Buttons For Sign In via Social Medias-->
+            <div class="col-md-5 " id="mobile-social-buttons">
+                <div class="row">
+                    <div class="col-12 mt-2">
+                        <button class="btn btn-light border border-dark btn-block">
+                            <img src="assets/images/github.svg" width="30px" height="30px" alt="github">
+                            Sign in with Github
+                        </button>
+                    </div>
+                    <div class="w-100 mt-2"></div>
+                    <div class="col-12">
+                        <button class="btn btn-light border border-dark btn-block">
+                            <img src="assets/images/google.svg" width="30px" height="30px" alt="github">
+                            Sign in with Google
+                        </button>
+                    </div>
+                    <div class="w-100 mt-2"></div>
+                    <div class="col-12">
+                        <button class="btn btn-light border border-dark btn-block">
+                            <img src="assets/images/facebookl.svg" width="30px" height="30px" alt="github">
+                            Sign in with Facebook
+                        </button>
+                   </div>
+                    <div class="w-100 mt-2"></div>
+                    <div class="col-12">
+                        <button class="btn btn-light border border-dark btn-block">
+                            <img src="assets/images/twitterl.svg" width="30px" height="30px" alt="github">
+                            Sign in with Twitter
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

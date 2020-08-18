@@ -1,4 +1,3 @@
-import { throwError } from 'rxjs';
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { Router } from '@angular/router';
 
@@ -8,7 +7,7 @@ import { FormGroup, FormControl, Validators,AbstractControl } from '@angular/for
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styles: []
+  styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
 
@@ -69,6 +68,18 @@ export class RegisterComponent implements OnInit {
      
     
      
+  }
+  signUpGithub() {
+    console.log("signUp Github");
+  }
+  signUpGoogle() {
+    console.log("signUp Google");
+  }
+  signUpFacebook() {
+    console.log("signUp Facebook");
+  }
+  signUpTwitter() {
+    console.log("signUp Twitter");
   }
 
 }
