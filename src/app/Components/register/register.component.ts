@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
      
   }
   signUpGithub() {
-    console.log("signUp Github");
+    window.location.href="https://github.com/login/oauth/authorize?client_id=1766cc6e638422eeaa65";
   }
   signUpGoogle() {
     console.log("signUp Google");

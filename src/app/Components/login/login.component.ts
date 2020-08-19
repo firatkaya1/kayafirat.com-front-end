@@ -49,7 +49,6 @@ export class LoginComponent implements OnInit {
   }
   /* Sign in with social media accounts */
   signInGithub() {
-    console.log("signUp Github");
     window.location.href="https://github.com/login/oauth/authorize?client_id=1766cc6e638422eeaa65";
   }
   signInGoogle() {

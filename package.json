@@ -25,6 +25,7 @@
     "jwt-decode": "^2.2.0",
     "ng-recaptcha": "^5.0.0",
     "ngx-cookie-service": "^3.0.4",
+    "ngx-spinner": "^10.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -1,17 +1,30 @@
 
+
+
 <div class="container">
+    <ngx-spinner
+bdColor="rgba(51,51,51,0.8)"
+size="medium"
+color="#4BA845"
+type="square-jelly-box">
+<p class="text-white h4">Yönlendiriliyorsunuz...</p>
+</ngx-spinner>
     <div class="row">
         <div class="col-md-12 mx-auto text-center">
             <img src="assets/images/github.svg" width="250px" height="250px" alt="github">
         </div>
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="true">
             <p class="text-dark h5 text-center">
-                Aramıza hoşgeldin <span class="text-primary">padawan.</span> Seni şöyle anasayfamıza alalım. Sana bol <ins class="text-danger">okumalı</ins> günler diliyorum.
+                Yönlendiriliyorsunuz... Giriş yaptığınız için teşekkürler.
             </p>
+            
         </div>
-        <div class="col-md-12 text-center mt-4">
-            <button class="btn btn-outline-success">Anasayfaya Git</button>
-            <button class="btn btn-outline-primary ml-4">Profilime Git</button>
+        <div class="col-md-12" *ngIf="false">
+            <p class="text-danger h5 text-center">
+                Bilinmeyen bir hata meydana geldi. Lütfen tekrar deneyiniz.
+            </p>
+            
         </div>
+        
     </div>
 </div>

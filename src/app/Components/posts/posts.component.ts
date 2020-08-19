@@ -21,6 +21,7 @@ export class PostsComponent implements OnInit {
     this._postService.getPostIndex().subscribe(
       res => {
         this.postIndex = res;
+        
       });
   }
 

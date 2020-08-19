@@ -29,6 +29,10 @@ import { SearchtagComponent } from './Components/searchtag/searchtag.component';
 import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
 import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
 import { GithubComponent } from './Components/github/github.component';
+import {NgxSpinnerModule} from "ngx-spinner";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+
+
 
 @NgModule({
   declarations: [
@@ -52,15 +56,18 @@ import { GithubComponent } from './Components/github/github.component';
     AuthenticationerrorComponent,
     NotfounderrorComponent,
     GithubComponent
-  ],
+    ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
     RecaptchaModule, 
-    RecaptchaFormsModule 
+    RecaptchaFormsModule,
+    NgxSpinnerModule
+ 
   ],
   providers: [CookieService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },

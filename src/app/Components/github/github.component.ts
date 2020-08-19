@@ -3,6 +3,7 @@ import { ActivatedRoute} from '@angular/router';
 import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-github',
@@ -12,8 +13,9 @@ import { Router } from '@angular/router';
 export class GithubComponent implements OnInit {
 
   private code:string;
-
-  constructor(private route: ActivatedRoute,private _authService:AuthenticateService,private _userService:UserServiceService,private router: Router) { 
+  private isSuccess:boolean = true;
+  constructor(private route: ActivatedRoute,private spinner: NgxSpinnerService,private _authService:AuthenticateService,private _userService:UserServiceService,private router: Router) { 
+    this.spinner.show();
     this.code = this.route.snapshot.queryParamMap.get('code');
     this._authService.loginGithub(this.code).subscribe(
       result => 
@@ -22,10 +24,15 @@ export class GithubComponent implements OnInit {
         this._userService.getUserPhoto(this._authService.getJWTEmail(result)).subscribe(
         (data) => {
                     this._authService.setPhotoandUser(data[0],data[1])
-                  });   
-      });
+                    setTimeout(() => {
+                      this.spinner.hide();
+                    }, 2000);
+                    this.router.navigate(["/profile/"+data[0]])
 
-      setTimeout(() => { this.router.navigateByUrl('/'); }, 2000);
+                  });   
+      },
+      error => {this.spinner.hide();this.isSuccess=false});
+
   }
 
   ngOnInit(): void {
