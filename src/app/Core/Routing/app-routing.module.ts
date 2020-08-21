@@ -1,3 +1,4 @@
+import { LinkedinComponent } from './../../Components/linkedin/linkedin.component';
 import { GithubComponent } from './../../Components/github/github.component';
 import { LoginComponent } from './../../Components/login/login.component';
 import { ServererrorComponent } from './../../Components/servererror/servererror.component';
@@ -42,9 +43,12 @@ const routes: Routes = [
   {path:'forgotpassword/reset',redirectTo:'404',pathMatch: 'full' },
   {path:'forgotpassword/reset/:token',component:ResetpasswordComponent },
   {path:'login/auth/github',component:GithubComponent},
+  {path:'login/auth/linkedin',component:LinkedinComponent},
+
   {path:'404',component:NotfounderrorComponent },
   {path:'500',component:ServererrorComponent },
   {path:'403',component: AuthenticationerrorComponent},
+
   {path: '**', redirectTo: '/404'}
 ];
 

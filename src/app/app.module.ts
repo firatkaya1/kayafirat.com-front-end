@@ -30,7 +30,8 @@ import { AuthenticationerrorComponent } from './Components/authenticationerror/a
 import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
 import { GithubComponent } from './Components/github/github.component';
 import {NgxSpinnerModule} from "ngx-spinner";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LinkedinComponent } from './Components/linkedin/linkedin.component';
 
 
 
@@ -55,8 +56,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SearchtagComponent,
     AuthenticationerrorComponent,
     NotfounderrorComponent,
-    GithubComponent
-    ],
+    GithubComponent,
+    LinkedinComponent
+      ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
     console.log("signUp Google");
   }
   signUpFacebook() {
-    console.log("signUp Facebook");
+    console.log("signUp linkedin");
   }
   signUpTwitter() {
     console.log("signUp Twitter");

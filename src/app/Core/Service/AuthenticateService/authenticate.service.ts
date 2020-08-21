@@ -31,6 +31,13 @@ export class AuthenticateService {
     
 
     }
+
+    loginLinkedin(code:string){
+      const body = {
+        code:code
+      }
+       return this.http.post("http://localhost:8080/api/v1/user/auth/linkedin",body,{ responseType: "text"});
+    }
     createBasicAuthToken(username: String, password: String) {
       return 'Basic ' + window.btoa(username + ":" + password)
     }

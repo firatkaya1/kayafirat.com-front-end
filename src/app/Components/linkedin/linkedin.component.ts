@@ -6,18 +6,18 @@ import { Router } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
-  selector: 'app-github',
-  templateUrl: './github.component.html',
-  styleUrls: ['./github.component.css']
+  selector: 'app-linkedin',
+  templateUrl: './linkedin.component.html',
+  styleUrls: ['./linkedin.component.css']
 })
-export class GithubComponent implements OnInit {
+export class LinkedinComponent implements OnInit {
 
   private code:string;
   public isSuccess:boolean = true;
   constructor(private route: ActivatedRoute,private spinner: NgxSpinnerService,private _authService:AuthenticateService,private _userService:UserServiceService,private router: Router) { 
     this.spinner.show();
     this.code = this.route.snapshot.queryParamMap.get('code');
-    this._authService.loginGithub(this.code).subscribe(
+    this._authService.loginLinkedin(this.code).subscribe(
       result => 
       {
         this._authService.registerSuccessfulLogin(result);
@@ -30,7 +30,7 @@ export class GithubComponent implements OnInit {
                     this.router.navigate(["/profile/"+data[0]])
 
                   });   
-      },
+      } ,
       error => {this.spinner.hide();this.isSuccess=false});
 
   }
