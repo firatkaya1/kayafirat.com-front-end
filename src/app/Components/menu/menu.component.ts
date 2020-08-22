@@ -1,4 +1,4 @@
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
+import {TranslateService} from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,8 +15,10 @@ export class MenuComponent implements OnInit {
   public userprofilphoto:string = "";
 
 
-  constructor(private authenticateService:AuthenticateService,private router:Router,private  _userService:UserServiceService) {
-
+  constructor(private authenticateService:AuthenticateService,
+              private router:Router,
+              private translate: TranslateService ) {
+                translate.setDefaultLang('en');
   }
 
   ngOnInit(): void {

@@ -75,11 +75,8 @@ export class RegisterComponent implements OnInit {
   signUpGoogle() {
     console.log("signUp Google");
   }
-  signUpFacebook() {
-    console.log("signUp linkedin");
-  }
-  signUpTwitter() {
-    console.log("signUp Twitter");
+  signUpLinkedin() {
+    window.location.href="https://www.linkedin.com/oauth/v2/authorization?client_id=77s8v0hceim00y&redirect_uri=http://localhost:4200/login/auth/linkedin&response_type=code&scope=r_liteprofile%20r_emailaddress";
   }
 
 }

@@ -4,7 +4,7 @@
         <div class="col-md-12">
             <div class="row ">
                 <div class="col-md-4">
-                    <p class="h4">Tüm Yazılarım</p>
+                    <p class="h4" [translate]="'category.allarticles'">Tüm Yazılarım</p>
                 </div>
                 <div class="col-md-3 text-right mb-2">
                     <select class="custom-select" (change)="ngOnChange($event.target.value)" [(ngModel)]="selectedPageSize">
@@ -22,16 +22,16 @@
                 </div>
                 <div class="col-md-4 text-right">
                     <select class="custom-select" (change)="ngOnChangeOrderBy($event.target.value)">
-                        <option value="post_time-desc" selected>Yeniden Eskiye Göre Sırala</option>
-                        <option value="post_time-asc">Eskiden Yeniye Göre Sırala</option>
-                        <option value="post_max_comment-desc">En Çok Yorum Alana Göre Sırala</option>
-                        <option value="post_max_comment-asc">En Az Yorum Alana Göre Sırala</option>
-                        <option value="post_max_view-desc">En Çok Görüntülene Göre Sırala</option>
-                        <option value="post_max_view-asc">En Az Görüntülene Göre Sırala</option>
+                        <option value="post_time-desc" selected [translate]="'category.timedesc'">Yeniden Eskiye Göre Sırala</option>
+                        <option value="post_time-asc" [translate]="'category.timeasc'">Eskiden Yeniye Göre Sırala</option>
+                        <option value="post_max_comment-desc" [translate]="'category.commentdesc'">En Çok Yorum Alana Göre Sırala</option>
+                        <option value="post_max_comment-asc" [translate]="'category.commentasc'">En Az Yorum Alana Göre Sırala</option>
+                        <option value="post_max_view-desc" [translate]="'category.viewdesc'">En Çok Görüntülene Göre Sırala</option>
+                        <option value="post_max_view-asc" [translate]="'category.viewasc'">En Az Görüntülene Göre Sırala</option>
                       </select>
                 </div>
                 <div class="col-xs-12 col-12 col-md-1 text-right" (click)="orderBy()">
-                    <button class="btn btn-success">Ara</button>
+                    <button class="btn btn-success" [translate]="'category.search'">Ara</button>
                 </div>
             </div>
         </div>
@@ -47,9 +47,9 @@
                     <p class="card-text">
                         {{post.post_Header}}
                     </p>
-                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white ">Okumak için tıklayın.</a>
+                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white " [translate]="'category.clicktoread'" ></a>
                 </div>
-                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} Görüntülenme</span> | <span id="maxSee">{{ post.post_Max_Comment }} Yorum</span></div>
+                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} <span [translate]="'category.views'"></span> </span> | <span id="maxSee">{{ post.post_Max_Comment }} <span [translate]="'category.comments'"></span></span></div>
             </div>
         </div>
 
@@ -65,8 +65,8 @@
             </nav>
         </div>
          <!--Comment Alerts-->
-        <div *ngIf="orderSuccess" class="col-md-3 alert alert-success alert-dismissible fade show fixed-top mt-4 border-dark" role="alert">
-            <strong>Başarılı!</strong> İşleminiz tamamlandı.
+        <div *ngIf="orderSuccess" class="col-md-5 alert alert-success alert-dismissible fade show fixed-top mt-4 border-dark" role="alert">
+            <strong [translate]="'category.success'"></strong> <span [translate]="'category.successmessage'"></span>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>

@@ -8,27 +8,27 @@
     <div class="collapse navbar-collapse " id="navbarNav">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a routerLink="/search" routerLinkActive="active" (click)="ngOnChange()" class="nav-link text-primary">Arama Yap</a>
+                <a routerLink="/search" routerLinkActive="active" (click)="ngOnChange()" class="nav-link text-primary" [translate]="'menu.search'">Arama Yap</a>
             </li>
             <li class="nav-item">
-                <a routerLink="/category" routerLinkActive="active" (click)="ngOnChange()" class="nav-link text-primary">Yazılarım</a>
+                <a routerLink="/category" routerLinkActive="active" (click)="ngOnChange()" class="nav-link text-primary" [translate]="'menu.articles'">Yazılarım</a>
             </li>
             <li class="navbar-item" *ngIf="!isAuthentication()">
                 <a routerLink="/login" routerLinkActive="active">
-                    <button class="btn btn-sm btn-outline-success mt-1">
+                    <button class="btn btn-sm btn-outline-success mt-1" [translate]="'menu.login'">
                         Giriş Yap
                     </button>
                 </a>
             </li>
             <li class="nav-item dropdown" *ngIf="isAuthentication()" (click)="ngOnChange()">
-                <a class="nav-link dropdown-toggle text-success m-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-success m-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [translate]="'menu.account'">
                     <img [src]="userprofilphoto" class="border p-0 m-0" width="25px" alt="">
                     Hesabım
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" (click)="ngOnChange()">
-                    <a class="dropdown-item" [routerLink]="['/profile/',username]" >Profil</a>
-                    <a class="dropdown-item" [routerLink]="['/settings/',username]" >Ayarlar</a>
-                    <a class="dropdown-item" (click)="logout()" routerLinkActive="active">Çıkış</a>
+                    <a class="dropdown-item" [routerLink]="['/profile/',username]" [translate]="'menu.profile'" >Profil</a>
+                    <a class="dropdown-item" [routerLink]="['/settings/',username]" [translate]="'menu.settings'" >Ayarlar</a>
+                    <a class="dropdown-item" (click)="logout()" routerLinkActive="active" [translate]="'menu.exit'">Çıkış</a>
                 </div>
             </li>
         </ul>

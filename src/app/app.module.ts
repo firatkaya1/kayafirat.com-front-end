@@ -6,8 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
-import { HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
+import { HttpClient ,HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import {NgxSpinnerModule} from "ngx-spinner";
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 
 
 import { AppRoutingModule } from './Core/Routing/app-routing.module';
@@ -29,7 +33,6 @@ import { SearchtagComponent } from './Components/searchtag/searchtag.component';
 import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
 import { NotfounderrorComponent } from './Components/notfounderror/notfounderror.component';
 import { GithubComponent } from './Components/github/github.component';
-import {NgxSpinnerModule} from "ngx-spinner";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LinkedinComponent } from './Components/linkedin/linkedin.component';
 
@@ -58,7 +61,7 @@ import { LinkedinComponent } from './Components/linkedin/linkedin.component';
     NotfounderrorComponent,
     GithubComponent,
     LinkedinComponent
-      ],
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -68,7 +71,14 @@ import { LinkedinComponent } from './Components/linkedin/linkedin.component';
     HttpClientModule,
     RecaptchaModule, 
     RecaptchaFormsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  })
  
   ],
   providers: [CookieService,
@@ -77,3 +87,7 @@ import { LinkedinComponent } from './Components/linkedin/linkedin.component';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}

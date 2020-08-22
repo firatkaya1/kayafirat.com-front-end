@@ -1,0 +1,96 @@
+{
+    "demo.title": "Translation demo",
+    "demo.text": "This is a simple demonstration app for ngx-translate",
+    
+
+    "menu": {
+        "search":"Search",
+        "articles":"My Articles",
+        "login":"Login",
+        "account":"Account",
+        "profile":"My profile",
+        "settings":"Settings",
+        "exit":"Log out"
+    },
+
+    "login" : {
+        "login":"Login",
+        "email":"Email Address",
+        "password":"Password",
+        "rememberme":"Remember me",
+        "forgotpass":"Forgot your password?",
+        "notmember":"Don’t have an account?",
+        "signinGithub":"Sign in with Github",
+        "siginLinkedin":"Sign in with Linkedin",
+        "signinGoogle":"Sign in with Google",
+        "error":"Email or password is invalid.",
+        "success":"Login is succesfull. Redirecting..."
+        
+    },
+
+    "register" : {
+        "errorEmail":"There is already an account in this email address.",
+        "errorUsername":"There is already an account in this username",
+        "email":"Email Address",
+        "emailErrors" : {
+            "notEmpty":"This field cannot be empty.",
+            "onlyEmail":"This field must be email"
+        },
+        "username": "Username",
+        "usernameErrors" : {
+            "notEmpty":"This field cannot be empty",
+            "specialCharacter":"You cannot use special characters and numbers.",
+            "minimum":"Username minimum lenght must be 5",
+            "maximum":"Username maximum lenght must be 15"
+        },
+        "password":"Password",
+        "passwordErrors": {
+            "notEmpty":"This field cannot be empty",
+            "minimum":"Password minimum lenght must be 5",
+            "maximum":"Password maximum lenght must be 36",
+            "uppercase":"Password must be contain at least one uppercase character",
+            "lowercase":"Password must be contain at least one lowercase character",
+            "number":"Password must be contain at least one number"
+        },
+        "birthdate":"Date of birth",
+        "birthdateErrors" : {
+            "notEmpty":"This field cannot be empty"
+        },
+        "alreadyaccount":"Already have an account? Login",
+        "userterms":"I accept the user agreement.",
+        "signup":"Sign Up",
+        "signupwith": {
+            "github" :"Sign up with Github",
+            "linkedin":"Sign up with Linkedin",
+            "google":"Sign up with Google"
+        },
+        "alertSuccess":"It's done!",
+        "alertMessage":"Sign up is success.Please check your email and verify your account. You will redirect Login page after 5 seconds..."
+    },
+
+    "category": {
+        "timedesc":"Sort by new to old",
+        "timeasc":"Sort by old to new ",
+        "commentdesc":"Sort by most comments",
+        "commentasc":"Sort by least comments",
+        "viewdesc":"Sort by most view",
+        "viewasc":"Sort by least view",
+        "allarticles": "Articles",
+        "search":"Search",
+        "views":"Views",
+        "comments":"Comments",
+        "success":"Success!",
+        "successmessage":" Your transaction has been completed.",
+        "clicktoread":"Click to read."
+
+    },
+
+    "about": {
+        "me":"I am Fırat, I'm student at Beykent University at third class. I created this blog because I want to share what i learned. If you want to take my new articles, you can subscribe and support me easily. Have a good day !"
+    },
+
+    "footer" : {
+        "license":"All right reserved."
+    }
+
+  }

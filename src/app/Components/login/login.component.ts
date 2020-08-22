@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   public loginSuccess:boolean = false;
   public validateRecaptcha:boolean = true;
  
-  constructor(private _userService:UserServiceService,private _authService:AuthenticateService,private router:Router) { }
+  constructor(private _userService:UserServiceService,private _authService:AuthenticateService,private router:Router ) {}
 
   ngOnInit(): void {
     if(this._authService.isUserLoggedIn()){

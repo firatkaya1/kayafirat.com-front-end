@@ -7,77 +7,65 @@
             </div>
             <div class="col-md-5">
                 <div  *ngIf="errorCode == 0">
-                    <p class="text-danger">Bu email adresine kayıtlı bir hesap bulunmaktadır.</p>
+                    <p class="text-danger" [translate]="'register.errorEmail'"></p>
                 </div>
                 <div  *ngIf="errorCode == 1">
-                    <p class="text-danger">Bu kullanıcı adına kayıtlı bir hesap bulunmaktadır.</p>
+                    <p class="text-danger" [translate]="'register.errorUsername'"></p>
                 </div>
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 mb-2 mx-auto">
-                <label for="emailAddress">Email Adresiniz</label>
+                <label for="emailAddress"  [translate]="'register.email'"></label>
                 <input type="email" [class.is-valid]="myUserDetails.get('emailAddress').valid" [class.is-invalid]="myUserDetails.get('emailAddress').invalid && (myUserDetails.get('emailAddress').dirty || myUserDetails.get('emailAddress').touched)" class="form-control" id="emailAddress" formControlName="emailAddress">
                 
                 <div *ngIf="myUserDetails.get('emailAddress').invalid && (myUserDetails.get('emailAddress').dirty || myUserDetails.get('emailAddress').touched)" class="text-danger">
-                    <div *ngIf="myUserDetails.get('emailAddress').errors.required">
-                        Bu alan boş bırakılamaz.
+                    <div *ngIf="myUserDetails.get('emailAddress').errors.required" [translate]="'register.emailErrors.notEmpty'">
+                       
                     </div>
-                    <div *ngIf="myUserDetails.get('emailAddress').errors.email">
-                        Email adresinizi girmek zorundasınız.
+                    <div *ngIf="myUserDetails.get('emailAddress').errors.email" [translate]="'register.emailErrors.onlyEmail'">
                     </div>
                 </div>
             </div>
             <div class="w-100"></div>
-            <div class="col-md-5 mb-2 mx-auto mt-4">
-                <label for="username">Kullancı Adın</label>
+            <div class="col-md-5 mb-2 mx-auto mt-2">
+                <label for="username" [translate]="'register.username'"> </label>
                 <input type="text"  [class.is-valid]="myUserDetails.get('username').valid" [class.is-invalid]="myUserDetails.get('username').invalid && (myUserDetails.get('username').dirty || myUserDetails.get('username').touched)" class="form-control" id="username" formControlName="username">
                 <div *ngIf="myUserDetails.get('username').invalid && (myUserDetails.get('username').dirty || myUserDetails.get('username').touched)" class="text-danger">
-                    <div *ngIf="myUserDetails.get('username').errors.required">
-                        Bu alan boş bırakılamaz.
+                    <div *ngIf="myUserDetails.get('username').errors.required" [translate]="'register.usernameErrors.notEmpty'">
                     </div>
-                    <div *ngIf="myUserDetails.get('username').errors.pattern">
-                        Özel karakter ve rakam kullanamazsınız.
+                    <div *ngIf="myUserDetails.get('username').errors.pattern" [translate]="'register.usernameErrors.specialCharacter'">
                     </div>
-                    <div *ngIf="myUserDetails.get('username').errors.minlength">
-                        Kullanıcı adınız minumum 5 karakter içermelidir.
+                    <div *ngIf="myUserDetails.get('username').errors.minlength" [translate]="'register.usernameErrors.minimum'">
                     </div>
-                    <div *ngIf="myUserDetails.get('username').errors.maxlength">
-                        Kullanıcı adınız maksimum 15 karakter içerebilir.
+                    <div *ngIf="myUserDetails.get('username').errors.maxlength" [translate]="'register.usernameErrors.maximum'">
                     </div>
                 </div>
             </div>
             <div class="w-100"></div>
-            <div class="col-md-5 mb-2 mx-auto mt-4">
-                <label for="password">Şifren</label>
+            <div class="col-md-5 mb-2 mx-auto mt-2">
+                <label for="password" [translate]="'register.password'">Şifren</label>
                 <input type="password" [class.is-valid]="myUserDetails.get('password').valid" [class.is-invalid]="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="form-control" id="password" formControlName="password" autocomplete="on">
                 <div *ngIf="myUserDetails.get('password').invalid && (myUserDetails.get('password').dirty || myUserDetails.get('password').touched)" class="text-danger">
-                    <div *ngIf="myUserDetails.get('password').hasError('required')">
-                        Bu alan boş bırakılamaz.
+                    <div *ngIf="myUserDetails.get('password').hasError('required')" [translate]="'register.passwordErrors.notEmpty'">
                     </div>
-                    <div *ngIf="myUserDetails.get('password').hasError('minlength')">
-                        Şifreniz minumum 8 karakter içermelidir.
+                    <div *ngIf="myUserDetails.get('password').hasError('minlength')" [translate]="'register.passwordErrors.minimum'">
                     </div>
-                    <div *ngIf="myUserDetails.get('password').hasError('maxlength')">
-                        Şifreniz maksimum 36 karakter içerebilir.
+                    <div *ngIf="myUserDetails.get('password').hasError('maxlength')" [translate]="'register.passwordErrors.maximum'">
                     </div>
-                    <div *ngIf="myUserDetails.get('password').hasError('lowerCaseValidator')">
-                        Şifrenizde en az bir küçük harf kullanılmalıdır.
+                    <div *ngIf="myUserDetails.get('password').hasError('lowerCaseValidator')" [translate]="'register.passwordErrors.lowercase'">
                     </div>
-                    <div *ngIf="myUserDetails.get('password').hasError('upperCaseValidator')">
-                        Şifrenizde en az bir büyük harf kullanılmalıdır.
+                    <div *ngIf="myUserDetails.get('password').hasError('upperCaseValidator')" [translate]="'register.passwordErrors.uppercase'">
                     </div>
-                    <div *ngIf="myUserDetails.get('password').hasError('numberValidator')">
-                        Şifrenizde en az bir rakam kullanılmalıdır.
+                    <div *ngIf="myUserDetails.get('password').hasError('numberValidator')" [translate]="'register.passwordErrors.number'">
                     </div>
                 </div>
             </div>
             <div class="w-100"></div>
-            <div class="col-md-5 mb-2 mx-auto mt-4">
-                <label for="birthdate">Doğum Tarihin</label>
+            <div class="col-md-5 mb-2 mx-auto mt-2">
+                <label for="birthdate" [translate]="'register.birthdate'">Doğum Tarihin</label>
                 <input type="date" class="form-control" max="2010-12-31" name="birthdate" [class.is-valid]="myUserDetails.get('birthdate').valid"  [class.is-invalid]="myUserDetails.get('birthdate').invalid" formControlName="birthdate" id="birthdate" required>
                 <div *ngIf="myUserDetails.get('birthdate').invalid" class="text-danger">
-                    <div *ngIf="myUserDetails.get('birthdate').hasError('required')">
-                        Bu alan boş bırakılamaz.
+                    <div *ngIf="myUserDetails.get('birthdate').hasError('required')" [translate]="'register.birthdateErrors.notEmpty'">
                     </div>
                 </div>
          
@@ -85,7 +73,7 @@
             <div class="w-100"></div>
             <div class="col-md-5">
                 <a  routerLink="/login" routerLinkActive="active" >
-                    <ins> Bir hesabın var mı ? Giriş yap. </ins>
+                    <ins [translate]="'register.alreadyaccount'"></ins>
                 </a>
             </div>
             <div class="w-100"></div>
@@ -95,31 +83,27 @@
             <div class="w-100"></div>
             <div class="col-md-5 mb-2 mx-auto mt-4 text-center">
                 <input type="checkbox" class="form-check-input" [class.is-invalid]="myUserDetails.get('userterms').invalid" id="userterms" formControlName="userterms">
-                <label class="form-check-label" for="userterms">Kullanıcı sözleşmesini kabul ediyorum.</label>
+                <label class="form-check-label" for="userterms" [translate]="'register.userterms'"></label>
             </div>          
             <div class="w-100"></div>
             <div class="col-md-5 text-right">
-                <button class="btn btn-outline-success btn-block" [disabled]="myUserDetails.invalid || validateRecaptcha" >Kayıt Ol</button>
+                <button class="btn btn-outline-success btn-block" [disabled]="myUserDetails.invalid || validateRecaptcha" [translate]="'register.signup'">Kayıt Ol</button>
             </div>
             <div class="w-100"></div>
 
             <!--Desktop Fixed Right Menu-->
             <div class="rightside " id="rightMenu">
                 <a id="github" (click)="signUpGithub()"> 
-                    <p class=" text-dark" >Sign up with Github</p>
+                    <p class=" text-dark" [translate]="'register.signupwith.github'"></p>
                     <img src="assets/images/github.svg" width="35px" height="35px" alt="github">
                 </a>
                 <a id="google" (click)="signUpGoogle()"> 
-                    <p class=" text-dark d-inline" >Sign up with Google</p>
-                    <img src="assets/images/google.svg" width="35px" height="35px" alt="github">
+                    <p class=" text-dark d-inline" [translate]="'register.signupwith.google'"></p>
+                    <img src="assets/images/google.svg" width="35px" height="35px" alt="google">
                 </a>
-                <a id="facebook"  (click)="signUpFacebook()"> 
-                    <p class=" text-dark d-inline">Sign upwith Facebook</p>
-                    <img src="assets/images/facebookl.svg" width="35px" height="35px" alt="github">
-                </a>
-                <a id="twitter" (click)="signUpTwitter()" > 
-                    <p class=" text-dark d-inline ">Sign up with Twitter</p>
-                    <img src="assets/images/twitterl.svg" width="35px" height="35px" alt="github">
+                <a id="linkedin"  (click)="signUpLinkedin()"> 
+                    <p class=" text-dark d-inline" [translate]="'register.signupwith.linkedin'"></p>
+                    <img src="assets/images/linkedin.png" width="35px" height="35px" alt="linkedin">
                 </a>
             </div>
         </div>
@@ -132,40 +116,33 @@
                 <div class="col-12 mt-2">
                     <button class="btn btn-light border border-dark btn-block" (click)="signUpGithub()">
                         <img src="assets/images/github.svg" width="30px" height="30px" alt="github">
-                        Sign up with Github
+                        <span [translate]="'register.signupwith.github'"></span>
                     </button>
                 </div>
                 <div class="w-100 mt-2"></div>
                 <div class="col-12">
                     <button class="btn btn-light border border-dark btn-block" (click)="signUpGoogle()">
                         <img src="assets/images/google.svg" width="30px" height="30px" alt="google">
-                        Sign up with Google
+                        <span [translate]="'register.signupwith.google'"></span>
                     </button>
                 </div>
                 <div class="w-100 mt-2"></div>
                 <div class="col-12">
-                    <button class="btn btn-light border border-dark btn-block" (click)="signUpFacebook()">
-                        <img src="assets/images/facebookl.svg" width="30px" height="30px" alt="facebook">
-                        Sign up with Facebook
+                    <button class="btn btn-light border border-dark btn-block" (click)="signUpLinkedin()">
+                        <img src="assets/images/linkedin.png" width="30px" height="30px" alt="linkedin">
+                        <span [translate]="'register.signupwith.linkedin'"></span>
                     </button>
                </div>
-                <div class="w-100 mt-2"></div>
-                <div class="col-12">
-                    <button class="btn btn-light border border-dark btn-block" (click)="signUpTwitter()">
-                        <img src="assets/images/twitterl.svg" width="30px" height="30px" alt="twitter">
-                        Sign up with Twitter
-                    </button>
-                </div>
             </div>
         </div>
         <div class="w-100" style="height: 100px;"></div>
     </div>
 
-    <!--Comment Alerts-->
+    <!--Register Alerts-->
    <div class="row">
     <div class="col-6">
         <div *ngIf="registerSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
-            <strong>Harika!</strong> Kayıt başarıyla gerçekleşti. Lütfen mail adresine gelen doğrulama linki ile hesabını aktive et. 5 saniye sonra giriş sayfasına yönlendiriliceksin.
+            <strong [translate]="'register.alertSuccess'"></strong> <span [translate]="'register.alertMessage'"></span> 
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>

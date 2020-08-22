@@ -6,27 +6,27 @@
             </div>
             <div class="col-md-5 mt-4">
                 <div *ngIf="loginSuccess">
-                    <p class="text-success">Giriş başarılı.</p>
+                    <p class="text-success" [translate]="'login.success'">Giriş başarılı.</p>
                 </div>
                 <div *ngIf="invalidLogin">
-                    <p class="text-danger">Kullanıcı adı yada şifreniz hatalı.</p>
+                    <p class="text-danger" [translate]="'login.error'">Kullanıcı adı yada şifreniz hatalı.</p>
                 </div>
             </div>
             <div class="w-100"></div>
             <div class="col-md-5  mx-auto mt-1">
-                <label for="emailAddress">Email Adresiniz</label>
+                <label for="emailAddress" [translate]="'login.email'">Email Adresiniz</label>
                 <input type="text" class="form-control" #username id="emailAddress" required>
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 mb-3 mx-auto mt-2">
-                <label for="password">Şifreniz</label>
+                <label for="password"  [translate]="'login.password'">Password</label>
                 <input type="password" class="form-control" #pass id="password" required autocomplete="on">
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 text-left mb-2">
                 <div class="custom-control custom-checkbox mr-sm-2">
                     <input type="checkbox" class="custom-control-input" id="rememberMe">
-                    <label class="custom-control-label" for="rememberMe">Beni Hatırla</label>
+                    <label class="custom-control-label" for="rememberMe" [translate]="'login.rememberme'">Beni Hatırla</label>
                 </div>
             </div>
             <div class="w-100"></div>
@@ -34,12 +34,12 @@
                 <div class="row">
                     <div class="col-md-6">
                         <a  routerLink="/register" routerLinkActive="active">
-                            <ins> Üye değil misin ? </ins>
+                            <ins [translate]="'login.notmember'"> Üye değil misin ? </ins>
                         </a>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 text-right">
                         <a  routerLink="/forgotpassword" routerLinkActive="active">
-                            <ins> Şifreni mi unuttun ? </ins>
+                            <ins [translate]="'login.forgotpass'"> Şifreni mi unuttun ? </ins>
                         </a>
                     </div>
                 </div>
@@ -51,27 +51,23 @@
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 text-right">
-                <button class="btn btn-outline-success btn-block" [disabled]="validateRecaptcha"  (click)="ngOnSubmit(username.value,pass.value)" >Giriş Yap</button>
+                <button class="btn btn-outline-success btn-block" [disabled]="validateRecaptcha"  (click)="ngOnSubmit(username.value,pass.value)" [translate]="'login.login'" >Giriş Yap</button>
             </div>
             <div class="w-100"></div>
 
             <!--Desktop Fixed Left Menu-->
             <div class="rightside " id="rightMenu">
                 <a id="github" (click)="signInGithub()"> 
-                    <p class=" text-dark" >Sign in with Github</p>
+                    <p class=" text-dark" [translate]="'login.signinGithub'">Sign in with Github</p>
                     <img src="assets/images/github.svg" width="35px" height="35px" alt="github">
                 </a>
                 <a id="google" (click)="signInGoogle()"> 
-                    <p class=" text-dark d-inline" >Sign in with Google</p>
+                    <p class=" text-dark d-inline" [translate]="'login.signinGoogle'">Sign in with Google</p>
                     <img src="assets/images/google.svg" width="35px" height="35px" alt="github">
                 </a>
-                <a id="facebook"  (click)="signInLinkedin()"> 
+                <a id="facebook"  (click)="signInLinkedin()"  [translate]="'login.signinLinkedin'"> 
                     <p class=" text-dark d-inline">Sign in with Linkedin</p>
                     <img src="assets/images/linkedin.png" width="35px" height="35px" alt="github">
-                </a>
-                <a id="twitter" (click)="signInTwitter()" > 
-                    <p class=" text-dark d-inline ">Sign in with Twitter</p>
-                    <img src="assets/images/twitterl.svg" width="35px" height="35px" alt="github">
                 </a>
             </div>
             <!--Mobile Buttons For Sign In via Social Medias-->
