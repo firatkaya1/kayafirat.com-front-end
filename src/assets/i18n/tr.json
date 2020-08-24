@@ -1,0 +1,276 @@
+{
+    "menu": {
+        "search":"Arama Yap",
+        "articles":"Yazılarım",
+        "login":"Giriş Yap",
+        "account":"Hesabım",
+        "profile":"Profil",
+        "settings":"Ayarlar",
+        "exit":"Çıkış"
+    },
+    "login" : {
+        "login":"Giriş",
+        "email":"Email Adresiniz",
+        "password":"Şifreniz",
+        "rememberme":"Beni Hatırla",
+        "forgotpass":"Şifremi unuttum?",
+        "notmember":"Hesabın yok mu ? Kayıt ol",
+        "signinGithub":"Github ile giriş yap",
+        "siginLinkedin":"Linkedin ile giriş yap",
+        "signinGoogle":"Google ile giriş yap.",
+        "error":"Email adresiniz yada şifreniz hatalı, lütfen tekrar deneyin.",
+        "success":"Giriş başarılı... Yönlendiriliyorsunuz."
+        
+    },
+    "register" : {
+        "errorEmail":"Bu email adresine kayıtlı bir hesap bulunmaktadır.",
+        "errorUsername":"Bu kullanıcı adına kayıtlı bir hesap bulunmaktadır.",
+        "email":"Email Adresiniz",
+        "emailErrors" : {
+            "notEmpty":"Bu alan boş olamaz.",
+            "onlyEmail":"Email adresinizi girmek zorundasınız."
+        },
+        "username": "Kullanıcı Adınız",
+        "usernameErrors" : {
+            "notEmpty":"Bu alan boş olamaz.",
+            "specialCharacter":"Özel karakter ve rakam kullanamazsınız.",
+            "minimum":"Kullanıcı adınız minumum 5 karakter içermelidir.",
+            "maximum":"Kullanıcı adınız maksimum 15 karakter içerebilir."
+        },
+        "password":"Şifreniz",
+        "passwordErrors": {
+            "notEmpty":"Bu alan boş olamaz.",
+            "minimum":"Password minimum lenght must be 5",
+            "maximum":"Password maximum lenght must be 36",
+            "uppercase":"Şifrenizde en az bir büyük harf kullanılmalıdır.",
+            "lowercase":"Şifrenizde en az bir küçük harf kullanılmalıdır.",
+            "number":"Şifrenizde en az bir rakam kullanılmalıdır."
+        },
+        "birthdate":"Doğum Tarihiniz",
+        "birthdateErrors" : {
+            "notEmpty":"Bu alan boş olamaz."
+        },
+        "alreadyaccount":"Zaten bir hesabın var mı ? Giriş yap.",
+        "userterms":"Kullanıcı sözleşmesini kabul ediyorum.",
+        "signup":"Kayıt Ol",
+        "signupwith": {
+            "github" :"Github ile kayıt ol.",
+            "linkedin":"Linkedin ile kayıt ol.",
+            "google":"GOogle ile kayıt ol."
+        },
+        "alertSuccess":"Başarılı!",
+        "alertMessage":"Kayıt işlemi başarıyla tamamlandı. Lütfen email adresinizi kontrol ediniz. 5 saniye sonra giriş sayfasına yönlendiriliceksiniz..."
+    },
+    "category": {
+        "timedesc":"Yeniden Eskiye Göre Sırala",
+        "timeasc":"Eskiden Yeniye Göre Sırala",
+        "commentdesc":"En Çok Yorum Alana Göre Sırala",
+        "commentasc":"En Az Yorum Alana Göre Sırala",
+        "viewdesc":"En Çok Görüntülene Göre Sırala",
+        "viewasc":"En Az Görüntülene Göre Sırala",
+        "allarticles": "Tüm yazılarım",
+        "search":"Ara",
+        "views":"Görüntülenme",
+        "comments":"Yorum",
+        "success":"Başarılı!",
+        "successmessage":" İşleminiz tamamlandı.",
+        "clicktoread":"Okumak için tıklayınız.",
+        "clicktoreadAll":"Tüm yazılarımı görmek için tıklayınız."
+
+    },
+    "article": {
+        "views":"Görüntülenme",
+        "comments":"Yorum",
+        "yourComment":"Senin yorumun",
+        "end":"SON",
+        "commentwarning":"*Bu alana yorum yapabilmek için bot olmadığınızı kanıtlamak zorundasınız. Doğruladıktan sonra yorumunuzu yollayabilirsiniz.",
+        "otherArticles":"Diğer Yazılarım",
+        "anonymous":"Anonim olarak yorum yap.",
+        "submit":"Gönder",
+        "commentSuccess":"Başarılı!",
+        "commentSuccessMessage":"Yorumunuz başarıyla eklendi.",
+        "commentError":"Hata",
+        "commentErrorMessage":"Yorum alanı boş bırakılamaz",
+        "commentUpdateMessage":"Yorumunuz başarıyla güncellendi.",
+        "commentDeleteMessage":"Yorumunuz başarıyla silindi.",
+        "commentDeleteQuestion":"Bu yorumunuz silmek istiyor musunuz? ",
+        "commentDeleteInfo":"Seçili yorum tamamen yok olacaktır. Bu işlem geri alınamaz. Yapmış olduğun yorum faydalı bir bilgi içeriyorsa sonraki nesiller için bir kaynak olabilir !",
+        "commentDeleteNo":"Vazgeç",
+        "commentDeleteYes":"Sil",
+        "commentUpdate":"Güncelle",
+        "cookies":"Sizlere daha iyi hizmet edebilmek için çerezleri kullanıyoruz. Bunların ne tip çerezler oldugunu görebilmek için tıklayabilir ve güvenli bir şekilde görebilirsiniz.",
+        "cookiesAccept":"Kabul Et",
+        "cookiesDeny":"Reddet"
+    },
+    "search" : {
+        "search":"Arama Yap",
+        "title":"Aramak istediğin bir konu mu var?",
+        "placeholder":"Aramak istediğin kelimeyi yaz",
+        "postTag":"Konu Etiketi",
+        "postTitle":"Konu Başlığı",
+        "postHeader":"Konu içerigi",
+        "found":"Searches found in the word {{searchWord}} A total of {{maxResult}} results are listed. ",
+        "notfound":"Sorry, No results found for word {{searchWord}} ."
+    },
+    "profile" : {
+        
+        "username":"Kullanıcı Adı",
+        "aboutme":"Hakkımda",
+        "dateofregister":"Üyelik Tarihi",
+        "dateofbirth":"Doğum Tarihi",
+        "totalcomment":"Toplam Yorum",
+        "totalfav":"Toplam Favori",
+        "contact":"İletişim Adresi",
+        "lastseen":"Son Giriş Tarihi",
+        "allcomment":"Tüm Yorumları",
+        "allfav":"Tüm Favorileri",
+        "github":"Github Adresi ",
+        "linkedin":"Linkedin Adresi",
+        "hidden":"Bu bilgi gizlemiştir.",
+        "modal" : {
+            "reason0":"Bildirme Nedeni",
+            "report":"Profili Bildir",
+            "reason":"Lütfen bir seçeneği seçiniz.",
+            "reason1":"Uygunsuz resim yada yazı bulunuyor.",
+            "reason2":"Yanlış bilgileri kullanıyor.",
+            "reason3":"Başkasının bilgilerini kullanıyor.",
+            "reason4":"Diğer",
+            "explain":"Lütfen bu profili bildirme nedeninizi açıklayın.",
+            "close":"Kapat",
+            "submit":"Bildiriyi Yolla"
+        }
+
+    },
+    "settings" : {
+        "profilesettings":"Profil Ayarları",
+        "accountsettings":"Hesap Ayarları ",
+        "username":"Kullanıcı Adı",
+        "aboutme":"Hakkımda",
+        "dateofregister":"Üyelik Tarihi",
+        "dateofbirth":"Doğum Tarihi",
+        "totalcomment":"Toplam Yorum",
+        "totalfav":"Toplam Favori",
+        "contact":"İletişim Adresi",
+        "lastseen":"Son Giriş Tarihi",
+        "allcomment":"Tüm Yorumları",
+        "allfav":"Tüm Favorileri",
+        "github":"Github Adresi ",
+        "linkedin":"Linkedin Adresi",
+        "hidden":"Görünmesini istemiyorum.",
+        "savechanges":"Değişiklikleri Kaydet",
+        "accountstatus":"Hesap Durumu",
+        "verify":"Onaylandı.",
+        "notverify":"Onaylanmadı.",
+        "password":"Hesap Şifresin",
+        "emailAddress":"Email Adresi",
+        "profilePicture":"Profil Resmi",
+        "sendAgain":"Tekrar Yolla",
+        "update":"Güncelle",
+        "click":"Tıkla"
+        
+    },
+    "forgotpassword":{
+        "info":"Kayıtlı email adresinize bir şifre sıfırlama bağlantısı yollayabilmek için lütfen aşağıdaki alanı doldurunuz.",
+        "email":"Email Adresiniz",
+        "submit":"Şifre Sıfırlama Bağlantısı Gönder",
+        "reset":"Şifremi Sıfırla"
+
+    },
+    "linkedin" : {
+        "redirecting":"Yönlendiriliyorsunuz.... Giriş yaptığınız için teşekkürler.",
+        "wait":"Lütfen Bekleyiniz...",
+        "error":"Bilinmeyen bir hata meydana geldi. Lütfen tekrar deneyiniz."
+    },
+    "github" : {
+        "redirecting":"Yönlendiriliyorsunuz.... Giriş yaptığınız için teşekkürler.",
+        "wait":"Lütfen Bekleyiniz...",
+        "error":"Bilinmeyen bir hata meydana geldi. Lütfen tekrar deneyiniz."
+    },
+    "500" : {
+        "explain":"Sunucumuzda bir problem meydana geldi. Bu problemin ne olduğunu çözmeye çalışıyoruz. Eğer mevcut işiniz sırasında bu hatayı aldıysanız bize bildirebilirsiniz. En kısa sürede çözmeye çalışacağız.",
+        "backtohome":"Anasayfaya Dön",
+        "submitreport":"Hata Bildir",
+        "email":"Email Adresi",
+        "notrequired":"Bu alan zorunlu degildir.",
+        "explainErr":"Hatayı nasıl aldıgınızı kısaca açıklayınız.",
+        "explainErr2":"Almış olduğunuz hatayı nasıl karşılaştıgınızı daha iyi anlayabilmek için bunu bilmemiz gerekmektedir.",
+        "submit":"Gönder",
+        "errorCode":"Hata Kodu ",
+        "noValue":"Bu alana bir değer girilemez.",
+        "onlyNumber":"Lütfen sadece sayı giriniz."
+    },
+    "404" : {
+        "explain":"Aradığınız sayfayı bulamadık. Silinmiş olabilir veyatta yanlış bir adrese yönlendirilmiş olabilirsiniz. Eğer bu bir sorun olucaksa bildirebilirsiniz. Sizlere daha iyi hizmet verebilmek için bunu en kısa zamanda çözmeye çalışacağız.",
+        "backtohome":"Anasayfaya Dön",
+        "submitreport":"Hata Bildir",
+        "email":"Email Adresi",
+        "notrequired":"Bu alan zorunlu degildir.",
+        "explainErr":"Hatayı nasıl aldıgınızı kısaca açıklayınız.",
+        "explainErr2":"Almış olduğunuz hatayı nasıl karşılaştıgınızı daha iyi anlayabilmek için bunu bilmemiz gerekmektedir.",
+        "submit":"Gönder",
+        "errorCode":"Hata Kodu ",
+        "noValue":"Bu alana bir değer girilemez.",
+        "onlyNumber":"Lütfen sadece sayı giriniz."
+    },
+    "403" : {
+        "explain":"Yapmış olduğunuz işlem, güvenlik duvarımıza takıldı. Üye olmadan bir şeyler yapmaya çalışıyorsunuz yada var olan yetkinize el koyuldu. Yada buraya gelmeye çalıştığınız bağlantı linkinin süresi doldu. Bunu bir sorun olarak görüyorsanız bizlere bildirebilirsiniz.",
+        "backtohome":"Anasayfaya Dön",
+        "submitreport":"Hata Bildir",
+        "email":"Email Adresi",
+        "notrequired":"Bu alan zorunlu degildir.",
+        "explainErr":"Hatayı nasıl aldıgınızı kısaca açıklayınız.",
+        "explainErr2":"Almış olduğunuz hatayı nasıl karşılaştıgınızı daha iyi anlayabilmek için bunu bilmemiz gerekmektedir.",
+        "submit":"Gönder",
+        "errorCode":"Hata Kodu ",
+        "noValue":"Bu alana bir değer girilemez.",
+        "onlyNumber":"Lütfen sadece sayı giriniz."
+    },
+    "verifyacc" :{
+        "verified":"Hesabınız doğrulandı.",
+        "succes":" hesabın başarılı bir şekilde onaylandı. Hesabını aktive ettikten sonra daha güvenli bir ortama adım atmış bulundun.Teşekkür ederiz.",
+        "perfect":"Harika !",
+        "dear":"Sevgili ",
+        "backtohome":"Anasayfaya Dön",
+        "error":"Hesap aktive etme süresi doldu.",
+        "errorMessage":"Hesabını daha güvende tutabilmek adına sana yolladığımız hesap doğrulama linkinin ömrünü tamamlamış gözüküyor. Lütfen ayarlardan tekrardan hesap sıfırlama linki talep et. Unutma, 30 dakika içinde hesabını onaylamazsan, bu hatayı yine göreceksin."
+    },
+    "reset":{
+        "newpass":"Yeni şifrenizi giriniz.",
+        "strongpass":"Güçlü bir şifre ile hesabını güvene al.",
+        "yourpass":"Şifren",
+        "required":"Bu alan boş bırakılamaz",
+        "minimum":"Şifreniz minumum 8 karakter içermelidir.",
+        "maximum":"Şifreniz maksimum 24 karakter içerebilir.",
+        "uppercase":"Şifrenizde en az bir büyük harf kullanılmalıdır.",
+        "lowercase":"Şifrenizde en az bir küçük harf kullanılmalıdır.",
+        "number":"Şifrenizde en az bir rakam kullanılmalıdır.",
+        "change":"Şifremi değiştir.",
+        "error":"Şifre sıfırlama süresi doldu.",
+        "dear":"Sevgili ",
+        "success":"Başarılı!",
+        "successMessage":"Şifre değiştirme işlemi başarıyla tamamlandı. 5 Saniye sonra anasayfaya yönlendiriliceksiniz...",
+        "errorMessage":"Hesabını daha güvende tutabilmek adına sana yolladığımız şifre sıfırlama  linkinin ömrünü tamamlamış gözüküyor. Lütfen ayarlardan tekrardan şifre sıfırlama linki talep et. Unutma, 30 dakika içinde hesabını onaylamazsan, bu hatayı yine göreceksin."
+    },
+    "searchtag" : {
+        "articles":"Yazılarım",
+        "searchedcategory":"Aranılan kategori adı : ",
+        "totalPost":"Toplam bulunan konu sayısı : ",
+        "click":"Okumak için tıklayın.",
+        "views":"Görüntülenme",
+        "comments":"Yorum",
+        "sorry":"Üzgünüm",
+        "message":"Aramaya çalıştığın konu etiketiyle ilgili bir yazı bulunmuyor."
+    },
+    "welcome": {
+        "aboutme":"Kişisel bloguma hoşgeldin, Burada öğrendiğim, geliştirdigim projelerimi sizlerle paylaşacağım ve aynı zamanda edindiğim tecrübeleri anlatacağım. Bana destek olabilmek için üye olabilirsiniz ve güncel yazılarımdan haberdar olabilmek için bültenime kayıt olabilirsiniz. Sadece yazılarımı okuyarak destek olabilirsiniz.",
+        "hello":"Merhaba,",
+        "aboutme2":"Görebildiğiniz gibi bu blogu kendim kodladım. Böyle basit tabanlı bir kişisel blogu nasıl kodlarım diyorsanız kendi yazdığım ve uzun bir makele serim olan Kendi Blogumuzu Kodluyoruz isimli serimi okuyabilirsiniz. Sorularınız varsa da bana mail atarak veyatta makelelerimin altında yazdıklarımı cevaplayarak dönüş yapabilirsiniz."
+    },
+    "about": {
+        "me":"Adım Fırat Kaya, Beykent Üniversitesi Bilgisayar Mühendisliği 3.Sınıfı öğrencisiyim. Öğrendiklerimi test edebilmek ve diğer insanlarla paylaşabilmek için bu platformu kurdum. Güncel yazılarımdan haberdar olabilmek için haber bültenime kayıt olabilirsiniz yada beni aşağıdaki sosyal medya hesaplarımdan takibe alabilirsiniz. Sizlere bol okumalı günler dilerim."
+    },
+    "footer" : {
+        "license":"Tüm hakları saklıdır."
+    }
+
+  }

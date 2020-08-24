@@ -6,11 +6,11 @@
             </div>
             
                 <div class="col-md-12 mt-2 text-center">
-                    <h1>Hesap Aktive Edildi</h1>
+                    <h1 [translate]="'verifyacc.verified'"></h1>
                 </div>
                 <div class="col-md-12 mt-2 text-center">
                     <p class="h5">
-                        <b>Harika</b><br> Sevgili <span><ins>{{jti}}</ins></span> hesabın başarılı bir şekilde onaylandı. Hesabını aktive ettikten sonra daha güvenli bir ortama adım atmış bulundun.Teşekkür ederiz.
+                        <b [translate]="'verifyacc.perfect'"></b><br> <span [translate]="'verifyacc.dear'"></span>  <span><ins>{{jti}}</ins>,</span> <span  [translate]="'verifyacc.succes'"></span>
                     </p>
                 </div>
             </div>
@@ -20,18 +20,18 @@
         </div>
         
             <div class="col-md-12 mt-2 text-center">
-                <h1>Hesap aktive etme süresi doldu.</h1>
+                <h1 [translate]="'verifyacc.error'"></h1>
             </div>
             <div class="col-md-12 mt-2 text-center">
                 <p class="h5">
-                    Sevgili {{jti}},<br>
-                    Hesabını daha güvende tutabilmek adına sana yolladığımız hesap doğrulama linkinin ömrünü tamamlamış gözüküyor. Lütfen ayarlardan tekrardan hesap sıfırlama linki talep et. Unutma, 30 dakika içinde hesabını onaylamazsan, bu hatayı yine göreceksin.
+                    <span [translate]="'verifyacc.dear'"></span> {{jti}},<br>
+                    <span [translate]="'verifyacc.errorMessage'"></span>
                 </p>
             </div>
         </div>
         <div class="col-md-12 text-center">
             <a href="index.html">
-                <button class="btn btn-outline-success">Anasayfaya Dön</button>
+                <button class="btn btn-outline-success" [translate]="'verifyacc.backtohome'" > </button>
             </a>
         </div>
         <div class="col-md-12" style="height: 100px;"></div>

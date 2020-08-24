@@ -4,38 +4,38 @@
             <img src="assets/images/error.svg" width="200px" alt="404Error">
         </div>
         <div class="col-md-12 mt-2">
-            <p class="h4">Aradığınız sayfayı bulamadık. Silinmiş olabilir veyatta yanlış bir adrese yönlendirilmiş olabilirsiniz. Eğer bu bir sorun olucaksa bildirebilirsiniz. Sizlere daha iyi hizmet verebilmek için bunu en kısa zamanda çözmeye çalışacağız.</p>
+            <p class="h4" [translate]="'404.explain'"></p>
         </div>
         <div class="col-md-6 text-right">
             <a href="index.html">
-                <button class="btn btn-outline-success">Anasayfaya Dön</button>
+                <button class="btn btn-outline-success" [translate]="'404.backtohome'"> </button>
             </a>
         </div>
         <div class="col-md-6">
             <a href="#section3">
-                <button class="btn btn-outline-danger">Hata Bildir</button>
+                <button class="btn btn-outline-danger" [translate]="'404.submitreport'"> </button>
             </a>
         </div>
         <div class="col-md-12" style="height: 1000px;"></div>
         <div class="col-md-12" id="section3">
-            <h3 class="text-center">Hata Bildirimi</h3>
+            <h3 class="text-center" [translate]="'404.submitreport'"> </h3>
         </div>
         <div class="col-md-6 mx-auto border p-4 shadow">
             <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Email Adresiniz</label>
+                    <label for="exampleInputEmail1" [translate]="'404.email'"> </label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Bu alan zorunlu degildir.</small>
+                    <small id="emailHelp" class="form-text text-muted" [translate]="'404.notrequired'"></small>
                 </div>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Hatayı nasıl aldıgınızı kısaca açıklayınız.</label>
+                    <label for="exampleFormControlTextarea1" [translate]="'404.explainErr'"></label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
-                    <small id="emailHelp" class="form-text text-muted">Almış olduğunuz hatayı nasıl karşılaştıgınızı daha iyi anlayabilmek için bunu bilmemiz gerekmektedir.</small>
+                    <small id="emailHelp" class="form-text text-muted" [translate]="'404.explainErr2'"></small>
                 </div>
                 <div class="form-group">
-                    <label for="errorCode" class="text-danger">Hata Kodu</label>
+                    <label for="errorCode" class="text-danger" [translate]="'404.errorCode'"> </label>
                     <input type="email" class="form-control" id="errorCode" value="404" disabled>
-                    <small id="errorCode" class="form-text text-muted">Bu alana bir değer girilemez.</small>
+                    <small id="errorCode" class="form-text text-muted" [translate]="'404.noValue'"></small>
                 </div>
                 <div class="form-group">
                     <div class="row p-1">
@@ -43,11 +43,11 @@
                             <p class="text-white text-center mt-2 mb-2 mx-auto h6"><span id="number1"></span> + <span id="number2"></span> </p>
                         </div>
                         <div class="col-md-10">
-                            <input type="number" class="form-control" id="errorCode" oninput="controllAnswer(this.value)" placeholder="Lütfen sadece rakam ile cevaplayınız.">
+                            <input type="number" class="form-control" id="errorCode" oninput="controllAnswer(this.value)" placeholder="{{ '404.onlyNumber' | translate }}">
                         </div>
                     </div>
                 </div>
-                <button type="submit" id="answerButton" class="btn btn-primary btn-block disabled">Gönder</button>
+                <button type="submit" id="answerButton" class="btn btn-primary btn-block disabled" [translate]="'404.submit'">Gönder</button>
             </form>
         </div>
         <div class="col-md-12" style="height: 100px;"></div>

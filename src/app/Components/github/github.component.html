@@ -1,30 +1,16 @@
-
-
-
 <div class="container">
-    <ngx-spinner
-bdColor="rgba(51,51,51,0.8)"
-size="medium"
-color="#4BA845"
-type="square-jelly-box">
-<p class="text-white h4">Yönlendiriliyorsunuz...</p>
-</ngx-spinner>
+    <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#4BA845" type="square-jelly-box">
+        <p class="text-white h4" [translate]="'github.wait'"></p>
+    </ngx-spinner>
     <div class="row">
         <div class="col-md-12 mx-auto text-center">
             <img src="assets/images/github.svg" width="250px" height="250px" alt="github">
         </div>
         <div class="col-md-12" *ngIf="isSuccess">
-            <p class="text-dark h5 text-center">
-                Yönlendiriliyorsunuz... Giriş yaptığınız için teşekkürler.
-            </p>
-            
+            <p class="text-dark h5 text-center" [translate]="'github.redirecting'"></p>
         </div>
-        <div class="col-md-12" *ngIf="isSuccess">
-            <p class="text-danger h5 text-center">
-                Bilinmeyen bir hata meydana geldi. Lütfen tekrar deneyiniz.
-            </p>
-            
+        <div class="col-md-12" *ngIf="!isSuccess">
+            <p class="text-danger h5 text-center" [translate]="'github.error'"></p>
         </div>
-        
     </div>
 </div>

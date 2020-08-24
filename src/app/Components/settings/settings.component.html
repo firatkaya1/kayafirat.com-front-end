@@ -4,111 +4,111 @@
             <img [src]="user.userProfilePhoto" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
         </div>
         <div class="col-md-12 text-center mt-2">
-            <p class="h4"><b>Profil Ayarları</b></p>
+            <p class="h4"><b [translate]="'settings.profilesettings'"></b></p>
         </div>
         <form class="w-100" [formGroup]="myUserPermissions"  (ngSubmit)="ngOnSubmit()">
             <div class="col-md-8 mx-auto mt-2">
                 <table class="table table-striped table-dark shadow">
                     <tbody >
                         <tr>
-                            <td class="text-warning">Kullanıcı Adı</td>
+                            <td class="text-warning" [translate]="'settings.username'"></td>
                             <td>{{user.userName}}</td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                   
                                     <input type="checkbox" disabled class="custom-control-input" id="username" formControlName="username">
-                                    <label class="custom-control-label" for="username">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="username" [translate]="'settings.hidden'"></label>
                                   
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Hakkımda</td>
+                            <td class="text-warning" [translate]="'settings.aboutme'"></td>
                             <td><p>{{user.userProfile.userAboutme}}</p></td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input"  id="userAboutMe" formControlName="userAboutMe">
-                                    <label class="custom-control-label" for="userAboutMe">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userAboutMe" [translate]="'settings.hidden'"> </label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Üyelik Tarihi</td>
+                            <td class="text-warning" [translate]="'settings.dateofregister'"> </td>
                             <td>{{user.userRegisterDate | date}}</td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userRegisterDate" formControlName="userRegisterDate">
-                                    <label class="custom-control-label" for="userRegisterDate">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userRegisterDate" [translate]="'settings.hidden'"></label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Doğum Tarihi</td>
+                            <td class="text-warning" [translate]="'settings.dateofbirth'"> </td>
                             <td>{{user.userBirthdayDate | date}}</td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userBirthDate" formControlName="userBirthDate">
-                                    <label class="custom-control-label" for="userBirthDate">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userBirthDate" [translate]="'settings.hidden'"> </label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">İletişim Adresi</td>
+                            <td class="text-warning" [translate]="'settings.contact'"> </td>
                             <td>{{user.userEmail}}</td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userMailAdress" formControlName="userMailAdress">
-                                    <label class="custom-control-label" for="userMailAdress">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userMailAdress" [translate]="'settings.hidden'"></label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Son Giriş Tarihi</td>
+                            <td class="text-warning" [translate]="'settings.lastseen'"></td>
                             <td>2020/11/9 09:54</td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userLastSeen" formControlName="userLastSeen">
-                                    <label class="custom-control-label" for="userLastSeen">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userLastSeen" [translate]="'settings.hidden'"> </label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Tüm Yorumları</td>
-                            <td><a href="#" class="text-white"><ins>Tıkla</ins></a></td>
+                            <td class="text-warning" [translate]="'settings.allcomment'"> </td>
+                            <td><a href="#" class="text-white"><ins [translate]="'settings.click'"></ins></a></td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userShowAllComment" formControlName="userShowAllComment">
-                                    <label class="custom-control-label" for="userShowAllComment">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userShowAllComment" [translate]="'settings.hidden'"></label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Tüm Favorileri</td>
-                            <td><a href="#" class="text-white"><ins>Tıkla</ins></a></td>
+                            <td class="text-warning" [translate]="'settings.allfav'"></td>
+                            <td><a href="#" class="text-white"><ins [translate]="'settings.click'"></ins></a></td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userShowAllFav" formControlName="userShowAllFav">
-                                    <label class="custom-control-label" for="userShowAllFav">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userShowAllFav" [translate]="'settings.hidden'"> </label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Github Adresi <img src="assets/images/github64.png" width="25px" alt="linkedin-profile"></td>
+                            <td class="text-warning"> <span [translate]="'settings.github'"></span>  <img src="assets/images/github64.png" width="25px" alt="linkedin-profile"></td>
                             <td><a href="#" class="text-white"><ins>{{user.userProfile.userGithub}}</ins></a></td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userGithubAddress" formControlName="userGithubAddress">
-                                    <label class="custom-control-label" for="userGithubAddress">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userGithubAddress" [translate]="'settings.hidden'"></label>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Linkedin Adresi<img src="assets/images/linkedin.png" width="25px" alt="linkedin-profile"> </td>
+                            <td class="text-warning"> <span [translate]="'settings.github'"></span> <img src="assets/images/linkedin.png" width="25px" alt="linkedin-profile"> </td>
                             <td><a href="#" class="text-white"><ins>{{user.userProfile.userLinkedin}}</ins></a></td>
                             <td>
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userLinkedinAddress" formControlName="userLinkedinAddress" >
-                                    <label class="custom-control-label" for="userLinkedinAddress">Görünmesini istemiyorum.</label>
+                                    <label class="custom-control-label" for="userLinkedinAddress" [translate]="'settings.hidden'"></label>
                                 </div>
                             </td>
                         </tr>
@@ -116,12 +116,12 @@
                 </table>
             </div>
             <div class="col-md-12 text-center">
-                <button class="btn btn-outline-success">Değişiklikleri Kaydet</button>
+                <button class="btn btn-outline-success" [translate]="'settings.savechanges'"></button>
             </div>
         </form>
         <div class="col-md-12">
             <div class="col-md-12 text-center mt-2">
-                <p class="h4"><b>Hesap Ayarları</b></p>
+                <p class="h4"><b [translate]="'settings.accountsettings'"> </b></p>
             </div>
         </div>
         <form class="w-100" >
@@ -129,105 +129,105 @@
                 <table class="table table-striped table-dark shadow">
                     <tbody>
                         <tr>
-                            <td class="text-warning">Hesap Durumu</td>
+                            <td class="text-warning" [translate]="'settings.accountstatus'">Hesap Durumu</td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div *ngIf="user.verification">
-                                            <span class="text-success">Onaylandı</span>
+                                            <span class="text-success"  [translate]="'settings.verify'"></span>
                                         </div>
                                         <div *ngIf="!user.verification">
-                                            <span class="text-info">Onaylanmadı.</span>
+                                            <span class="text-info"  [translate]="'settings.notverify'"></span>
                                         </div>                                    
                                     </div>
                                     <div class="col-md-4" *ngIf="!user.verification">
-                                     <button class="btn btn-danger btn-sm" [disabled]="!sendVerifyButton" (click)="sendUserVerificationMail(user.userEmail)">Tekrar Yolla</button>
+                                     <button class="btn btn-danger btn-sm" [disabled]="!sendVerifyButton" (click)="sendUserVerificationMail(user.userEmail)" [translate]="'settings.sendAgain'"> </button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Kullanıcı Adı</td>
+                            <td class="text-warning" [translate]="'settings.username'"> </td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="text" class="form-control bg-dark text-white border-0" #username  maxlength="20" value="{{user.userName}}" placeholder="İsim Soyisim" id="nameSurname">                                     
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success" (click)="updateUserUsername(user.userEmail,username.value)" >Güncelle</button>
+                                     <button class="btn btn-success" (click)="updateUserUsername(user.userEmail,username.value)" [translate]="'settings.update'"></button>
                                     </div>
                                 </div>
                             </td>
                             
                         </tr>
                         <tr>
-                            <td class="text-warning">Hesap Şifresi</td>
+                            <td class="text-warning" [translate]="'settings.password'"></td>
                             <td>
                                <div class="row">
                                    <div class="col-md-8">
                                     <input type="password" class="form-control bg-dark text-white border-0" #pass id="accountPassword">
                                    </div>
                                    <div class="col-md-4">
-                                    <button class="btn btn-success" (click)="updateUserPass(user.userEmail,user.userId,pass.value)">Güncelle</button>
+                                    <button class="btn btn-success" (click)="updateUserPass(user.userEmail,user.userId,pass.value)" [translate]="'settings.update'"></button>
                                    </div>
                                </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Doğum Tarihi</td>
+                            <td class="text-warning" [translate]="'settings.dateofbirth'">Doğum Tarihi</td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="date" class="form-control bg-dark text-white border-0" #birthdate max="2010-12-31" value="{{user.userBirthdayDate |  date:'yyyy-MM-dd'}}"  id="birthdate" required>
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success"   (click)="updateUserBirthDate(user.userEmail,birthdate.value)">Güncelle</button>
+                                     <button class="btn btn-success" (click)="updateUserBirthDate(user.userEmail,birthdate.value)" [translate]="'settings.update'"></button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Hesap Email Adresi</td>
+                            <td class="text-warning" [translate]="'settings.emailAddress'">Hesap Email Adresi</td>
                             <td>
                                 <input type="email" disabled  class="form-control bg-dark text-white border-0"  value="{{user.userEmail}}" placeholder="Hesap Email Adresi" id="acountEmailAddress">
                             </td>  
                         </tr>
                         <tr>
-                            <td class="text-warning">Github Adresi <img src="assets/images/github64.png" width="25px" alt="linkedin-profile"></td>
+                            <td class="text-warning"> <span [translate]="'settings.github'"></span> <img src="assets/images/github64.png" width="25px" alt="linkedin-profile"></td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="text" class="form-control bg-dark text-white border-0" #githubLink value="{{user.userProfile.userGithub}}" placeholder="{{user.userProfile.userGithub}}" id="userGithubAddress">
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success" (click)="updateUserGithubAddres(user.userEmail,githubLink.value)">Güncelle</button>
+                                     <button class="btn btn-success" (click)="updateUserGithubAddres(user.userEmail,githubLink.value)" [translate]="'settings.update'" ></button>
                                     </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-warning">Linkedin Adresi<img src="assets/images/linkedin.png" width="25px" alt="linkedin-profile"> </td>
+                            <td class="text-warning"><span [translate]="'settings.linkedin'"></span><img src="assets/images/linkedin.png" width="25px" alt="linkedin-profile"> </td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="text" class="form-control bg-dark text-white border-0"  #linkedinlink value="{{user.userProfile.userLinkedin}}" placeholder="{{user.userProfile.userLinkedin}}" id="userLinkedinAddress">
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success"  (click)="updateUserLinkedinAddress(user.userEmail,linkedinlink.value)">Güncelle</button>
+                                     <button class="btn btn-success"  (click)="updateUserLinkedinAddress(user.userEmail,linkedinlink.value)" [translate]="'settings.update'"></button>
                                     </div>
                                 </div>
                             </td>
 
                         </tr>
                         <tr>
-                            <td class="text-warning">Profil Resmi </td>
+                            <td class="text-warning" [translate]="'settings.profilePicture'">  </td>
                             <td>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <input type="file" max-size="1024" enctype="multipart/form-data" accept="image/*" (change)="onFileChanged($event)"  #fileVal required>
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success"  (click)="updateUserProfilPhoto(user.userId)">Güncelle</button>
+                                     <button class="btn btn-success"  (click)="updateUserProfilPhoto(user.userId)" [translate]="'settings.update'"></button>
                                     </div>
                                 </div>
                             </td>

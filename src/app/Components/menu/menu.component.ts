@@ -18,7 +18,7 @@ export class MenuComponent implements OnInit {
   constructor(private authenticateService:AuthenticateService,
               private router:Router,
               private translate: TranslateService ) {
-                translate.setDefaultLang('en');
+                translate.setDefaultLang('tr');
   }
 
   ngOnInit(): void {

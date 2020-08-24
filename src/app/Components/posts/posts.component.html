@@ -15,9 +15,9 @@
                     <p class="card-text">
                         {{post.post_Header}}
                     </p>
-                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white ">Okumak için tıklayın.</a>
+                    <a [routerLink]="['/article', enChangeLink(post.post_Title)]" class="text-white " [translate]="'category.clicktoread'"></a>
                 </div>
-                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} Görüntülenme</span> | <span id="maxSee">{{ post.post_Max_Comment }} Yorum</span></div>
+                <div class="card-footer p-0 text-right text-light" style="font-size: 13px;"><span id="maxSee">{{post.post_Max_View}} <span [translate]="'category.views'"></span> </span> | <span id="maxSee">{{ post.post_Max_Comment }} <span [translate]="'category.comments'"></span></span></div>
             </div>
         </div>
         
@@ -26,5 +26,5 @@
 
 </div>
 <div class="col-md-12 m-0 p-0 text-right">
-    <a routerLink="/category" routerLinkActive="active">Tüm yazılarımı görebilmek için tıklayınız.</a>
+    <a routerLink="/category" routerLinkActive="active" [translate]="'category.clicktoreadAll'"></a>
 </div>

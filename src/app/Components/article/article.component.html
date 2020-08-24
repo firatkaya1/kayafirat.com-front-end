@@ -23,21 +23,21 @@
             </p>
         </div>
         <div class="col-md-12">
-            <p class="h5 text-center mt-4 mb-4">SON</p>
+            <p class="h5 text-center mt-4 mb-4" [translate]="'article.end'"></p>
         </div>
         <div class="col-md-12 text-secondary ">
             <p>Anahtar Kelimeler : <span>java,blog,domain,database</span>
             </p>
         </div>
         <div class="col-md-12 border-top border-bottom text-secondary">
-            <p class="text-center m-0 p-2">{{post.postMaxView}} Görüntülenme | {{post.postMaxComment}} Yorum | {{post.postTime | date:'medium'}}
+            <p class="text-center m-0 p-2">{{post.postMaxView}} <span [translate]="'article.views'"></span> | {{post.postMaxComment}} <span [translate]="'article.comments'"></span> | {{post.postTime | date:'medium'}}
                 <a href="#"><img src="assets/images/linkedin.png" class="float-right" width="30px" alt="linkedin"></a>
                 <a href="#"> <img src="assets/images/twitter.svg" class="float-right" width="30px" alt="twitter"></a>
                 <a href="#"><img src="assets/images/facebook.svg" class="float-right" width="25px" alt="facebook"></a>
             </p>
         </div>
         <div class="col-md-12 text-center mt-4 mb-4">
-            <p class="h5">Yorumlar</p>
+            <p class="h5" [translate]="'article.comments'"></p>
         </div>
         <div class="col-md-12"> 
             <div class="row border " *ngFor="let comment of commentInfo">
@@ -82,8 +82,8 @@
                 <div class="col-12 border-top p-0 m-0">
                     <div id="{{'a'+comment.commentId}}" class="collapse" >
                         <div class="card-body">
-                            <textarea name="commentDescription1" [(ngModel)]="commentUpdateMessage" ng-trim="true"  rows="6" style="width: 100%;" class="form-control" [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'"  placeholder="Senin yorumun"></textarea>
-                            <button class="btn btn-md btn-success float-right mt-2 mb-2" (click)="updateComment(comment.commentId)">Güncelle</button>
+                            <textarea name="commentDescription1" [(ngModel)]="commentUpdateMessage" ng-trim="true"  rows="6" style="width: 100%;" class="form-control" [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'"  [placeholder]="'article.yourComment' | translate"></textarea>
+                            <button class="btn btn-md btn-success float-right mt-2 mb-2" (click)="updateComment(comment.commentId)"[translate]="'article.commentUpdate'" ></button>
                         </div>
                     </div>
                 </div>
@@ -94,12 +94,10 @@
         <div class="col-md-12">
             <div class="row ">
                 <div class="col-md-12 mt-4 ">
-                    <textarea name="commentDescription" ng-trim="true" [(ngModel)]="commentMessage"  [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'" rows="3" style="width: 100%;" class="form-control mb-4 "  placeholder="Senin yorumun" id="commentDescription" required  ></textarea>
+                    <textarea name="commentDescription" ng-trim="true" [(ngModel)]="commentMessage"  [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'" rows="3" style="width: 100%;" class="form-control mb-4 " [placeholder]="'article.yourComment' | translate" id="commentDescription" required  ></textarea>
                 </div>
                 <div class="col-md-12">
-                  <p class="text-danger">
-                    *Bu alana yorum yapabilmek için bot olmadığınızı kanıtlamak zorundasınız. Doğruladıktan sonra yorumunuzu yollayabilirsiniz.
-                  </p>
+                  <p class="text-danger" [translate]="'article.commentwarning'"></p>
                 </div>
                 <div class="col-md-5"></div>
                 
@@ -111,16 +109,16 @@
                 <div class="col-md-10 text-right" *ngIf="validateRecaptcha && !isAuthenticate">
                     <input class="form-check-input " [(ngModel)]="isAnonymous" type="checkbox" id="gridCheck1">
                     <label class="form-check-label" for="gridCheck1" id="anonimCheckbox">
-                      <p>Anonim olarak yorum yap.</p>
+                      <p  [translate]="'article.anonymous'"></p>
                     </label>
                 </div> 
                 
                 <div class="col-md-2 text-right" *ngIf="validateRecaptcha && !isAuthenticate">
-                    <input type="submit" id="sendCommentButton" (click)="setCommentAnonymous()"  name="submit" value="Gönder" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
+                    <input type="submit" id="sendCommentButton" (click)="setCommentAnonymous()"  name="submit" value="{{ 'article.submit' | translate }}" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
                 </div>
                 
                 <div class="col-md-2 text-center mx-auto mt-4 " *ngIf="validateRecaptcha && isAuthenticate">
-                    <input type="submit" id="sendCommentButton" (click)="setCommentAuthenticate()"  name="submit" value="Gönder" [ngClass]="isCurrentDarkMode ? 'btn btn-block  btn-dark border-white' : 'btn btn-block btn-success'">
+                    <input type="submit" id="sendCommentButton" (click)="setCommentAuthenticate()"    name="submit" value="{{ 'article.submit' | translate }}" [ngClass]="isCurrentDarkMode ? 'btn btn-block  btn-dark border-white' : 'btn btn-block btn-success'">
                 </div>
             </div>
         </div>
@@ -128,7 +126,7 @@
         <!--Comment Alerts-->
         <div class="col-6">
             <div *ngIf="commentSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
-                <strong>Harika!</strong> Yorumun başarıyla gönderildi.
+                <strong [translate]="'article.commentSuccess'">Harika!</strong><span [translate]="'article.commentSuccesMessage'"></span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -137,17 +135,16 @@
         <!--Comment Alerts-->
         <div class="col-6">
             <div *ngIf="!commentError" class="alert alert-danger alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
-                <strong>Hata!</strong> Yorum alanına birşeyler yazmalısın.
+                <strong [translate]="'article.commentError'"></strong> <span [translate]="'article.commentErrorMessage'">Yorum alanına birşeyler yazmalısın.</span> 
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
         </div>
-
         <!--Comment Update Alerts-->
         <div class="col-6">
             <div *ngIf="commentUpdateSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
-                <strong>Harika!</strong> Yorumun başarıyla güncellendi.
+                <strong  [translate]="'article.commentSuccess'"></strong>  <span [translate]="'article.commentUpdateMessage'"></span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -156,7 +153,7 @@
         <!--Comment Delete Alerts-->
         <div class="col-6">
             <div *ngIf="commentDeleteSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
-                <strong>İşlem Başarılı!</strong> Yorumunuz silindi.
+                <strong [translate]="'article.commentSuccess'"></strong> <span [translate]="'article.commentDeleteMessage'" ></span>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -165,28 +162,27 @@
 
         <!--Delete Comment Modal-->
         <div class="modal fade" id="deleteCommentModal"  tabindex="-1" aria-hidden="true">
-       
                 <div class="modal-dialog modal-dialog-centered" >
                   <div class="modal-content" [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'">
                     <div class="modal-header">
-                      <h5 class="modal-title">Bu yorumu silmek istediğinize emin misin?</h5>
+                      <h5 class="modal-title" [translate]="'article.commentDeleteQuestion'"></h5>
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"  (click)="clearModalCommentId()">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
                     <div class="modal-body" >
-                      <p>Seçili yorum tamamen yok olacaktır. Bu işlem geri alınamaz. Yapmış olduğun yorum faydalı bir bilgi içeriyorsa sonraki nesiller için bir kaynak olabilir !</p>
+                      <p [translate]="'article.commentDeleteInfo'"></p>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearModalCommentId()" >Vazgeç</button>
-                      <button type="button" class="btn btn-danger" (click)="deleteComment()" onclick="$('.modal').modal('hide')">Yorumu Sil</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearModalCommentId()" [translate]="'article.commentDeleteNo'" ></button>
+                      <button type="button" class="btn btn-danger" (click)="deleteComment()" onclick="$('.modal').modal('hide')" [translate]="'article.commentDeleteYes'"></button>
                     </div>
                   </div>
                 </div>
         </div>
 
         <div class="col-md-12 mt-2">
-            <p class="h5 mb-2 mt-2" >Diğer yazılarım</p>
+            <p class="h5 mb-2 mt-2" [translate]="'article.otherArticles'"></p>
             <div class="col-md-12 mb-0">
                 <ol class="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" [ngClass]="isCurrentDarkMode ? 'bg-light' : 'bg-dark'" id="list1" style="height: 5px;"></li>
@@ -325,9 +321,9 @@
 
 <div [ngClass]=" acceptCookie ? 'd-none' : '' ">
     <nav class="navbar  bg-dark  m-4 fixed-bottom  border border-primary" id="policiyarea" [ngClass]="isHideCookie ? 'd-none' : '' ">
-        <p class="text-right h6 p-0 m-0 text-white" id="cookiesP">Sizlere daha iyi hizmet edebilmek için çerezleri kullanıyoruz. Bunların ne tip çerezler oldugunu görebilmek için <a href="#" class="text-white"><ins>tıklayabilir</ins></a> ve güvenli bir şekilde görebilirsiniz.</p>
-        <button class="btn btn-outline-success" (click)="acceptsCookie()" value="Kabul Et">Kabul Et</button>
-        <button class="btn btn-outline-danger" (click)="hideCookie()" value="Reddet">Reddet</button>
+        <p class="text-right h6 p-0 m-0 text-white" id="cookiesP" [translate]="'article.cookies'"></p>
+        <input type="button" class="btn btn-outline-success" (click)="acceptsCookie()"  value="{{ 'article.cookiesAccept' | translate }}">
+        <input type="button" class="btn btn-outline-danger" (click)="hideCookie()" value="{{ 'article.cookiesDeny' | translate }}">
         <button type="button" class="close"  (click)="hideCookie()" aria-label="Close">
             <span aria-hidden="true" >&times;</span>
         </button>

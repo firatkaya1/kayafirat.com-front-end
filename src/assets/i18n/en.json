@@ -1,8 +1,4 @@
 {
-    "demo.title": "Translation demo",
-    "demo.text": "This is a simple demonstration app for ngx-translate",
-    
-
     "menu": {
         "search":"Search",
         "articles":"My Articles",
@@ -12,7 +8,6 @@
         "settings":"Settings",
         "exit":"Log out"
     },
-
     "login" : {
         "login":"Login",
         "email":"Email Address",
@@ -27,7 +22,6 @@
         "success":"Login is succesfull. Redirecting..."
         
     },
-
     "register" : {
         "errorEmail":"There is already an account in this email address.",
         "errorUsername":"There is already an account in this username",
@@ -67,7 +61,6 @@
         "alertSuccess":"It's done!",
         "alertMessage":"Sign up is success.Please check your email and verify your account. You will redirect Login page after 5 seconds..."
     },
-
     "category": {
         "timedesc":"Sort by new to old",
         "timeasc":"Sort by old to new ",
@@ -81,14 +74,201 @@
         "comments":"Comments",
         "success":"Success!",
         "successmessage":" Your transaction has been completed.",
-        "clicktoread":"Click to read."
+        "clicktoread":"Click to read.",
+        "clicktoreadAll":"Click to see my all articles..."
 
     },
+    "article": {
+        "views":"Views",
+        "comments":"Comments",
+        "yourComment":"Your comment",
+        "end":"END",
+        "commentwarning":"*You have to prove not bot, please fill the checkbox after that you can send your comment.",
+        "otherArticles":"Other articles",
+        "anonymous":"Submit your comment anonymously.",
+        "submit":"Submit",
+        "commentSuccess":"Success!",
+        "commentSuccessMessage":"Comment successfully added.",
+        "commentError":"Error",
+        "commentErrorMessage":"Comment area cannot be empty",
+        "commentUpdateMessage":"Comment successfully updated.",
+        "commentDeleteMessage":"Comment successfully deleted.",
+        "commentDeleteQuestion":"Do you want to delete this comment ? ",
+        "commentDeleteInfo":"The selected comment will be completely destroyed. This action cannot be undone. If your comment contains useful information, it can be a resource for future generations!",
+        "commentDeleteNo":"No",
+        "commentDeleteYes":"Delete",
+        "commentUpdate":"Update",
+        "cookies":"We use cookies to serve you better. To see what type of cookies these are, you can click  and see it securely.",
+        "cookiesAccept":"Accept",
+        "cookiesDeny":"Deny"
+    },
+    "search" : {
+        "search":"Search",
+        "title":"Is there a topic you want to search?",
+        "placeholder":"Type the word you want to search",
+        "postTag":"Post Tag",
+        "postTitle":"Post Title",
+        "postHeader":"Post Header",
+        "found":"Searches found in the word {{searchWord}} A total of {{maxResult}} results are listed. ",
+        "notfound":"Sorry, No results found for word {{searchWord}} ."
+    },
+    "profile" : {
+        
+        "username":"Username",
+        "aboutme":"About me",
+        "dateofregister":"Date of Register",
+        "dateofbirth":"Date of Birth",
+        "totalcomment":"Total Comment",
+        "totalfav":"Total favorite",
+        "contact":"Contact Address",
+        "lastseen":"Last seen",
+        "allcomment":"All comments",
+        "allfav":"All favorite",
+        "github":"Github Address",
+        "linkedin":"Linkedin Address",
+        "hidden":"This information was hidden.",
+        "modal" : {
+            "reason0":"Reporting reason",
+            "report":"Report Profile",
+            "reason":"Please choose a reason",
+            "reason1":"There is inappropriate image or text.",
+            "reason2":"Using the wrong information.",
+            "reason3":"Using someone else's information.",
+            "reason4":"Other",
+            "explain":"Please explain why you are reporting this profile?",
+            "close":"Close",
+            "submit":"Submit"
+        }
 
+    },
+    "settings" : {
+        "profilesettings":"Profile Settings",
+        "accountsettings":"Account Settings",
+        "username":"Username",
+        "aboutme":"About Me",
+        "dateofregister":"Date of Register",
+        "dateofbirth":"Date of Birth",
+        "totalcomment":"Total Comment",
+        "totalfav":"Total Favorite",
+        "contact":"Contact Address",
+        "lastseen":"Last Seen",
+        "allcomment":"All Comments",
+        "allfav":"All Favorite",
+        "github":"Github Address",
+        "linkedin":"Linkedin Address",
+        "hidden":"I do not want it to appear.",
+        "savechanges":"Save Changes",
+        "accountstatus":"Account Status",
+        "verify":"Verified",
+        "notverify":"Not Verified",
+        "password":"Password",
+        "emailAddress":"Email Address",
+        "profilePicture":"Profile Picture",
+        "sendAgain":"Send Again",
+        "update":"Update",
+        "click":"Click"
+        
+    },
+    "forgotpassword":{
+        "info":"Please fill in the field below to send a password reset link to your registered email address.",
+        "email":"Email Address",
+        "submit":"Send password reset link",
+        "reset":"Reset Password"
+
+    },
+    "linkedin" : {
+        "redirecting":"Redirecting.... Thanks for Login..",
+        "wait":"Please waiting...",
+        "error":"Unknown error occurred. Please try again."
+    },
+    "github" : {
+        "redirecting":"Redirecting.... Thanks for Login..",
+        "wait":"Please waiting...",
+        "error":"Unknown error occurred. Please try again."
+    },
+    "500" : {
+        "explain":"There was a problem with our server. We are trying to figure out what this problem is. If you have received this error during your current job, you can let us know. We will try to solve it as soon as possible.",
+        "backtohome":"Back to Home",
+        "submitreport":"Submit Report",
+        "email":"Email Address",
+        "notrequired":"This is not required.",
+        "explainErr":"Briefly explain how you got the error.",
+        "explainErr2":"We need to know this to better understand how you encountered the error you received.",
+        "submit":"Submit",
+        "errorCode":"Error Code",
+        "noValue":"No value can be entered in this field.",
+        "onlyNumber":"Please only enter number."
+    },
+    "404" : {
+        "explain":"We couldn't find the page you were looking for. You may have been deleted or redirected to the wrong address. If this is going to be a problem, you can report it. We will try to solve this as soon as possible in order to serve you better.",
+        "backtohome":"Back to Home",
+        "submitreport":"Submit Report",
+        "email":"Email Address",
+        "notrequired":"This is not required.",
+        "explainErr":"Briefly explain how you got the error.",
+        "explainErr2":"We need to know this to better understand how you encountered the error you received.",
+        "submit":"Submit",
+        "errorCode":"Error Code",
+        "noValue":"No value can be entered in this field.",
+        "onlyNumber":"Please only enter number."
+    },
+    "403" : {
+        "explain":"Your transaction has caught on our firewall. You are trying to do something without being a member or your existing authorization has been taken. Or the link link you are trying to come here has expired. If you see this as a problem, you can let us know.",
+        "backtohome":"Back to Home",
+        "submitreport":"Submit Report",
+        "email":"Email Address",
+        "notrequired":"This is not required.",
+        "explainErr":"Briefly explain how you got the error.",
+        "explainErr2":"We need to know this to better understand how you encountered the error you received.",
+        "submit":"Submit",
+        "errorCode":"Error Code",
+        "noValue":"No value can be entered in this field.",
+        "onlyNumber":"Please only enter number."
+    },
+    "verifyacc" :{
+        "verified":"Account Activated",
+        "succes":"Your account has been successfully verified. After activating your account, you have stepped into a safer environment. Thank you.",
+        "perfect":"Perfect",
+        "dear":"Dear ",
+        "backtohome":"Back to Home",
+        "error":"Account activation period has expired.",
+        "errorMessage":"In order to keep your account safer, the account verification link we sent to you seems to have reached its end of life. Please request an account reset link from settings again. Remember, if you don't verify your account within 30 minutes, you'll see this error again."
+    },
+    "reset":{
+        "newpass":"Enter your new password",
+        "strongpass":"Secure your account with a strong password.",
+        "yourpass":"Your password",
+        "required":"This field cannot be empty",
+        "minimum":"Password minimum lenght must be 8",
+        "maximum":"Password maximum lenght must be 24",
+        "uppercase":"Password must be contain at least one uppercase character",
+        "lowercase":"Password must be contain at least one lowercase character",
+        "number":"Password must be contain at least one number",
+        "change":"Change My Password",
+        "error":"Account activation period has expired.",
+        "dear":"Dear ",
+        "success":"Success!",
+        "successMessage":"The password reset process has been updated successfully. You are redirected to the home page within 5 seconds.",
+        "errorMessage":"In order to keep your account safer, the password reset link we sent to you seems to have expired. Please request a password reset link again in settings. Remember, you will see this error again if you don't reset the password within 30 minutes."
+    },
+    "searchtag" : {
+        "articles":"Articles",
+        "searchedcategory":"Searched category name : ",
+        "totalPost":"Total number of topics found : ",
+        "click":"Click to Read",
+        "views":"Views",
+        "comments":"Comments",
+        "sorry":"Sorry",
+        "message":"There is no article related to the subject tag you are trying to search."
+    },
+    "welcome": {
+        "aboutme":"Welcome to my personal blog, where I will share with you the projects I have learned and developed, and at the same time tell about my experiences. You can subscribe to support me and sign up for my newsletter to be informed about my current articles. You can support just by reading my articles.",
+        "hello":"Hello,",
+        "aboutme2":"As you can see, I coded this blog myself. If you say how to code such a simple-based personal blog, you can read my series titled We Code Our Own Blog, which is a long article series I wrote. If you have questions, you can return to me by sending an e-mail or by answering what I wrote under my articles."
+    },
     "about": {
         "me":"I am Fırat, I'm student at Beykent University at third class. I created this blog because I want to share what i learned. If you want to take my new articles, you can subscribe and support me easily. Have a good day !"
     },
-
     "footer" : {
         "license":"All right reserved."
     }
