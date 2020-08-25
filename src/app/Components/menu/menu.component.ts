@@ -13,12 +13,14 @@ export class MenuComponent implements OnInit {
 
   public username:string = "";
   public userprofilphoto:string = "";
+  public selectedLanguage:string="tr";
 
 
   constructor(private authenticateService:AuthenticateService,
               private router:Router,
               private translate: TranslateService ) {
                 translate.setDefaultLang('tr');
+                this.selectedLanguage="tr";
   }
 
   ngOnInit(): void {
@@ -45,6 +47,18 @@ export class MenuComponent implements OnInit {
       this.username = this.authenticateService.getUserName();
       this.userprofilphoto = this.authenticateService.getUserPhoto();
     }
+   }
+
+   changeLanguage(){
+    if(this.selectedLanguage=="tr"){
+      this.selectedLanguage = "en";
+      this.translate.setDefaultLang("en");
+    } else {
+      this.selectedLanguage = "tr";
+      this.translate.setDefaultLang("tr");
+
+    }
+    
    }
 
 }

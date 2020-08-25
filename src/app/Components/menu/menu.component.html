@@ -31,6 +31,26 @@
                     <a class="dropdown-item" (click)="logout()" routerLinkActive="active" [translate]="'menu.exit'">Çıkış</a>
                 </div>
             </li>
+            <li class="nav-item dropdown"  >
+                <a class="nav-link dropdown-toggle text-success m-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span *ngIf="selectedLanguage=='tr' ? true : false">
+                        <img src="assets/images/turkey.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> Türkçe</span>
+                    </span>
+                    <span *ngIf="selectedLanguage=='en' ? true : false">
+                        <img src="assets/images/uk.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> English</span>
+                    </span>
+                </a>
+                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink" (click)="ngOnChange()">
+                    <a class="dropdown-item" (click)="changeLanguage()" style="cursor: pointer;">
+                        <span *ngIf="selectedLanguage!='tr' ? true : false">
+                            <img src="assets/images/turkey.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> Türkçe</span>
+                        </span>
+                        <span *ngIf="selectedLanguage !='en' ? true : false ">
+                            <img src="assets/images/uk.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> English</span>
+                        </span>
+                    </a>
+                </div>
+            </li>
         </ul>
     </div>
   </nav> 
