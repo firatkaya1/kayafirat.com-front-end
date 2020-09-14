@@ -52,12 +52,8 @@ export class LoginComponent implements OnInit {
     window.location.href="https://github.com/login/oauth/authorize?client_id=1766cc6e638422eeaa65";
   }
   signInGoogle() {
-    console.log("signUp Google");
   }
   signInLinkedin() {
     window.location.href="https://www.linkedin.com/oauth/v2/authorization?client_id=77s8v0hceim00y&redirect_uri=http://localhost:4200/login/auth/linkedin&response_type=code&scope=r_liteprofile%20r_emailaddress";
-  }
-  signInTwitter() {
-    console.log("signUp Twitter");
   }
 }

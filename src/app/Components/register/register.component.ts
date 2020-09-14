@@ -73,10 +73,10 @@ export class RegisterComponent implements OnInit {
     window.location.href="https://github.com/login/oauth/authorize?client_id=1766cc6e638422eeaa65";
   }
   signUpGoogle() {
-    console.log("signUp Google");
   }
   signUpLinkedin() {
-    window.location.href="https://www.linkedin.com/oauth/v2/authorization?client_id=77s8v0hceim00y&redirect_uri=http://localhost:4200/login/auth/linkedin&response_type=code&scope=r_liteprofile%20r_emailaddress";
+    let redirecturi:string = "http://blog.kayafirat.com/login/auth/linkedin1";
+    window.location.href="https://www.linkedin.com/oauth/v2/authorization?client_id=77s8v0hceim00y&redirect_uri="+redirecturi+"&response_type=code&scope=r_liteprofile%20r_emailaddress";
   }
 
 }
