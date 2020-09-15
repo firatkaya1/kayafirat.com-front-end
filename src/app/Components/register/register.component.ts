@@ -54,7 +54,6 @@ export class RegisterComponent implements OnInit {
      this._userService.setUser(this.myUserDetails).subscribe(
        data => { this.errorCode = -1 
         if(this.errorCode === -1) {
-          console.log("işlem başarıyla tamamlandı.");
           this.registerSuccess=true;
           setTimeout(() => { this.registerSuccess=false;
             this._userService.sendVerificationEmail(this.myUserDetails.get('emailAddress').value);                
