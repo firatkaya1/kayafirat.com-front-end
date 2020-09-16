@@ -145,6 +145,7 @@ export class SettingsComponent implements OnInit {
     this._userService.updateUserName(email,username);
     setTimeout(() => {
       this.getUserPermissions();
+      sessionStorage.setItem('tSC31DGH51',username);
       this.router.navigateByUrl('/settings/'+username);
     }, 1000);
 
