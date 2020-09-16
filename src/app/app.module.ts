@@ -35,6 +35,8 @@ import { NotfounderrorComponent } from './Components/notfounderror/notfounderror
 import { GithubComponent } from './Components/github/github.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LinkedinComponent } from './Components/linkedin/linkedin.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 
@@ -78,7 +80,8 @@ import { LinkedinComponent } from './Components/linkedin/linkedin.component';
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       }
-  })
+  }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production,registrationStrategy: "registerImmediately" })
  
   ],
   providers: [CookieService,
