@@ -3,7 +3,6 @@ import { UserServiceService } from './../../Core/Service/UserService/user-servic
 import { IUser } from './../../Core/Model/User';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-profile',

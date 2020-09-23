@@ -1,8 +1,7 @@
-import { CookieService } from 'ngx-cookie-service';
 import { IUser } from './../../Model/User';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 
