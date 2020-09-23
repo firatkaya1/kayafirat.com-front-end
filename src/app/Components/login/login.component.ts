@@ -27,13 +27,7 @@ export class LoginComponent implements OnInit {
     this._authService.login(username,password)
     .subscribe((result) => {
       this.invalidLogin = false;
-      this.loginSuccess = true;
-      this._authService.registerSuccessfulLogin(result);
-        this._userService.getUserPhoto(username).subscribe(data => 
-          {
-            this._authService.setPhotoandUser(data[0],data[1])
-          });
-      
+      this.loginSuccess = true;      
       setTimeout(() => {    window.location.reload();}, 1000);
     }, (error) => {
       this.invalidLogin = true;

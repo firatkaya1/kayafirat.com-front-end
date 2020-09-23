@@ -227,7 +227,7 @@
                                         <input type="file" max-size="1024" enctype="multipart/form-data" accept="image/*" (change)="onFileChanged($event)"  #fileVal required>
                                     </div>
                                     <div class="col-md-4">
-                                     <button class="btn btn-success"  (click)="updateUserProfilPhoto(user.userId)" [translate]="'settings.update'"></button>
+                                     <button class="btn btn-success"  (click)="updateUserProfilPhoto(user.userId,user.userEmail)" [translate]="'settings.update'"></button>
                                     </div>
                                 </div>
                             </td>

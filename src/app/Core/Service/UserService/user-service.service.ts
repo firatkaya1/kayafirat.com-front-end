@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { IUser } from './../../Model/User';
 import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
@@ -10,22 +11,23 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  private urlUserByUsername:string = "http://localhost:8080/api/v1/user/username/";
-  private addUserUrl:string = "http://localhost:8080/api/v1/user/register";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya/";
+  private urlUserByUsername:string = this.BASE_URL+"api/v1/user/username/";
+  private addUserUrl:string = this.BASE_URL+"api/v1/user/register";
 
-  private sendEmail:string = "http://localhost:8080/api/v1/user/sendemail/";
+  private sendEmail:string = this.BASE_URL+"api/v1/user/sendemail/";
 
-  private sendResetPassEmail:string = "http://localhost:8080/api/v1/user/sendResetEmail";
-  private verifyUser:string = "http://localhost:8080/api/v1/user/verification";
-  private validaterecaptcha:string = "http://localhost:8080/api/v1/user/validaterecaptcha";
-  private searchURL:string = "http://localhost:8080/api/v1/post/search/";
+  private sendResetPassEmail:string = this.BASE_URL+"api/v1/user/sendResetEmail";
+  private verifyUser:string = this.BASE_URL+"api/v1/user/verification";
+  private validaterecaptcha:string = this.BASE_URL+"api/v1/user/validaterecaptcha";
+  private searchURL:string = this.BASE_URL+"api/v1/post/search/";
 
-  private updatePassword:string = "http://localhost:8080/api/v1/user/reset/"
+  private updatePassword:string = this.BASE_URL+"api/v1/user/reset/"
 
-  private updateUserPermission:string = "http://localhost:8080/api/v1/user/update/userpermissions/";
-  private updateUser:string = "http://localhost:8080/api/v1/user/update";
-  private updateProfilPhoto:string = "http://localhost:8080/api/v1/user/updatepicture/";
-  private userPhoto:string = "http://localhost:8080/api/v1/user/email/photo";
+  private updateUserPermission:string = this.BASE_URL+"api/v1/user/update/userpermissions/";
+  private updateUser:string = this.BASE_URL+"api/v1/user/update";
+  private updateProfilPhoto:string = this.BASE_URL+"api/v1/user/updatepicture/";
+  private userPhoto:string = this.BASE_URL+"api/v1/user/email/photo";
 
   constructor(private http:HttpClient) { }
 
@@ -42,11 +44,8 @@ export class UserServiceService {
     return this.http.get<string[]>(this.searchURL.concat(word).concat("/").concat(pageNumber).concat("/")
     .concat(pageSize).concat("/sorted/").concat(sortedName).concat("/orderby/").concat(orderby));
   }
-  getUserPhoto(username:string){
-    const body = {
-      email:username
-    }
-    return this.http.post<string[]>(this.userPhoto,body);
+  getUserPhoto(email:string){
+    return this.http.post<string[]>(this.userPhoto,{email:email});
     
   }
   setUser(registerForm:FormGroup){
@@ -147,7 +146,10 @@ export class UserServiceService {
     const body = {
       key : response
     }
-     return this.http.post<any>(this.validaterecaptcha,body);
+    let headers = new HttpHeaders({
+      'skip' : ''});
+    let options = { headers: headers };
+     return this.http.post<any>(this.validaterecaptcha,body,options);
       
   }
   getIpAddress(){
@@ -156,6 +158,7 @@ export class UserServiceService {
     let options = { headers: headers };
     return this.http.get<string>("http://api.ipify.org/?format=json",options);
   }
+  
 
 
 }

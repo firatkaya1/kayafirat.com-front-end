@@ -47,6 +47,7 @@ export class MenuComponent implements OnInit {
       this.username = this.authenticateService.getUserName();
       this.userprofilphoto = this.authenticateService.getUserPhoto();
     }
+   
    }
 
    changeLanguage(){

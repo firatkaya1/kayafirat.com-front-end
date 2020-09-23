@@ -1,3 +1,4 @@
+import { IPostSeo } from './PostSeo';
 import {IComment} from './Comment';
 
 export interface IPostDetail {
@@ -9,6 +10,7 @@ export interface IPostDetail {
     postTime: string;
     postMaxView: string;
     comment:IComment[];
+    postSeo:IPostSeo;
 
 }
 

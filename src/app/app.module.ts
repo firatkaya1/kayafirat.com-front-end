@@ -1,3 +1,4 @@
+import { CSRFInterceptor } from './Core/interceptor/CSRFInterceptor';
 import { HttpInterceptorService } from './Core/interceptor/httpInterceptor';
 import { ErrorInterceptor } from './Core/interceptor/ErrorInterceptor';
 import { ServererrorComponent } from './Components/servererror/servererror.component';
@@ -6,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {CookieService} from 'ngx-cookie-service';
-import { HttpClient ,HttpClientModule, HTTP_INTERCEPTORS, HttpInterceptor } from '@angular/common/http';
+import { HttpClient ,HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 
 
@@ -74,6 +76,7 @@ import { environment } from '../environments/environment';
     RecaptchaModule, 
     RecaptchaFormsModule,
     NgxSpinnerModule,
+    MatSlideToggleModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -86,7 +89,8 @@ import { environment } from '../environments/environment';
   ],
   providers: [CookieService,
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: CSRFInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

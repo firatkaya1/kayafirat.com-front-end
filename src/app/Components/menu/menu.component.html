@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light navbar-expand-lg border-bottom border-dark">
-    <a routerLink="/" (click)="ngOnChange()" routerLinkActive="active" class="navbar-brand text-primary">kayafirat.com <span class="text-danger">[beta] <span class="text-success">[v.1.0.1]</span></span></a> 
+    <a routerLink="/" (click)="ngOnChange()" routerLinkActive="active" class="navbar-brand text-primary">kayafirat.com <span class="text-danger ">[beta] <span class="text-success">[v.1.0.1]</span></span></a> 
     <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
             <i class="fa fa-navicon" style="color:#fff; font-size:28px;"></i>
@@ -32,7 +32,7 @@
                 </div>
             </li>
             <li class="nav-item dropdown"  >
-                <a class="nav-link dropdown-toggle text-success m-0" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle text-success m-0" href="#" id="dropdowns" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span *ngIf="selectedLanguage=='tr' ? true : false">
                         <img src="assets/images/turkey.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> Türkçe</span>
                     </span>
@@ -40,7 +40,7 @@
                         <img src="assets/images/uk.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> English</span>
                     </span>
                 </a>
-                <div class="dropdown-menu bg-light" aria-labelledby="navbarDropdownMenuLink" (click)="ngOnChange()">
+                <div class="dropdown-menu bg-light" aria-labelledby="dropdowns" (click)="ngOnChange()">
                     <a class="dropdown-item" (click)="changeLanguage()" style="cursor: pointer;">
                         <span *ngIf="selectedLanguage!='tr' ? true : false">
                             <img src="assets/images/turkey.svg" class=" p-0 m-0" width="25px" alt="turkish-flag"><span> Türkçe</span>

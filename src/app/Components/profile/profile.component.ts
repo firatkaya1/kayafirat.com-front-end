@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     
     if(this.isUserLogged){
-      this.isSameUser = jwt_decode(this._auhtService.getLoggedInUserName()).sub;
+      this.isSameUser =this._auhtService.getUserName();
     } else {
       this.router.navigateByUrl('403');
     }

@@ -9,15 +9,16 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
 
-  private myPosts:string = "http://localhost:8080/api/v1/post/lastposts/10/desc";
-  private myPost:string = "http://localhost:8080/api/v1/post/postTitle/";
-  private addCommentUrl:string = "http://localhost:8080/api/v1/comment/";
-  private addPageView:string = "http://localhost:8080/api/v1/post/updateview";
-  private orderByDate:string = "http://localhost:8080/api/v1/post/";
-  private postTagUrl:string = "http://localhost:8080/api/v1/post/postTag/";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya/";
+  private myPosts:string = this.BASE_URL+"api/v1/post/lastposts/10/desc";
+  private myPost:string = this.BASE_URL+"api/v1/post/postTitle/";
+  private addCommentUrl:string = this.BASE_URL+"api/v1/comment/";
+  private addPageView:string = this.BASE_URL+"api/v1/post/updateview";
+  private orderByDate:string = this.BASE_URL+"api/v1/post/";
+  private postTagUrl:string = this.BASE_URL+"api/v1/post/postTag/";
 
-  private updateCommentURL:string =  "http://localhost:8080/api/v1/comment";
-  private deleteCommentURL:string = "http://localhost:8080/api/v1/comment/";
+  private updateCommentURL:string =  this.BASE_URL+"api/v1/comment";
+  private deleteCommentURL:string = this.BASE_URL+"api/v1/comment/";
 
   constructor(private http:HttpClient) { }
 
@@ -54,8 +55,7 @@ export class PostService {
   setCommentAnonymous(postId:string,comment:string,username:string):void {
     let headers = new HttpHeaders({
       'skip' : '' });
-    let options = { headers: headers };
-    this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment },options).subscribe(data => {}) 
+    this.http.post<Comment>(this.addCommentUrl.concat(postId), { username:username,commentMessage:comment }).subscribe(data => {}) 
         
   }
 

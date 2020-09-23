@@ -1,85 +1,52 @@
+import { CookieService } from 'ngx-cookie-service';
+import { UserServiceService } from './../UserService/user-service.service';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import * as jwt_decode from "jwt-decode";
-
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticateService {
 
+    private BASE_URL = "https://api.kayafirat.com/firatkaya/";
+    secretKey = "YourSecretKeyForEncryption&Descryption";
     public username:string;
     public password:string;
-    USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
-    USER_NAME_SESSION_PROFİLE_PHOTO = 'xs34rfdkwJJ'
-    USER_NAME_SESSION_USER_NAME = 'tSC31DGH51'
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient,private cookieService:CookieService) {}
 
     login(username:string,password:string) {
-      const body = {
-        username:username,
-        password:password
-      }
-       return this.http.post("http://localhost:8080/api/v1/user/login",body, { responseType: "text"});
+       return this.http.post(this.BASE_URL+"api/v1/user/login",{username:username,password:password}, { responseType: "text"});
     
 
     }
     loginGithub(code:string) {
-      const body = {
-        code:code
-      }
-       return this.http.post("http://localhost:8080/api/v1/user/auth/github",body,{ responseType: "text"});
-    
-
+       return this.http.post(this.BASE_URL+"api/v1/user/auth/github",{code:code},{ responseType: "text"});
     }
-
     loginLinkedin(code:string){
-      const body = {
-        code:code
-      }
-       return this.http.post("http://localhost:8080/api/v1/user/auth/linkedin",body,{ responseType: "text"});
+       return this.http.post(this.BASE_URL+"api/v1/user/auth/linkedin",{code:code},{ responseType: "text"});
     }
     createBasicAuthToken(username: String, password: String) {
       return 'Basic ' + window.btoa(username + ":" + password)
     }
-    registerSuccessfulLogin(username) {
-      //add JWT 
-      sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, username);
-    }
-    setPhotoandUser(username:string,photoPath:string){
-       //add user photo url
-       sessionStorage.setItem(this.USER_NAME_SESSION_PROFİLE_PHOTO,photoPath);
-       //add username
-       sessionStorage.setItem(this.USER_NAME_SESSION_USER_NAME,username);
-    }
+
 
     logout() {
-      sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
-      sessionStorage.removeItem(this.USER_NAME_SESSION_USER_NAME);
-      sessionStorage.removeItem(this.USER_NAME_SESSION_PROFİLE_PHOTO);
       this.username = null;
       this.password = null;
+      this.http.post(this.BASE_URL+"api/v1/user/logout","").subscribe(data => {});
     }
 
 
     isUserLoggedIn() {
-      let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
-      if (user === null) return false
-      return true
-    }
+      return this.cookieService.get('username').length>1 ? true : false;
+  }
   
-    getLoggedInUserName() {
-      let user = sessionStorage.getItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME)
-      if (user === null) return ''
-      return user
-    }
-
     getUserPhoto(){
-      return sessionStorage.getItem(this.USER_NAME_SESSION_PROFİLE_PHOTO);
+      return this.cookieService.get('userPhoto');
     }
     getUserName(){
-      return sessionStorage.getItem(this.USER_NAME_SESSION_USER_NAME);
+     return this.cookieService.get('username');
+      
     }
-    getJWTEmail(jwt:any){
-      return jwt_decode(jwt).sub;
-    }
+  
+    
 }

@@ -20,16 +20,10 @@ export class GithubComponent implements OnInit {
     this._authService.loginGithub(this.code).subscribe(
       result => 
       {
-        this._authService.registerSuccessfulLogin(result);
-        this._userService.getUserPhoto(this._authService.getJWTEmail(result)).subscribe(
-        (data) => {
-                    this._authService.setPhotoandUser(data[0],data[1])
-                    setTimeout(() => {
-                      this.spinner.hide();
-                    }, 2000);
-                    this.router.navigate(["/profile/"+data[0]])
-
-                  });   
+        setTimeout(() => {
+          this.spinner.hide();
+        }, 2000);
+        this.router.navigate(["/"]);  
       },
       error => {this.spinner.hide();this.isSuccess=false});
 

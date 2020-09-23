@@ -1,3 +1,4 @@
+import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { IUser } from './../../Core/Model/User';
 import { Component, OnInit, ErrorHandler } from '@angular/core';
@@ -40,7 +41,7 @@ export class SettingsComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute,
-              private _userService: UserServiceService,private router: Router) { 
+              private _userService: UserServiceService,private router: Router,private _authService:AuthenticateService) { 
 
    this.route.paramMap.subscribe(params => {
     this.usernamerouter = params.get('username');
@@ -168,12 +169,13 @@ export class SettingsComponent implements OnInit {
         this.sendVerifyButton=true;
       }, 30000);
  }
- updateUserProfilPhoto(userId:string){
+ updateUserProfilPhoto(userId:string,username:string){
    this._userService.updateUserProfilPhoto(userId,this.selectedImage);
    this.success=true;
       setTimeout(() => {
         this.success=false;
       }, 5000);
+      
  }
  onFileChanged(event) {
   this.selectedImage = event.target.files[0]
