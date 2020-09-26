@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class PostService {
 
-  private BASE_URL = "https://api.kayafirat.com/firatkaya/";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1/";
   private myPosts:string = this.BASE_URL+"api/v1/post/lastposts/10/desc";
   private myPost:string = this.BASE_URL+"api/v1/post/postTitle/";
   private addCommentUrl:string = this.BASE_URL+"api/v1/comment/";
@@ -43,9 +43,9 @@ export class PostService {
 
   getIpAddress(){
     let headers = new HttpHeaders({
-      'skip' : '' });
+      'skip' : '', });
     let options = { headers: headers };
-    return this.http.get<string>("http://api.ipify.org/?format=json",options);
+    return this.http.get<string>("https://cors-anywhere.herokuapp.com/https://api.ipify.org/?format=json",options);
   }
   setPageView(postId:string,temporaryCode:string,ipAddress:string){
     const body = { ipAddress:ipAddress,temporaryCode:temporaryCode,postId:postId }

@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  private BASE_URL = "https://api.kayafirat.com/firatkaya/";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1/";
   private urlUserByUsername:string = this.BASE_URL+"api/v1/user/username/";
   private addUserUrl:string = this.BASE_URL+"api/v1/user/register";
 
@@ -142,20 +142,19 @@ export class UserServiceService {
 
   }
   validateReCaptcha(response:string) {
-    const body = {
-      key : response
-    }
+
     let headers = new HttpHeaders({
       'skip' : ''});
     let options = { headers: headers };
-     return this.http.post<any>(this.validaterecaptcha,body,options);
+
+     return this.http.post<any>(this.validaterecaptcha,{key:response},options);
       
   }
   getIpAddress(){
     let headers = new HttpHeaders({
       'skip' : '' });
     let options = { headers: headers };
-    return this.http.get<string>("http://api.ipify.org/?format=json",options);
+    return this.http.get<string>("https://cors-anywhere.herokuapp.com/http:/api.ipify.org/?format=json",options);
   }
   
 

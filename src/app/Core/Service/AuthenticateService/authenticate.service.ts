@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class AuthenticateService {
 
-    private BASE_URL = "https://api.kayafirat.com/firatkaya/";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1/";
     secretKey = "YourSecretKeyForEncryption&Descryption";
     public username:string;
     public password:string;
