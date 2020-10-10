@@ -8,6 +8,7 @@ export interface IPostDetail {
     postHeader: string;
     postBody:string;
     postTime: string;
+    postMaxComment: string;
     postMaxView: string;
     comment:IComment[];
     postSeo:IPostSeo;

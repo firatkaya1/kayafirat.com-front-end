@@ -54,7 +54,7 @@ export class SettingsComponent implements OnInit {
 
   ngOnSubmit():void {
     let body = {
-      userEmail: "",
+      userEmail: this.users[0].userEmail,
       nameShow: false,
       aboutmeShow: this.myUserPermissions.controls['userAboutMe'].value,
       registerdateShow:this.myUserPermissions.controls['userRegisterDate'].value,
@@ -66,7 +66,7 @@ export class SettingsComponent implements OnInit {
       githubShow: this.myUserPermissions.controls['userGithubAddress'].value,
       linkedinShow:this.myUserPermissions.controls['userLinkedinAddress'].value
   };
-  this._userService.updateUserPermissions(this.usernamerouter,body);
+  this._userService.updateUserPermissions(body);
   this.success=true;
   setTimeout(() => {
     this.success=false;
@@ -156,30 +156,29 @@ export class SettingsComponent implements OnInit {
         this.success=false;
       }, 5000);
   }
+  sendUserVerificationMail(email:string){
+    this._userService.sendVerificationEmail(email);
+    this.sendVerifyButton=false;
+    this.success=true;
+        setTimeout(() => {
+          this.success=false;
+        }, 5000);
 
- sendUserVerificationMail(email:string){
-   this._userService.sendVerificationEmail(email);
-   this.sendVerifyButton=false;
-   this.success=true;
-      setTimeout(() => {
-        this.success=false;
-      }, 5000);
-
-      setTimeout(() => {
-        this.sendVerifyButton=true;
-      }, 30000);
- }
- updateUserProfilPhoto(userId:string,username:string){
-   this._userService.updateUserProfilPhoto(userId,this.selectedImage);
-   this.success=true;
-      setTimeout(() => {
-        this.success=false;
-      }, 5000);
-      
- }
- onFileChanged(event) {
-  this.selectedImage = event.target.files[0]
-  console.log("selected:"+this.selectedImage);
-}
+        setTimeout(() => {
+          this.sendVerifyButton=true;
+        }, 30000);
+  }
+  updateUserProfilPhoto(userId:string,username:string){
+    this._userService.updateUserProfilPhoto(userId,this.selectedImage);
+    this.success=true;
+        setTimeout(() => {
+          this.success=false;
+        }, 5000);
+        
+  }
+  onFileChanged(event) {
+    this.selectedImage = event.target.files[0]
+    console.log("selected:"+this.selectedImage);
+  }
 
 }

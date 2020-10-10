@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class AuthenticateService {
 
-  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1/";
+  private BASE_URL = "http://localhost:8080";
     secretKey = "YourSecretKeyForEncryption&Descryption";
     public username:string;
     public password:string;
@@ -13,15 +13,15 @@ export class AuthenticateService {
     constructor(private http: HttpClient,private cookieService:CookieService) {}
 
     login(username:string,password:string) {
-       return this.http.post(this.BASE_URL+"api/v1/user/login",{username:username,password:password}, { responseType: "text"});
+       return this.http.post(this.BASE_URL+"/v1/login",{username:username,password:password}, { responseType: "text"});
     
 
     }
     loginGithub(code:string) {
-       return this.http.post(this.BASE_URL+"api/v1/user/auth/github",{code:code},{ responseType: "text"});
+       return this.http.post(this.BASE_URL+"/v1/auth/github?code="+code,"");
     }
     loginLinkedin(code:string){
-       return this.http.post(this.BASE_URL+"api/v1/user/auth/linkedin",{code:code},{ responseType: "text"});
+       return this.http.post(this.BASE_URL+"/v1/auth/linkedin?code="+code,"");
     }
     createBasicAuthToken(username: String, password: String) {
       return 'Basic ' + window.btoa(username + ":" + password)
@@ -31,7 +31,7 @@ export class AuthenticateService {
     logout() {
       this.username = null;
       this.password = null;
-      this.http.post(this.BASE_URL+"api/v1/user/logout","").subscribe(data => {});
+      this.http.post(this.BASE_URL+"/v1/logout","").subscribe(data => {});
     }
 
 

@@ -2,7 +2,6 @@ import { IPostSeo } from './../../Core/Model/PostSeo';
 import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
 import { Title, Meta } from '@angular/platform-browser';
-import { MatSlideToggle } from '@angular/material/slide-toggle'
 
 import { IComment } from './../../Core/Model/Comment';
 import { IPostDetail } from './../../Core/Model/PostDetails';
@@ -20,9 +19,9 @@ import { v4 as uuid } from 'uuid';
 export class ArticleComponent implements OnInit {
 
   public posttitlerouter:string;
-  public postInfo:IPostDetail[] = [];
+  public post:IPostDetail;
   public commentInfo:IComment[] = [];
-  public postSeo:IPostSeo[] = [];
+  public postSeo:IPostSeo;
   public acceptCookie:string = this.cookieService.get('acceptCookie');
   public isSawThisPage:string = this.cookieService.get('isSawThisPage');
   public isHideCookie:boolean = false;
@@ -38,7 +37,7 @@ export class ArticleComponent implements OnInit {
   public commentError:boolean=true;
   public validateRecaptcha:boolean = false;
   public isAuthenticate:boolean = false;
-  
+
 
   constructor(
     private cookieService: CookieService,
@@ -70,31 +69,27 @@ export class ArticleComponent implements OnInit {
   }
   setCommentAnonymous(){
     if(this.isAnonymous && this.commentMessage != null) {
-     this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,'Anonymous');
-     this.clearCommentSide();
-    
+      this._postService.setCommentAnonymous(this.post.postId,this.commentMessage,'Anonymous');
+      this.clearCommentSide();
+      this.validateRecaptcha=false
+      setTimeout(() => { this.getPost();}, 3000);
+      setTimeout(() => { this.commentSuccess=false;}, 10000);  
       
-      setTimeout(() => { this.commentSuccess=false;
-        this.validateRecaptcha=false}, 10000);
-        
-        setTimeout(() => { this.getPost();}, 1000);
 
     } else {
       this.commentError = false;
       setTimeout(() => { this.commentError=true;}, 10000);
     }
-    
-    //
+ 
   }
   setCommentAuthenticate(){
     if(this.commentMessage != null) {
       let username = this._authenticateService.getUserName();
-      this._postService.setCommentAnonymous(this.postInfo[0].postId,this.commentMessage,username);
+      this._postService.setCommentAnonymous(this.post.postId,this.commentMessage,username);
       this.clearCommentSide();
-       setTimeout(() => { this.commentSuccess=false;
-         this.validateRecaptcha=false}, 10000);
-         
-         setTimeout(() => { this.getPost();}, 1000);
+      this.validateRecaptcha=false
+      setTimeout(() => { this.getPost();}, 3000);
+      setTimeout(() => { this.commentSuccess=false;}, 10000);  
  
      } else {
        this.commentError = false;
@@ -118,16 +113,15 @@ export class ArticleComponent implements OnInit {
   }
   getPost() {
     this._postService.getPost(this.posttitlerouter).subscribe(
-      res => {
-        
-        this.postInfo = res;
-        this.commentInfo=this.postInfo[0].comment;
-        this.postSeo[0] = this.postInfo[0].postSeo;
-        this.addMetaTags(this.postSeo[0]);
-        if(this.cookieService.check(this.postInfo[0].postId)==false) {
-          this.cookieService.set(this.postInfo[0].postId,uuid(),0.0105);
+     (res) => {
+        this.post = res;
+        this.commentInfo=res.comment;
+        this.postSeo = res.postSeo;
+        this.addMetaTags(this.postSeo);
+        if(this.cookieService.check(this.post.postId)==false) {
+          this.cookieService.set(this.post.postId,uuid(),0.0105);
           this._postService.getIpAddress().subscribe((resp:any) => { 
-            this._postService.setPageView(this.postInfo[0].postId,this.cookieService.get(this.postInfo[0].postId),resp.ip);
+            this._postService.setPageView(this.post.postId,this.cookieService.get(this.post[0].postId),resp.ip);
           });
         }  
         
@@ -190,7 +184,5 @@ export class ArticleComponent implements OnInit {
       }
     return false;
   }
-
-
 
 }

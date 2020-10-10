@@ -1,26 +1,18 @@
 <body [ngClass]="isCurrentDarkMode ? 'bg-dark text-white' : 'bg-light'" >
-     <!--Dark Thema-->
-<!--
-     <div class="row d-inline ">
-    <div class="col-md-12">
-        <mat-slide-toggle  color="primary"  (change)="openDarkMode()" >Slide me!</mat-slide-toggle>
-    </div>
-</div>
--->
-<!--Container-->
-<div class="container"  >
-    <div class="row" *ngFor="let post of postInfo">
+
+<div class="container">
+    <div class="row">
         <div class="col-md-12 mx-auto text-center mt-2 mb-4">
             <img src="assets/images/article.svg" width="30%" alt="main-pictures">
         </div>
-        <div class="col-md-12 mx-auto " >
-            <p class="h5" id="myHeader">{{post.postTitle}}</p>
+        <div class="col-md-12 mx-auto">
+            <p class="h5" id="myHeader">{{ post?.postTitle }}</p>
             <p> 
-                {{post.postHeader}}
+                {{post?.postHeader}}
             </p>
 
             <p >
-                {{post.postBody}}
+                {{post?.postBody}}
             </p>
         </div>
         <div class="col-md-12">
@@ -31,7 +23,7 @@
             </p>
         </div>
         <div class="col-md-12 border-top border-bottom text-dark">
-            <p class="text-center m-0 p-2">{{post.postMaxView}} <span [translate]="'article.views'"></span> | {{post.postMaxComment}} <span [translate]="'article.comments'"></span> | {{post.postTime | date:'medium'}}
+            <p class="text-center m-0 p-2">{{post?.postMaxView}} <span [translate]="'article.views'"></span> | {{post?.postMaxComment}} <span [translate]="'article.comments'"></span> | {{post?.postTime | date:'medium'}}
                 <a href="#"><img src="assets/images/linkedin.png" class="float-right" width="30px" alt="linkedin"></a>
                 <a href="#"> <img src="assets/images/twitter.svg" class="float-right" width="30px" alt="twitter"></a>
                 <a href="#"><img src="assets/images/facebook.svg" class="float-right" width="25px" alt="facebook"></a>
@@ -102,7 +94,7 @@
                 <div class="col-md-5"></div>
                 
                 <div class="col-md-2">
-                    <re-captcha (resolved)="resolved($event)"  siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
+                    <re-captcha (resolved)="resolved($event)" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
                 </div>
                 <div class="col-md-5"></div>
                 <div class="w-100"></div>
@@ -118,7 +110,7 @@
                 </div>
                 
                 <div class="col-md-2 text-center mx-auto mt-4 " *ngIf="validateRecaptcha && isAuthenticate">
-                    <input type="submit" id="sendCommentButton" (click)="setCommentAuthenticate()"    name="submit" value="{{ 'article.submit' | translate }}" [ngClass]="isCurrentDarkMode ? 'btn btn-block  btn-dark border-white' : 'btn btn-block btn-success'">
+                    <input type="submit" id="sendCommentButton" (click)="setCommentAuthenticate()" name="submit" value="{{ 'article.submit' | translate }}" [ngClass]="isCurrentDarkMode ? 'btn btn-block  btn-dark border-white' : 'btn btn-block btn-success'">
                 </div>
             </div>
         </div>

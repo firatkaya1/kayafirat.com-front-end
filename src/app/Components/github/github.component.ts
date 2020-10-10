@@ -14,18 +14,18 @@ export class GithubComponent implements OnInit {
 
   private code:string;
   public isSuccess:boolean = true;
-  constructor(private route: ActivatedRoute,private spinner: NgxSpinnerService,private _authService:AuthenticateService,private _userService:UserServiceService,private router: Router) { 
+  constructor(private route: ActivatedRoute,private spinner: NgxSpinnerService,private _authService:AuthenticateService,private router: Router) { 
     this.spinner.show();
     this.code = this.route.snapshot.queryParamMap.get('code');
     this._authService.loginGithub(this.code).subscribe(
-      result => 
+      (result) => 
       {
         setTimeout(() => {
           this.spinner.hide();
         }, 2000);
         this.router.navigate(["/"]);  
       },
-      error => {this.spinner.hide();this.isSuccess=false});
+      (error) => {this.spinner.hide(); console.log("error :"+error);this.isSuccess=false});
 
   }
 

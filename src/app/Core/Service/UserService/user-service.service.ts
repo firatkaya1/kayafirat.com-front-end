@@ -10,23 +10,19 @@ import { Observable } from 'rxjs';
 })
 export class UserServiceService {
 
-  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1/";
-  private urlUserByUsername:string = this.BASE_URL+"api/v1/user/username/";
-  private addUserUrl:string = this.BASE_URL+"api/v1/user/register";
-
-  private sendEmail:string = this.BASE_URL+"api/v1/user/sendemail/";
-
-  private sendResetPassEmail:string = this.BASE_URL+"api/v1/user/sendResetEmail";
-  private verifyUser:string = this.BASE_URL+"api/v1/user/verification";
-  private validaterecaptcha:string = this.BASE_URL+"api/v1/user/validaterecaptcha";
-  private searchURL:string = this.BASE_URL+"api/v1/post/search/";
-
-  private updatePassword:string = this.BASE_URL+"api/v1/user/reset/"
-
-  private updateUserPermission:string = this.BASE_URL+"api/v1/user/update/userpermissions/";
-  private updateUser:string = this.BASE_URL+"api/v1/user/update";
-  private updateProfilPhoto:string = this.BASE_URL+"api/v1/user/updatepicture/";
-  private userPhoto:string = this.BASE_URL+"api/v1/user/email/photo";
+  private BASE_URL = "http://localhost:8080";
+  private urlUserByUsername:string = this.BASE_URL+"/v1/user?username=";
+  private addUserUrl:string = this.BASE_URL+"/v1/user/register";
+  private sendEmail:string = this.BASE_URL+"/v1/mail";
+  private sendResetPassEmail:string = this.BASE_URL+"/v1/mail/reset";
+  private verifyUser:string = this.BASE_URL+"/v1/mail/verify";
+  private validaterecaptcha:string = this.BASE_URL+"/v1/recaptcha";
+  private searchURL:string = this.BASE_URL+"/v1/post/search?";
+  private updatePassword:string = this.BASE_URL+"/v1/user/reset/"
+  private updateUserPermission:string = this.BASE_URL+"/v1/user/permissions";
+  private updateUser:string = this.BASE_URL+"/v1/user/update";
+  private updateProfilPhoto:string = this.BASE_URL+"/v1/user/photo/";
+  private userPhoto:string = this.BASE_URL+"/v1/user/email/photo";
 
   constructor(private http:HttpClient) { }
 
@@ -40,8 +36,8 @@ export class UserServiceService {
     return this.http.get<IUser[]>(this.urlUserByUsername.concat(username));
   }
   getSearchs(word:string,pageNumber:string,pageSize:string,sortedName:string,orderby:string) {
-    return this.http.get<string[]>(this.searchURL.concat(word).concat("/").concat(pageNumber).concat("/")
-    .concat(pageSize).concat("/sorted/").concat(sortedName).concat("/orderby/").concat(orderby));
+    let query = "keyword="+word+"&page="+pageNumber+"&size="+pageSize+"&sort="+sortedName+"&order="+orderby;
+    return this.http.get<string[]>(this.searchURL.concat(query));
   }
   getUserPhoto(email:string){
     return this.http.post<string[]>(this.userPhoto,{email:email});
@@ -93,8 +89,8 @@ export class UserServiceService {
     this.http.post<any>(this.updatePassword,body).subscribe(data => {})
 
   }
-  updateUserPermissions(username:string,body){
-    this.http.put<any>(this.updateUserPermission.concat(username),body).subscribe(data => {})
+  updateUserPermissions(body){
+    this.http.put<any>(this.updateUserPermission,body).subscribe(data => {})
 
   }
   updateUserGithubAddress(email:string,githubaddress:string){
@@ -154,7 +150,7 @@ export class UserServiceService {
     let headers = new HttpHeaders({
       'skip' : '' });
     let options = { headers: headers };
-    return this.http.get<string>("https://cors-anywhere.herokuapp.com/http:/api.ipify.org/?format=json",options);
+    return this.http.get<string>("https://cors-anywhere.herokuapp.com/http:/.ipify.org/?format=json",options);
   }
   
 

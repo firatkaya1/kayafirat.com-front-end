@@ -16,11 +16,15 @@ export class MenuComponent implements OnInit {
   public selectedLanguage:string="tr";
 
 
-  constructor(private authenticateService:AuthenticateService,
-              private router:Router,
-              private translate: TranslateService ) {
-                translate.setDefaultLang('tr');
-                this.selectedLanguage="tr";
+  constructor(private authenticateService:AuthenticateService, private router:Router, private translate: TranslateService ) {
+    if(localStorage.getItem("language")==null){
+      localStorage.setItem("language","tr");
+      translate.setDefaultLang('tr');
+      this.selectedLanguage="tr";
+    } else {
+      translate.setDefaultLang(localStorage.getItem("language"));
+      this.selectedLanguage=localStorage.getItem("language");
+    }
   }
 
   ngOnInit(): void {
@@ -53,9 +57,12 @@ export class MenuComponent implements OnInit {
    changeLanguage(){
     if(this.selectedLanguage=="tr"){
       this.selectedLanguage = "en";
+      localStorage.setItem("language","en");
       this.translate.setDefaultLang("en");
+      
     } else {
       this.selectedLanguage = "tr";
+      localStorage.setItem("language","tr");
       this.translate.setDefaultLang("tr");
 
     }

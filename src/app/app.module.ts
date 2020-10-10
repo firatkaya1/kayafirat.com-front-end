@@ -12,7 +12,6 @@ import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 
 
 
@@ -76,7 +75,6 @@ import { environment } from '../environments/environment';
     RecaptchaModule, 
     RecaptchaFormsModule,
     NgxSpinnerModule,
-    MatSlideToggleModule,
     TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
