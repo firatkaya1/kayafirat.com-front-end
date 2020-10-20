@@ -5,16 +5,9 @@
         <div class="col-md-12 mx-auto text-center mt-2 mb-4">
             <img src="assets/images/article.svg" width="30%" alt="main-pictures">
         </div>
-        <div class="col-md-12 mx-auto">
-            <p class="h5" id="myHeader">{{ post?.postTitle }}</p>
-            <p> 
-                {{post?.postHeader}}
-            </p>
-
-            <p >
-                {{post?.postBody}}
-            </p>
-        </div>
+        <div class="col-md-9 border-right border-left border-top border-dark mx-auto h5" [innerHTML]="post?.postTitle"></div>
+        <div class="col-md-9 border-right border-left border-dark mx-auto" [innerHTML]="post?.postHeader"></div>
+        <div class="col-md-9 border-right border-left border-dark mx-auto" [innerHTML]="post?.postBody"></div>
         <div class="col-md-12">
             <p class="h5 text-center mt-4 mb-4" [translate]="'article.end'"></p>
         </div>
@@ -32,8 +25,8 @@
         <div class="col-md-12 text-center mt-4 mb-4">
             <p class="h5" [translate]="'article.comments'"></p>
         </div>
-        <div class="col-md-12 " > 
-            <div class="row border "  *ngFor="let comment of commentInfo">
+        <div class="col-md-12"> 
+            <div class="row border" *ngFor="let comment of commentInfo">
                 <div class="col-md-2 border-right">
                     <div class="row mx-auto mt-2"> 
                         <div class="col-12 text-center">
@@ -80,12 +73,11 @@
                     </div>
                 </div>
             </div>
-            
         </div>
-        
-        <div class="col-md-12">
+
+        <div class="col-md-12 mt-5">
             <div class="row ">
-                <div class="col-md-12 mt-4 ">
+                <div class="col-md-12">
                     <textarea name="commentDescription" ng-trim="true" [(ngModel)]="commentMessage"  [ngClass]="isCurrentDarkMode ? 'bg-dark text-light' : 'bg-light text-dark'" rows="3" style="width: 100%;" class="form-control mb-4 " [placeholder]="'article.yourComment' | translate" id="commentDescription" required  ></textarea>
                 </div>
                 <div class="col-md-12">
@@ -98,18 +90,12 @@
                 </div>
                 <div class="col-md-5"></div>
                 <div class="w-100"></div>
-                <div class="col-md-10 text-right" *ngIf="validateRecaptcha && !isAuthenticate">
-                    <input class="form-check-input " [(ngModel)]="isAnonymous" type="checkbox" id="gridCheck1">
-                    <label class="form-check-label" for="gridCheck1" id="anonimCheckbox">
-                      <p  [translate]="'article.anonymous'"></p>
-                    </label>
-                </div> 
                 
-                <div class="col-md-2 text-right" *ngIf="validateRecaptcha && !isAuthenticate">
+                <div class="col-md-2 text-center mx-auto mt-4 " *ngIf="captchaResp?.length > 0  && !isAuthenticate">
                     <input type="submit" id="sendCommentButton" (click)="setCommentAnonymous()"  name="submit" value="{{ 'article.submit' | translate }}" [ngClass]="isCurrentDarkMode ? 'btn btn-block btn-dark border-white' : 'btn btn-success btn-block'">
                 </div>
                 
-                <div class="col-md-2 text-center mx-auto mt-4 " *ngIf="validateRecaptcha && isAuthenticate">
+                <div class="col-md-2 text-center mx-auto mt-4 " *ngIf="captchaResp?.length > 0 && isAuthenticate">
                     <input type="submit" id="sendCommentButton" (click)="setCommentAuthenticate()" name="submit" value="{{ 'article.submit' | translate }}" [ngClass]="isCurrentDarkMode ? 'btn btn-block  btn-dark border-white' : 'btn btn-block btn-success'">
                 </div>
             </div>

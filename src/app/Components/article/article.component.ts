@@ -1,15 +1,15 @@
-import { IPostSeo } from './../../Core/Model/PostSeo';
-import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { Title, Meta } from '@angular/platform-browser';
+import { IPostSeo }               from './../../Core/Model/PostSeo';
+import { AuthenticateService }    from './../../Core/Service/AuthenticateService/authenticate.service';
+import { UserServiceService }     from './../../Core/Service/UserService/user-service.service';
+import { Title, Meta }            from '@angular/platform-browser';
 
-import { IComment } from './../../Core/Model/Comment';
-import { IPostDetail } from './../../Core/Model/PostDetails';
-import { PostService } from '../../Core/Service/PostService/post.service';
-import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
+import { IComment }               from './../../Core/Model/Comment';
+import { IPostDetail }            from './../../Core/Model/PostDetails';
+import { PostService }            from '../../Core/Service/PostService/post.service';
+import { CookieService }          from 'ngx-cookie-service';
+import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid }             from 'uuid';
 
 @Component({
   selector: 'app-article',
@@ -35,7 +35,7 @@ export class ArticleComponent implements OnInit {
   public commentUpdateSuccess:boolean=false;
   public commentDeleteSuccess:boolean=false;
   public commentError:boolean=true;
-  public validateRecaptcha:boolean = false;
+  public captchaResp:string;
   public isAuthenticate:boolean = false;
 
 
@@ -63,16 +63,13 @@ export class ArticleComponent implements OnInit {
     
   }
   resolved(captchaResponse:string) {
-    this._userService.validateReCaptcha(captchaResponse).subscribe(res => {
-      res['success'] == true ? this.validateRecaptcha=true : this.validateRecaptcha=false;})
-   
+    this.captchaResp = captchaResponse;   
   }
   setCommentAnonymous(){
     if(this.isAnonymous && this.commentMessage != null) {
-      this._postService.setCommentAnonymous(this.post.postId,this.commentMessage,'Anonymous');
+      this._postService.setCommentAnonymous(this.post.postId,this.commentMessage,'Anonymous',this.captchaResp);
       this.clearCommentSide();
-      this.validateRecaptcha=false
-      setTimeout(() => { this.getPost();}, 3000);
+      setTimeout(() => { this.getPost(); }, 3000);
       setTimeout(() => { this.commentSuccess=false;}, 10000);  
       
 
@@ -85,9 +82,8 @@ export class ArticleComponent implements OnInit {
   setCommentAuthenticate(){
     if(this.commentMessage != null) {
       let username = this._authenticateService.getUserName();
-      this._postService.setCommentAnonymous(this.post.postId,this.commentMessage,username);
+      this._postService.setCommentAnonymous(this.post.postId,this.commentMessage,username,this.captchaResp);
       this.clearCommentSide();
-      this.validateRecaptcha=false
       setTimeout(() => { this.getPost();}, 3000);
       setTimeout(() => { this.commentSuccess=false;}, 10000);  
  
@@ -131,6 +127,7 @@ export class ArticleComponent implements OnInit {
   clearCommentSide(){
     this.commentMessage="";
     this.commentSuccess=true;
+    this.captchaResp="";
   }
   addMetaTags(res:IPostSeo){
     this.titleService.setTitle(this.posttitlerouter);

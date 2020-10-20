@@ -18,11 +18,13 @@ export class UserServiceService {
   private verifyUser:string = this.BASE_URL+"/v1/mail/verify";
   private validaterecaptcha:string = this.BASE_URL+"/v1/recaptcha";
   private searchURL:string = this.BASE_URL+"/v1/post/search?";
-  private updatePassword:string = this.BASE_URL+"/v1/user/reset/"
+  private updatePassword:string = this.BASE_URL+"/v1/mail/reset"
   private updateUserPermission:string = this.BASE_URL+"/v1/user/permissions";
   private updateUser:string = this.BASE_URL+"/v1/user/update";
-  private updateProfilPhoto:string = this.BASE_URL+"/v1/user/photo/";
-  private userPhoto:string = this.BASE_URL+"/v1/user/email/photo";
+  private updateProfilPhoto:string = this.BASE_URL+"/v1/user/photo";
+  private userPhoto:string = this.BASE_URL+"/v1/user/photo";
+
+  private forgotUserPasswordURI:string = this.BASE_URL+"/v1/mail/forgot";
 
   constructor(private http:HttpClient) { }
 
@@ -30,7 +32,6 @@ export class UserServiceService {
 
     return this.http.get<IUser>(this.urlUserByUsername.concat(username));
   }
-
   getUserByUsername(username:string): Observable<IUser[]> {
 
     return this.http.get<IUser[]>(this.urlUserByUsername.concat(username));
@@ -39,8 +40,8 @@ export class UserServiceService {
     let query = "keyword="+word+"&page="+pageNumber+"&size="+pageSize+"&sort="+sortedName+"&order="+orderby;
     return this.http.get<string[]>(this.searchURL.concat(query));
   }
-  getUserPhoto(email:string){
-    return this.http.post<string[]>(this.userPhoto,{email:email});
+  getUserPhoto(){
+    return this.http.get(this.userPhoto);
     
   }
   setUser(registerForm:FormGroup){
@@ -68,19 +69,17 @@ export class UserServiceService {
     let body = {
       email : emailAddress
     };
-    this.http.post<any>(this.sendResetPassEmail,body).subscribe(data => {})
+    this.http.post<any>(this.forgotUserPasswordURI,body).subscribe(data => {})
   }
-
   updateUserVerification(email:string,id:string){
     let body = {
-      email:email,
-      id:id
+      id:id,
+      email:email
     }
       this.http.post<any>(this.verifyUser,body).subscribe(data => {})
   }
-  updateUserPassword(emailAddress:string,userid:string,password:string,ipaddress:string,useragent:string){
+  updateUserPassword(userid:string,password:string,ipaddress:string,useragent:string){
     let body = {
-      email : emailAddress,
       userid:userid,
       password : password,
       ipaddress:ipaddress,
@@ -89,52 +88,58 @@ export class UserServiceService {
     this.http.post<any>(this.updatePassword,body).subscribe(data => {})
 
   }
+  forgotUserPassword(email:string,userid:string,password:string,ipaddress:string,useragent:string){
+    let body = {
+      email:email,
+      userid:userid,
+      password : password,
+      ipaddress:ipaddress,
+      useragent:useragent 
+    }
+    this.http.post<any>(this.forgotUserPasswordURI,body).subscribe(data => {})
+
+  }
   updateUserPermissions(body){
     this.http.put<any>(this.updateUserPermission,body).subscribe(data => {})
 
   }
-  updateUserGithubAddress(email:string,githubaddress:string){
+  updateUserGithubAddress(githubaddress:string){
     let body = {
-      key:"githubaddress",
-      email:email,
+      key:"github",
       githubaddress:githubaddress
     }
     this.http.put<any>(this.updateUser,body).subscribe(data => {})
   }
-  updateUserLinkedinAddress(email:string,linkedinaddress:string){
+  updateUserLinkedinAddress(linkedinaddress:string){
     let body = {
-      key:"linkedinaddress",
-      email:email,
+      key:"linkedin",
       linkedinaddress:linkedinaddress
     }
     this.http.put<any>(this.updateUser,body).subscribe(date => {})
 
   }
-  updateUserBirthDate(email:string,birthdate:string){
+  updateUserBirthDate(birthdate:string){
     let body = {
       key:"birthdate",
-      email:email,
       birthdate:birthdate
     }
     this.http.put<any>(this.updateUser,body).subscribe(date => {})
   }
-  updateUserName(email:string,username:string){
+  updateUserName(username:string){
     let body = {
       key:"username",
-      email:email,
       username:username
     }
     this.http.put<any>(this.updateUser,body).subscribe(date => {})
 
   }
-
-  updateUserProfilPhoto(userId:string,profilphoto:File){
+  updateUserProfilPhoto(profilphoto:File){
     let headers = new HttpHeaders({
       'photo' : '' });
     let options = { headers: headers };
     let formData = new FormData();
     formData.append('file', profilphoto);
-    this.http.post<any>(this.updateProfilPhoto.concat(userId),formData,options).subscribe(data => {})
+    return this.http.post<any>(this.updateProfilPhoto,formData,options);
 
   }
   validateReCaptcha(response:string) {
@@ -148,9 +153,9 @@ export class UserServiceService {
   }
   getIpAddress(){
     let headers = new HttpHeaders({
-      'skip' : '' });
+      'ipAddress' : '' });
     let options = { headers: headers };
-    return this.http.get<string>("https://cors-anywhere.herokuapp.com/http:/.ipify.org/?format=json",options);
+    return this.http.get<string>("https://www.cloudflare.com/cdn-cgi/trace",options);
   }
   
 

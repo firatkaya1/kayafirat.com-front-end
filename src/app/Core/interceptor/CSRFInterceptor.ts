@@ -15,6 +15,12 @@ export class CSRFInterceptor implements HttpInterceptor {
                 headers: req.headers
                 .set('X-XSRF-TOKEN', this.cc.get('XSRF-TOKEN')),withCredentials:true
             });
+            if(req.headers.has('ipAddress')){
+                req = req.clone({
+                    headers: req.headers.delete('X-XSRF-TOKEN').delete("ipAddress")
+                });
+                return next.handle(req);
+            }
             return next.handle(authReq);
         
     }

@@ -52,7 +52,7 @@ export class ResetpasswordComponent implements OnInit {
     if(current_time < jwt_decode(this.token).exp && jwt_decode(this.token).xts === "F562S1WFASXE" ) {
       const userAgent = Bowser.parse(window.navigator.userAgent).browser.name +" Version:"+ Bowser.parse(window.navigator.userAgent).browser.version +" "+Bowser.parse(window.navigator.userAgent).os.name;
       this._userService.getIpAddress().subscribe((data:any) => {
-        this._userService.updateUserPassword(this.jti,this.sub,this.myUserDetails.controls['password'].value,data.ip ,userAgent);
+        this._userService.forgotUserPassword(this.jti,this.sub,this.myUserDetails.controls['password'].value,data.ip ,userAgent);
       });
       
       this.isTokenExpired=false;

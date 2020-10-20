@@ -39,19 +39,19 @@ export class PostService {
 
   getIpAddress(){
     let headers = new HttpHeaders({
-      'skip' : '', });
+      'ipAddress' : '' });
     let options = { headers: headers };
-    return this.http.get<string>("https://cors-anywhere.herokuapp.com/https://api.ipify.org/?format=json",options);
+    return this.http.get<string>("https://www.cloudflare.com/cdn-cgi/trace",options);
   }
   setPageView(postId:string,temporaryCode:string,ipAddress:string){
     const body = { ipAddress:ipAddress,temporaryCode:temporaryCode,postId:postId }
     
     this.http.post<Comment>(this.addPageView, body).subscribe(data => {}) 
   }
-  setCommentAnonymous(postId:string,comment:string,username:string):void {
+  setCommentAnonymous(postId:string,comment:string,username:string,captcha:string):void {
     let headers = new HttpHeaders({
       'skip' : '' });
-    this.http.post<Comment>(this.addCommentUrl.concat(postId), {username:username,commentMessage:comment }).subscribe(data => {}) 
+    this.http.post<Comment>(this.addCommentUrl.concat(postId).concat("&captcha=").concat(captcha), {username:username,commentMessage:comment}).subscribe(data => {}) 
         
   }
 

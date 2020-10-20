@@ -18,6 +18,7 @@ export class PostsComponent implements OnInit {
 
 
   ngOnInit(): void {
+    console.log(this._postService.getIpAddress());
     this._postService.getPostIndex().subscribe(
       res => {
         this.postIndex = res;

@@ -50,11 +50,9 @@ export class SettingsComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserPermissions();      
-}
-
+  }
   ngOnSubmit():void {
     let body = {
-      userEmail: this.users[0].userEmail,
       nameShow: false,
       aboutmeShow: this.myUserPermissions.controls['userAboutMe'].value,
       registerdateShow:this.myUserPermissions.controls['userRegisterDate'].value,
@@ -72,8 +70,7 @@ export class SettingsComponent implements OnInit {
     this.success=false;
   }, 5000);
 
-} 
-
+  } 
   getUserPermissions(){
     this._userService.getUser(this.usernamerouter).subscribe(
       res => {  
@@ -95,8 +92,8 @@ export class SettingsComponent implements OnInit {
         
         );
   }
-  updateUserGithubAddres(email:string,githubaddress:string){
-    this._userService.updateUserGithubAddress(email,githubaddress);
+  updateUserGithubAddres(githubaddress:string){
+    this._userService.updateUserGithubAddress(githubaddress);
     setTimeout(() => {
       this.getUserPermissions();
     }, 1000);
@@ -106,8 +103,8 @@ export class SettingsComponent implements OnInit {
       this.success=false;
     }, 5000);
   }
-  updateUserLinkedinAddress(email:string,linkedinaddress:string){
-    this._userService.updateUserLinkedinAddress(email,linkedinaddress);
+  updateUserLinkedinAddress(linkedinaddress:string){
+    this._userService.updateUserLinkedinAddress(linkedinaddress);
     setTimeout(() => {
       this.getUserPermissions();
     }, 1000);
@@ -118,8 +115,8 @@ export class SettingsComponent implements OnInit {
     }, 5000);
     
   }
-  updateUserBirthDate(email:string,birthdate:string){
-    this._userService.updateUserBirthDate(email,birthdate);
+  updateUserBirthDate(birthdate:string){
+    this._userService.updateUserBirthDate(birthdate);
     setTimeout(() => {
       this.getUserPermissions();
     }, 1000);
@@ -131,19 +128,18 @@ export class SettingsComponent implements OnInit {
   }, 5000);
 
   }
-  updateUserPass(email:string,userid:string,pass:string){
+  updateUserPass(userid:string,pass:string){
     const userAgent = Bowser.parse(window.navigator.userAgent).browser.name +" Version:"+ Bowser.parse(window.navigator.userAgent).browser.version +" "+Bowser.parse(window.navigator.userAgent).os.name;
-    console.log("useragent:"+userid);
     this._userService.getIpAddress().subscribe((data:any) => {
-      this._userService.updateUserPassword(email,userid,pass,data.ip,userAgent);
+      this._userService.updateUserPassword(userid,pass,data.ip,userAgent);
     });
     
     setTimeout(() => {this.getUserPermissions();}, 1000);
     this.success=true;
     setTimeout(() => {this.success=false;},5000);
   }
-  updateUserUsername(email:string,username:string){
-    this._userService.updateUserName(email,username);
+  updateUserUsername(username:string){
+    this._userService.updateUserName(username);
     setTimeout(() => {
       this.getUserPermissions();
       sessionStorage.setItem('tSC31DGH51',username);
@@ -168,8 +164,8 @@ export class SettingsComponent implements OnInit {
           this.sendVerifyButton=true;
         }, 30000);
   }
-  updateUserProfilPhoto(userId:string,username:string){
-    this._userService.updateUserProfilPhoto(userId,this.selectedImage);
+  updateUserProfilPhoto(){
+    this._userService.updateUserProfilPhoto(this.selectedImage).subscribe(data => {console.log("aferin")});
     this.success=true;
         setTimeout(() => {
           this.success=false;
@@ -178,7 +174,6 @@ export class SettingsComponent implements OnInit {
   }
   onFileChanged(event) {
     this.selectedImage = event.target.files[0]
-    console.log("selected:"+this.selectedImage);
   }
 
 }

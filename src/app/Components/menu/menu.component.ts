@@ -29,12 +29,14 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPhotoAndUsername();
+    
   }
   ngOnChange(){
     this.getPhotoAndUsername();
   }
 
    logout(){
+     console.log("log out yapıldi");
      this.authenticateService.logout();
      this.username="";
      this.userprofilphoto="";
