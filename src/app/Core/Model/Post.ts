@@ -6,7 +6,6 @@ export interface IPost {
     postHeader: string;
     postTime: string;
     postMaxView: string;
-    postMaxComment:string;
 
 }
 

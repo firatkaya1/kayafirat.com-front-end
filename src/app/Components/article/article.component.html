@@ -16,7 +16,7 @@
             </p>
         </div>
         <div class="col-md-12 border-top border-bottom text-dark">
-            <p class="text-center m-0 p-2">{{post?.postMaxView}} <span [translate]="'article.views'"></span> | {{post?.postMaxComment}} <span [translate]="'article.comments'"></span> | {{post?.postTime | date:'medium'}}
+            <p class="text-center m-0 p-2">{{post?.postMaxView}} <span [translate]="'article.views'"></span> | {{post?.comment.length}} <span [translate]="'article.comments'"></span> | {{post?.postTime | date:'medium'}}
                 <a href="#"><img src="assets/images/linkedin.png" class="float-right" width="30px" alt="linkedin"></a>
                 <a href="#"> <img src="assets/images/twitter.svg" class="float-right" width="30px" alt="twitter"></a>
                 <a href="#"><img src="assets/images/facebook.svg" class="float-right" width="25px" alt="facebook"></a>
