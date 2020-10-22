@@ -1,25 +1,22 @@
-import { LinkedinComponent } from './../../Components/linkedin/linkedin.component';
-import { GithubComponent } from './../../Components/github/github.component';
-import { LoginComponent } from './../../Components/login/login.component';
-import { ServererrorComponent } from './../../Components/servererror/servererror.component';
-import { ResetpasswordComponent } from '../../Components/resetpassword/resetpassword.component';
-import { NotfounderrorComponent } from '../../Components/notfounderror/notfounderror.component';
 import { AuthenticationerrorComponent } from '../../Components/authenticationerror/authenticationerror.component';
-import { SearchtagComponent } from '../../Components/searchtag/searchtag.component';
-import { ForgotpasswordComponent } from '../../Components/forgotpassword/forgotpassword.component';
-import { SearchBarComponent } from '../../Components/search-bar/search-bar.component';
-import { ConfirmaccountComponent } from '../../Components/confirmaccount/confirmaccount.component';
-import { SettingsComponent } from '../../Components/settings/settings.component';
-import { ArticleComponent } from '../../Components/article/article.component';
-import { ProfileComponent } from '../../Components/profile/profile.component';
-import { CategoryComponent } from '../../Components/category/category.component';
-import { WelcomeComponent } from '../../Components/welcome/welcome.component';
-import { RegisterComponent } from '../../Components/register/register.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-
-
+import { ForgotpasswordComponent }      from '../../Components/forgotpassword/forgotpassword.component';
+import { ConfirmaccountComponent }      from '../../Components/confirmaccount/confirmaccount.component';
+import { ResetpasswordComponent }       from '../../Components/resetpassword/resetpassword.component';
+import { NotfounderrorComponent }       from '../../Components/notfounderror/notfounderror.component';
+import { ServererrorComponent }         from './../../Components/servererror/servererror.component';
+import { Routes, RouterModule }         from '@angular/router';
+import { SearchtagComponent }           from '../../Components/searchtag/searchtag.component';
+import { SearchBarComponent }           from '../../Components/search-bar/search-bar.component';
+import { LinkedinComponent }            from './../../Components/linkedin/linkedin.component';
+import { SettingsComponent }            from '../../Components/settings/settings.component';
+import { GithubComponent }              from './../../Components/github/github.component';
+import { ArticleComponent }             from '../../Components/article/article.component';
+import { CategoryComponent }            from '../../Components/category/category.component';
+import { RegisterComponent }            from '../../Components/register/register.component';
+import { ProfileComponent }             from '../../Components/profile/profile.component';
+import { WelcomeComponent }             from '../../Components/welcome/welcome.component';
+import { LoginComponent }               from './../../Components/login/login.component';
+import { NgModule }                     from '@angular/core';
 
 const routes: Routes = [
   {path:'',component:WelcomeComponent},
@@ -44,11 +41,9 @@ const routes: Routes = [
   {path:'forgotpassword/reset/:token',component:ResetpasswordComponent },
   {path:'login/auth/github',component:GithubComponent},
   {path:'login/auth/linkedin',component:LinkedinComponent},
-
   {path:'404',component:NotfounderrorComponent },
   {path:'500',component:ServererrorComponent },
   {path:'403',component: AuthenticationerrorComponent},
-
   {path: '**', redirectTo: '/404'}
 ];
 

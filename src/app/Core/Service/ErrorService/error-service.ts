@@ -1,7 +1,6 @@
-import { FormGroup } from '@angular/forms';
+import { FormGroup }  from '@angular/forms';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +22,4 @@ export class ErrorService {
     return this.http.post(this.addErrorURI.concat("?captcha=").concat(captcha),body);
   }
  
-
-
 }
