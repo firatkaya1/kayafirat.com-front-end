@@ -12,8 +12,8 @@ export class AuthenticateService {
 
     constructor(private http: HttpClient,private cookieService:CookieService) {}
 
-    login(username:string,password:string) {
-       return this.http.post(this.BASE_URL+"/v1/login",{username:username,password:password}, { responseType: "text"});
+    login(username:string,password:string,captcha:string) {
+       return this.http.post(this.BASE_URL+"/v1/login?captcha=".concat(captcha),{username:username,password:password}, { responseType: "text"});
     
 
     }

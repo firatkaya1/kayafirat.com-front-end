@@ -21,15 +21,19 @@
             <h3 class="text-center" [translate]="'403.submitreport'"> </h3>
         </div>
         <div class="col-md-6 mx-auto border p-4 shadow">
-            <form>
+            <form [formGroup]="errorDetails">
                 <div class="form-group">
                     <label for="exampleInputEmail1" [translate]="'403.email'"> </label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [class.is-valid]="errorDetails.get('emailAddress').valid" [class.is-invalid]="errorDetails.get('emailAddress').invalid && (errorDetails.get('emailAddress').dirty || errorDetails.get('emailAddress').touched)" formControlName="emailAddress">
                     <small id="emailHelp" class="form-text text-muted" [translate]="'403.notrequired'"></small>
+                    <div *ngIf="errorDetails.get('emailAddress').invalid && (errorDetails.get('emailAddress').dirty || errorDetails.get('emailAddress').touched)" class="text-danger">
+                        <div *ngIf="errorDetails.get('emailAddress').errors.email" [translate]="'register.emailErrors.onlyEmail'">
+                        </div>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1" [translate]="'403.explainErr'"></label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required [class.is-valid]="errorDetails.get('message').valid" [class.is-invalid]="errorDetails.get('message').invalid && (errorDetails.get('message').dirty || errorDetails.get('message').touched)" formControlName="message"></textarea>
                     <small id="emailHelp" class="form-text text-muted"  [translate]="'403.explainErr2'"></small>
                 </div>
                 <div class="form-group">
@@ -39,35 +43,38 @@
                 </div>
                 <div class="form-group">
                     <div class="row p-1">
-                        <div class="col-md-2 bg-dark border border-primary mb-2">
-                            <p class="text-white text-center mt-2 mb-2 mx-auto h6"><span id="number1"></span> + <span id="number2"></span> </p>
-                        </div>
-                        <div class="col-md-10">
-                            <input type="number" class="form-control" id="errorCode" oninput="controllAnswer(this.value)" placeholder="{{ '404.onlyNumber' | translate }}">
+                        <div class="col-md-7 mx-auto text-center">
+                            <re-captcha (resolved)="resolved($event)" class="text-center mx-auto" siteKey="6LfC_bIZAAAAAAoOKHCIaj0d3O3wKINKJXH6ilGC"> </re-captcha>
                         </div>
                     </div>
                 </div>
-                <button type="submit" id="answerButton" class="btn btn-primary btn-block disabled" [translate]="'403.submit'" ></button>
+                <button type="submit" id="answerButton" class="btn btn-primary btn-block"  (click)="sendError()" [disabled]="recaptcha?.length > 0 ? false : true" [translate]="'403.submit'" ></button>
             </form>
         </div>
         <div class="col-md-12" style="height: 100px;"></div>
     </div>
 
-
+    <!--Success Alerts-->
+    <div class="row">
+        <div class="col-6">
+            <div *ngIf="sendSuccess" class="alert alert-success alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
+                <strong>Harika !</strong> <span> Hata mesajınız başarılı bir şekilde bizlere ulaştı. En kısa zamanda çözmeye çalışacağız. Teşekkürler.</span> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+       </div>
+    <!--Fail Alerts-->
+    <div class="row">
+        <div class="col-6">
+            <div *ngIf="!sendFailed" class="alert alert-danger alert-dismissible fade show fixed-bottom  m-4 border-dark" role="alert">
+                <strong>Bir sorun var !</strong> <span> Lütfen sayfayı yenile ve tekrar bizlere ulaşmayı dene. Hata için üzgünüz.</span> 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
 </div>
-
-<script>
-    var number1 = Math.floor(Math.random() * 26);
-    var number2 = Math.floor(Math.random() * 30);
-    document.getElementById("number1").innerHTML = number1;
-    document.getElementById("number2").innerHTML = number2
-
-    function controllAnswer(answer) {
-        if (number1 + number2 == answer) {
-            document.getElementById("answerButton").classList.remove("disabled");
-        } else {
-            document.getElementById("answerButton").classList.add("disabled");
-        }
-    }
-</script>

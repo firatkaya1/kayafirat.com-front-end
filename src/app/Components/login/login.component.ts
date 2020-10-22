@@ -15,8 +15,9 @@ export class LoginComponent implements OnInit {
   public invalidLogin:boolean = false;
   public loginSuccess:boolean = false;
   public validateRecaptcha:boolean = true;
- 
-  constructor(private _userService:UserServiceService,private _authService:AuthenticateService,private router:Router ) {}
+  public recaptcha:string = "";
+
+  constructor(private _authService:AuthenticateService,private router:Router ) {}
 
   ngOnInit(): void {
     if(this._authService.isUserLoggedIn()){
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     }
   }
   ngOnSubmit(username:string,password:string) {
-    this._authService.login(username,password)
+    this._authService.login(username,password,this.recaptcha)
     .subscribe((result) => {
       this.invalidLogin = false;
       this.loginSuccess = true;      
@@ -37,11 +38,9 @@ export class LoginComponent implements OnInit {
     );
   }
   resolved(captchaResponse:string) {
-    this._userService.validateReCaptcha(captchaResponse).subscribe(res => {
-      res['success'] == true ? this.validateRecaptcha=false : this.validateRecaptcha=true; })
-    
+    this.recaptcha = captchaResponse;
   }
-  /* Sign in with social media accounts */
+    /* Sign in with social media accounts */
   signInGithub() {
     window.location.href="https://github.com/login/oauth/authorize?client_id=b83e481507d79fcfbb79";
   }

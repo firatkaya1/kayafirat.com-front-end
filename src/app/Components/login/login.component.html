@@ -51,7 +51,7 @@
             </div>
             <div class="w-100"></div>
             <div class="col-md-5 text-right">
-                <button class="btn btn-outline-success btn-block" [disabled]="validateRecaptcha"  (click)="ngOnSubmit(username.value,pass.value)" [translate]="'login.login'" >Giriş Yap</button>
+                <button class="btn btn-outline-success btn-block" [disabled]="recaptcha?.length > 0 ? false : true"  (click)="ngOnSubmit(username.value,pass.value)" [translate]="'login.login'" >Giriş Yap</button>
             </div>
             <div class="w-100"></div>
 
