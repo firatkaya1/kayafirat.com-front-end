@@ -1,6 +1,6 @@
-import { ErrorService } from './../../Core/Service/ErrorService/error-service';
+import { ErrorService }                       from './../../Core/Service/ErrorService/error-service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }                  from '@angular/core';
 
 @Component({
   selector: 'app-authenticationerror',

@@ -1,5 +1,5 @@
-import { ErrorService } from './../../Core/Service/ErrorService/error-service';
-import { Component, OnInit } from '@angular/core';
+import { ErrorService }                       from './../../Core/Service/ErrorService/error-service';
+import { Component, OnInit }                  from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({

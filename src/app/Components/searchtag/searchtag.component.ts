@@ -1,7 +1,7 @@
-import { IPost } from './../../Core/Model/Post';
-import { PostService } from './../../Core/Service/PostService/post.service';
+import { IPost }             from './../../Core/Model/Post';
+import { PostService }       from './../../Core/Service/PostService/post.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute}     from '@angular/router';
 
 @Component({
   selector: 'app-searchtag',

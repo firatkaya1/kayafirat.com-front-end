@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { Component, OnInit }   from '@angular/core';
+import { ActivatedRoute}       from '@angular/router';
 import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { Router } from '@angular/router';
-import { NgxSpinnerService } from "ngx-spinner";
+import { Router }              from '@angular/router';
+import { NgxSpinnerService }   from "ngx-spinner";
 
 @Component({
   selector: 'app-github',
@@ -25,7 +24,7 @@ export class GithubComponent implements OnInit {
         }, 2000);
         this.router.navigate(["/"]);  
       },
-      (error) => {this.spinner.hide(); console.log("error :"+error);this.isSuccess=false});
+      (error) => {this.spinner.hide();this.isSuccess=false});
 
   }
 

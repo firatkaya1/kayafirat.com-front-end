@@ -100,9 +100,7 @@ export class ArticleComponent implements OnInit {
     this.isHideCookie =true;
   }
   openDarkMode() {
-    this.isCurrentDarkMode = this.isCurrentDarkMode ? false : true; 
-    console.log("this.iss"+this.isCurrentDarkMode);
-   
+    this.isCurrentDarkMode = this.isCurrentDarkMode ? false : true;    
   }
   deChangeLink(str:string):string {
     return str.replace(/-/g, ' ');

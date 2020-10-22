@@ -1,11 +1,9 @@
-import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { IUser } from './../../Core/Model/User';
 import { Component, OnInit, ErrorHandler } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
-import { ActivatedRoute, Router} from '@angular/router';
-import * as Bowser from "bowser";
-
+import { UserServiceService }              from './../../Core/Service/UserService/user-service.service';
+import { FormGroup, FormControl }          from '@angular/forms';
+import { ActivatedRoute, Router}           from '@angular/router';
+import * as Bowser                         from "bowser";
+import { IUser }                           from './../../Core/Model/User';
 
 @Component({
   selector: 'app-settings',
@@ -38,11 +36,7 @@ export class SettingsComponent implements OnInit {
   
   }); 
 
-
-
-  constructor(private route: ActivatedRoute,
-              private _userService: UserServiceService,private router: Router,private _authService:AuthenticateService) { 
-
+  constructor(private route: ActivatedRoute,private _userService: UserServiceService,private router: Router) { 
    this.route.paramMap.subscribe(params => {
     this.usernamerouter = params.get('username');
    });
@@ -165,7 +159,7 @@ export class SettingsComponent implements OnInit {
         }, 30000);
   }
   updateUserProfilPhoto(){
-    this._userService.updateUserProfilPhoto(this.selectedImage).subscribe(data => {console.log("aferin")});
+    this._userService.updateUserProfilPhoto(this.selectedImage).subscribe(data => {});
     this.success=true;
         setTimeout(() => {
           this.success=false;

@@ -1,6 +1,6 @@
-import { ErrorService } from './../../Core/Service/ErrorService/error-service';
-import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ErrorService }                       from './../../Core/Service/ErrorService/error-service';
+import { Component, OnInit }                  from '@angular/core';
 
 @Component({
   selector: 'app-servererror',
@@ -13,6 +13,7 @@ export class ServererrorComponent implements OnInit {
   public recaptcha:string = "";
   public sendSuccess:boolean = false;
   public sendFailed:boolean = true;
+  
   constructor(private errorService:ErrorService) { }
 
   errorDetails = new FormGroup({

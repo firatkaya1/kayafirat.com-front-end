@@ -1,5 +1,5 @@
-import { IPost } from './../../Core/Model/Post';
-import { PostService } from '../../Core/Service/PostService/post.service';
+import { IPost }             from './../../Core/Model/Post';
+import { PostService }       from '../../Core/Service/PostService/post.service';
 import { Component, OnInit } from '@angular/core';
 
 
@@ -18,7 +18,6 @@ export class PostsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    console.log(this._postService.getIpAddress());
     this._postService.getPostIndex().subscribe(
       res => {
         this.postIndex = res;

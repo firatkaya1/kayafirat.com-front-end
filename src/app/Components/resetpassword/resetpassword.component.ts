@@ -1,9 +1,10 @@
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { ActivatedRoute,Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+
 import { FormGroup, FormControl, Validators,AbstractControl } from '@angular/forms';
-import * as jwt_decode from "jwt-decode";
-import * as Bowser from "bowser";
+import { UserServiceService }                                 from './../../Core/Service/UserService/user-service.service';
+import { ActivatedRoute,Router }                              from '@angular/router';
+import { Component, OnInit }                                  from '@angular/core';
+import * as jwt_decode                                        from "jwt-decode";
+import * as Bowser                                            from "bowser";
 
 
 

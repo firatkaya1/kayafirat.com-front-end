@@ -1,5 +1,5 @@
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { Component, OnInit } from '@angular/core';
+import { UserServiceService }     from './../../Core/Service/UserService/user-service.service';
+import { Component, OnInit }      from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

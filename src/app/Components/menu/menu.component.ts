@@ -1,8 +1,7 @@
-import {TranslateService} from '@ngx-translate/core';
-import { Router } from '@angular/router';
+import {TranslateService}      from '@ngx-translate/core';
 import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit }   from '@angular/core';
+import { Router }              from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -36,7 +35,6 @@ export class MenuComponent implements OnInit {
   }
 
    logout(){
-     console.log("log out yapıldi");
      this.authenticateService.logout();
      this.username="";
      this.userprofilphoto="";

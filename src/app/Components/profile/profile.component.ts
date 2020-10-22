@@ -1,8 +1,8 @@
-import { AuthenticateService } from './../../Core/Service/AuthenticateService/authenticate.service';
-import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { IUser } from './../../Core/Model/User';
+import { AuthenticateService }   from './../../Core/Service/AuthenticateService/authenticate.service';
+import { UserServiceService }    from './../../Core/Service/UserService/user-service.service';
 import { ActivatedRoute,Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit }     from '@angular/core';
+import { IUser }                 from './../../Core/Model/User';
 
 @Component({
   selector: 'app-profile',

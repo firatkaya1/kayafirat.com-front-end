@@ -1,7 +1,7 @@
 import { UserServiceService } from './../../Core/Service/UserService/user-service.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
-import * as jwt_decode from "jwt-decode";
+import { Component, OnInit }  from '@angular/core';
+import { ActivatedRoute}      from '@angular/router';
+import * as jwt_decode        from "jwt-decode";
 
 @Component({
   selector: 'app-confirmaccount',
