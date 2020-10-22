@@ -1,9 +1,8 @@
-import { IUser } from './../../Model/User';
-import { FormGroup } from '@angular/forms';
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { IUser }                   from './../../Model/User';
+import { FormGroup }               from '@angular/forms';
+import { Injectable }              from '@angular/core';
+import { Observable }              from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class UserServiceService {
   private urlUserByUsername:string = this.BASE_URL+"/v1/user?username=";
   private addUserUrl:string = this.BASE_URL+"/v1/user/register";
   private sendEmail:string = this.BASE_URL+"/v1/mail";
-  private sendResetPassEmail:string = this.BASE_URL+"/v1/mail/reset";
   private verifyUser:string = this.BASE_URL+"/v1/mail/verify";
   private validaterecaptcha:string = this.BASE_URL+"/v1/recaptcha";
   private searchURL:string = this.BASE_URL+"/v1/post/search?";
@@ -157,7 +155,4 @@ export class UserServiceService {
     let options = { headers: headers };
     return this.http.get<string>("https://www.cloudflare.com/cdn-cgi/trace",options);
   }
-  
-
-
 }

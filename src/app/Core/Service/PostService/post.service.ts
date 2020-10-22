@@ -1,8 +1,8 @@
-import { IPostDetail } from './../../Model/PostDetails';
-import { IPost } from './../../Model/Post';
-import { Injectable } from '@angular/core';
 import {HttpClient,HttpHeaders} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { IPostDetail }          from './../../Model/PostDetails';
+import { Injectable }           from '@angular/core';
+import { Observable }           from 'rxjs';
+import { IPost }                from './../../Model/Post';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,6 @@ export class PostService {
   getPost(title:string): Observable<IPostDetail> {
     return this.http.get<IPostDetail>(this.postTitle.concat(title));
   }
-  
   getPostOrderBy(pageNumber:string,pageSize:string,sortedName:string,orderby:string){
     let query:string = "page="+pageNumber+"&size="+pageSize+"&sort="+sortedName+"&order="+orderby;
     return this.http.get<IPost[]>(this.orderByDate.concat(query));
@@ -36,7 +35,6 @@ export class PostService {
   getPostByTag(postTag:string):Observable<IPost[]> {
     return this.http.get<IPost[]>(this.postTagUrl.concat(postTag));
   }
-
   getIpAddress(){
     let headers = new HttpHeaders({
       'ipAddress' : '' });
@@ -45,7 +43,6 @@ export class PostService {
   }
   setPageView(postId:string,temporaryCode:string,ipAddress:string){
     const body = { ipAddress:ipAddress,temporaryCode:temporaryCode,postId:postId }
-    
     this.http.post<Comment>(this.addPageView, body).subscribe(data => {}) 
   }
   setCommentAnonymous(postId:string,comment:string,username:string,captcha:string):void {
@@ -54,7 +51,6 @@ export class PostService {
     this.http.post<Comment>(this.addCommentUrl.concat(postId).concat("&captcha=").concat(captcha), {username:username,commentMessage:comment}).subscribe(data => {}) 
         
   }
-
   updateComment(_commentId:string,_commentMessage:string){
     let body = 
     {
