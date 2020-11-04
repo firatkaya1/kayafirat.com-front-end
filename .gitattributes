@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-
 *.css linguist-detectable=false
 *.js linguist-detectable=false
 *.ts linguist-detectable=true
-=======
-*.css linguist-detectable=false
-*.js linguist-detectable=false
-*.ts linguist-detectable=true
->>>>>>> 3a936985d1ff07f599ebb9a5498a86e875abbe70
