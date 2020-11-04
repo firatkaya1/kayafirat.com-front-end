@@ -9,7 +9,7 @@ import { Observable }              from 'rxjs';
 })
 export class UserServiceService {
 
-  private BASE_URL = "http://localhost:8080";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1";
   private urlUserByUsername:string = this.BASE_URL+"/v1/user?username=";
   private addUserUrl:string = this.BASE_URL+"/v1/user/register";
   private sendEmail:string = this.BASE_URL+"/v1/mail";

@@ -5,7 +5,7 @@ import { HttpClient }    from '@angular/common/http';
 @Injectable({ providedIn: 'root' })
 export class AuthenticateService {
 
-  private BASE_URL = "http://localhost:8080";
+  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1";
 
   public username:string;
   public password:string;
