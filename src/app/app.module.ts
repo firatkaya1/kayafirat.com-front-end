@@ -1,8 +1,8 @@
 import { CSRFInterceptor }                                from './Core/interceptor/CSRFInterceptor';
 import { HttpInterceptorService }                         from './Core/interceptor/httpInterceptor';
 import { ErrorInterceptor }                               from './Core/interceptor/ErrorInterceptor';
-import { ServererrorComponent }                           from './Components/servererror/servererror.component';
-import { ResetpasswordComponent }                         from './Components/resetpassword/resetpassword.component';
+import { ServererrorComponent }                           from './Components/Errors/servererror/servererror.component';
+import { ResetpasswordComponent }                         from './Components/User/resetpassword/resetpassword.component';
 import { FormsModule, ReactiveFormsModule }               from '@angular/forms';
 import { BrowserModule }                                  from '@angular/platform-browser';
 import { NgModule }                                       from '@angular/core';
@@ -18,24 +18,24 @@ import {TranslateHttpLoader}                              from '@ngx-translate/h
 import { AppRoutingModule }             from './Core/Routing/app-routing.module';
 import { AppComponent }                 from './app.component';
 import { PostsComponent }               from './Components/posts/posts.component';
-import { WelcomeComponent }             from './Components/welcome/welcome.component';
+import { MainComponent }                from './Components/main/main.component';
 import { SearchBarComponent }           from './Components/search-bar/search-bar.component';
-import { LoginComponent }               from './Components/login/login.component';
-import { RegisterComponent }            from './Components/register/register.component';
+import { LoginComponent }               from './Components/Authenticate/login/login.component';
+import { RegisterComponent }            from './Components/Authenticate/register/register.component';
 import { FooterComponent }              from './Components/footer/footer.component';
-import { ProfileComponent }             from './Components/profile/profile.component';
+import { ProfileComponent }             from './Components/User/profile/profile.component';
 import { ArticleComponent }             from './Components/article/article.component';
 import { CategoryComponent }            from './Components/category/category.component';
-import { SettingsComponent }            from './Components/settings/settings.component';
+import { SettingsComponent }            from './Components/User/settings/settings.component';
 import { MenuComponent }                from './Components/menu/menu.component';
-import { ConfirmaccountComponent }      from './Components/confirmaccount/confirmaccount.component';
-import { ForgotpasswordComponent }      from './Components/forgotpassword/forgotpassword.component';
+import { ConfirmaccountComponent }      from './Components/User/confirmaccount/confirmaccount.component';
+import { ForgotpasswordComponent }      from './Components/User/forgotpassword/forgotpassword.component';
 import { SearchtagComponent }           from './Components/searchtag/searchtag.component';
-import { AuthenticationerrorComponent } from './Components/authenticationerror/authenticationerror.component';
-import { NotfounderrorComponent }       from './Components/notfounderror/notfounderror.component';
-import { GithubComponent }              from './Components/github/github.component';
+import { AuthenticationerrorComponent } from './Components/Errors/authenticationerror/authenticationerror.component';
+import { NotfounderrorComponent }       from './Components/Errors/notfounderror/notfounderror.component';
+import { GithubComponent }              from './Components/Oauth2/github/github.component';
 import { BrowserAnimationsModule }      from '@angular/platform-browser/animations';
-import { LinkedinComponent }            from './Components/linkedin/linkedin.component';
+import { LinkedinComponent }            from './Components/Oauth2/linkedin/linkedin.component';
 import { ServiceWorkerModule }          from '@angular/service-worker';
 import { environment }                  from '../environments/environment';
 
@@ -45,7 +45,7 @@ import { environment }                  from '../environments/environment';
   declarations: [
     AppComponent,
     PostsComponent,
-    WelcomeComponent,
+    MainComponent,
     SearchBarComponent,
     LoginComponent,
     RegisterComponent,
@@ -66,7 +66,7 @@ import { environment }                  from '../environments/environment';
     LinkedinComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,

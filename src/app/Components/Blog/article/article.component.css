@@ -1,0 +1,51 @@
+.btn-update {
+    fill:#000;
+}
+.btn-update:hover {
+    fill: #04A8FF;
+}
+.btn-update:focus {
+    fill:#04A8FF;
+}
+
+p img {
+    max-width: 100%;
+    height: auto;
+}
+
+.custom-img { 
+  background-image:url(/assets/images/cheetah.jpg);
+  width: 100%;
+  height: 100%;
+  
+
+}
+.custom-body {
+    text-align: justify;
+    word-spacing: 5px;
+    color: #000;
+    letter-spacing: 1.2px;
+    font-size: 18px;
+    font-weight: 400;
+    font-family: system-ui;
+    line-height: 1.7;
+}
+
+@media only screen and (max-width: 600px) {
+    .custom-body {
+        text-align: justify;
+        word-spacing: normal;
+        color: #000;
+        letter-spacing:normal;
+        font-size: 18px;
+        font-weight: 400;
+        font-family: system-ui;
+        line-height: 1.5;
+    }
+    .custom-img { 
+        background-image:url(/assets/images/cheetah.jpg);
+        min-height: 100%;
+        width: 100%;     
+      
+      }
+}

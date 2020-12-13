@@ -9,7 +9,7 @@ import { IPost }                from './../../Model/Post';
 })
 export class PostService {
 
-  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1";
+  private BASE_URL = "http://localhost:8080";
   private myPosts:string = this.BASE_URL+"/v1/post/last?limit=10&order=desc";
   private postTitle:string = this.BASE_URL+"/v1/post/title?title=";
   private addCommentUrl:string = this.BASE_URL+"/v1/comment?id=";

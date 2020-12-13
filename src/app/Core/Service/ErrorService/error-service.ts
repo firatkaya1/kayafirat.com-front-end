@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ErrorService {
 
-  private BASE_URL = "https://api.kayafirat.com/firatkaya-0.0.1";
+  private BASE_URL = "http://localhost:8080";
 
   private addErrorURI = this.BASE_URL+"/v1/error";
 
