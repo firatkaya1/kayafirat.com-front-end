@@ -1,5 +1,5 @@
 import { AuthenticateService }   from './../../../Core/Service/AuthenticateService/authenticate.service';
-import { UserServiceService }    from './../../../Core/Service/UserService/user-service.service';
+import { UserService}            from './../../../Core/Service/UserService/user.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Component, OnInit }     from '@angular/core';
 import { IUser }                 from './../../../Core/Model/User';
@@ -16,7 +16,7 @@ export class ProfileComponent implements OnInit {
   public isSameUser:string;
   public isUserLogged:boolean;
 
-  constructor(private route: ActivatedRoute,private _userService: UserServiceService,private _auhtService:AuthenticateService,private router:Router) { 
+  constructor(private route: ActivatedRoute,private _userService: UserService,private _auhtService:AuthenticateService,private router:Router) { 
       this.route.paramMap.subscribe(params => {
         this.usernamerouter = params.get('username');
         this.isUserLogged = this._auhtService.isUserLoggedIn();

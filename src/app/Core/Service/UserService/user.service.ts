@@ -7,7 +7,7 @@ import { Observable }              from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class UserServiceService {
+export class UserService {
 
   private BASE_URL = "http://localhost:8080";
   private urlUserByUsername:string = this.BASE_URL+"/v1/user?username=";

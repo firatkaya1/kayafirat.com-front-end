@@ -1,5 +1,5 @@
 import { FormGroup, FormControl, Validators,AbstractControl } from '@angular/forms';
-import { UserServiceService }                                 from './../../../Core/Service/UserService/user-service.service';
+import { UserService }                                        from './../../../Core/Service/UserService/user.service';
 import { Component, OnInit }                                  from '@angular/core';
 import { Router }                                             from '@angular/router';
 
@@ -14,7 +14,7 @@ export class RegisterComponent implements OnInit {
   public validateRecaptcha:boolean = true;
   public errorCode:number;
     
-  constructor(private _userService:UserServiceService,private router: Router) { }
+  constructor(private _userService:UserService,private router: Router) { }
 
   myUserDetails = new FormGroup({
     emailAddress: new FormControl(null,[

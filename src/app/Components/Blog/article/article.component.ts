@@ -1,6 +1,6 @@
 import { IPostSeo }               from './../../../Core/Model/PostSeo';
 import { AuthenticateService }    from './../../../Core/Service/AuthenticateService/authenticate.service';
-import { UserServiceService }     from './../../../Core/Service/UserService/user-service.service';
+import { UserService }            from './../../../Core/Service/UserService/user.service';
 import { Title, Meta }            from '@angular/platform-browser';
 
 import { IComment }               from './../../../Core/Model/Comment';
@@ -43,7 +43,7 @@ export class ArticleComponent implements OnInit {
     private cookieService: CookieService,
     private route: ActivatedRoute,
     private _postService:PostService,
-    private _userService:UserServiceService,
+    private _userService:UserService,
     private _authenticateService:AuthenticateService,
     private titleService: Title,
     private metaService: Meta,

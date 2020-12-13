@@ -1,5 +1,5 @@
 import { Component, OnInit, ErrorHandler } from '@angular/core';
-import { UserServiceService }              from './../../../Core/Service/UserService/user-service.service';
+import { UserService }                     from './../../../Core/Service/UserService/user.service';
 import { FormGroup, FormControl }          from '@angular/forms';
 import { ActivatedRoute, Router}           from '@angular/router';
 import * as Bowser                         from "bowser";
@@ -36,7 +36,7 @@ export class SettingsComponent implements OnInit {
   
   }); 
 
-  constructor(private route: ActivatedRoute,private _userService: UserServiceService,private router: Router) { 
+  constructor(private route: ActivatedRoute,private _userService: UserService,private router: Router) { 
    this.route.paramMap.subscribe(params => {
     this.usernamerouter = params.get('username');
    });

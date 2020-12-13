@@ -1,4 +1,4 @@
-import { UserServiceService }                 from './../../../Core/Service/UserService/user-service.service';
+import { UserService }                        from './../../../Core/Service/UserService/user.service';
 import { Component, OnInit }                  from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -10,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class ForgotpasswordComponent implements OnInit {
 
-  constructor(private _userService:UserServiceService) { }
+  constructor(private _userService:UserService) { }
 
   public sendMailSuccess:boolean = false;
   public validateRecaptcha:boolean = true;

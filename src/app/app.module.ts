@@ -1,6 +1,6 @@
-import { CSRFInterceptor }                                from './Core/interceptor/CSRFInterceptor';
-import { HttpInterceptorService }                         from './Core/interceptor/httpInterceptor';
-import { ErrorInterceptor }                               from './Core/interceptor/ErrorInterceptor';
+import { CSRFInterceptor }                                from './Core/Interceptor/CSRFInterceptor';
+import { HttpInterceptorService }                         from './Core/Interceptor/HttpInterceptor';
+import { ErrorInterceptor }                               from './Core/Interceptor/ErrorInterceptor';
 import { ServererrorComponent }                           from './Components/Errors/servererror/servererror.component';
 import { ResetpasswordComponent }                         from './Components/User/resetpassword/resetpassword.component';
 import { FormsModule, ReactiveFormsModule }               from '@angular/forms';

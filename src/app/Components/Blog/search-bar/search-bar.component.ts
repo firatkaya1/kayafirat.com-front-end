@@ -1,4 +1,4 @@
-import { UserServiceService }     from './../../../Core/Service/UserService/user-service.service';
+import { UserService }     from './../../../Core/Service/UserService/user.service';
 import { Component, OnInit }      from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -20,7 +20,7 @@ export class SearchBarComponent implements OnInit {
   public maxResult:string;
   public pages:Array<number>;
 
-  constructor(private _userService:UserServiceService,private router:Router,private route: ActivatedRoute) { 
+  constructor(private _userService:UserService,private router:Router,private route: ActivatedRoute) { 
 
     this.route.paramMap.subscribe(params => {
       this.pagenumber = params.get('pagenumber');

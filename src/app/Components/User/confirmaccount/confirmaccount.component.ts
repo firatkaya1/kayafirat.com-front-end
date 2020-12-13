@@ -1,4 +1,4 @@
-import { UserServiceService } from './../../../Core/Service/UserService/user-service.service';
+import { UserService }        from './../../../Core/Service/UserService/user.service';
 import { Component, OnInit }  from '@angular/core';
 import { ActivatedRoute}      from '@angular/router';
 import * as jwt_decode        from "jwt-decode";
@@ -15,7 +15,7 @@ export class ConfirmaccountComponent implements OnInit {
   public jti:string;
   public sub:string;
 
-  constructor(private route: ActivatedRoute,private _userService:UserServiceService) { 
+  constructor(private route: ActivatedRoute,private _userService:UserService) { 
     this.route.paramMap.subscribe(params => {
       this.token = params.get('token');
       this.jti=jwt_decode(this.token).jti;
