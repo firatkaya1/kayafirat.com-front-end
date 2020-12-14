@@ -28,7 +28,7 @@
                 <div class="col-md-2 border-right">
                     <div class="row mx-auto mt-2"> 
                         <div class="col-12 text-center">
-                            <img src="{{comment.userProfilePhoto}}" class="img-thumbnail" width="75px" alt="profile-picture">
+                            <img src="{{comment.userProfilePhoto}}" (error)="comment.userProfilePhoto='/assets/images/profile.svg'"  class="img-thumbnail" width="75px" alt="profile-picture">
                             <p class="mb-0">
                                 <span *ngIf="comment.username !== 'Anonymous'">
                                     <a  [routerLink]="['/profile/',comment.username]">{{comment.username}}</a>

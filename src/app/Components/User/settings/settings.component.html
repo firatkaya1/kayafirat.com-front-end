@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row" *ngFor="let user of users ">
         <div class="col-md-12 text-center mt-4">
-            <img [src]="user.userProfilePhoto" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
+            <img [src]="user.userProfilePhoto" (error)="user.userProfilePhoto='/assets/images/profile.svg'" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
         </div>
         <div class="col-md-12 text-center mt-2">
             <p class="h4"><b [translate]="'settings.profilesettings'"></b></p>
@@ -19,16 +19,6 @@
                                     <input type="checkbox" disabled class="custom-control-input" id="username" formControlName="username">
                                     <label class="custom-control-label" for="username" [translate]="'settings.hidden'"></label>
                                   
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-warning" [translate]="'settings.aboutme'"></td>
-                            <td><p>{{user.userProfile.userAboutme}}</p></td>
-                            <td>
-                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input"  id="userAboutMe" formControlName="userAboutMe">
-                                    <label class="custom-control-label" for="userAboutMe" [translate]="'settings.hidden'"> </label>
                                 </div>
                             </td>
                         </tr>
@@ -59,16 +49,6 @@
                                 <div class="custom-control custom-checkbox my-1 mr-sm-2">
                                     <input type="checkbox" class="custom-control-input" id="userMailAdress" formControlName="userMailAdress">
                                     <label class="custom-control-label" for="userMailAdress" [translate]="'settings.hidden'"></label>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="text-warning" [translate]="'settings.lastseen'"></td>
-                            <td>2020/11/9 09:54</td>
-                            <td>
-                                <div class="custom-control custom-checkbox my-1 mr-sm-2">
-                                    <input type="checkbox" class="custom-control-input" id="userLastSeen" formControlName="userLastSeen">
-                                    <label class="custom-control-label" for="userLastSeen" [translate]="'settings.hidden'"> </label>
                                 </div>
                             </td>
                         </tr>

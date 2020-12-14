@@ -2,7 +2,8 @@
     <div class="row" *ngFor = "let user of users">
       
         <div class="col-md-12 text-center mt-4" >
-            <img src="{{ user.userProfilePhoto }}" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
+            <img src="{{ user.userProfilePhoto }}" (error)="user.userProfilePhoto='/assets/images/profile.svg'" width="150px" class="img-thumbnail rounded-circle border border-dark" alt="profile-photo">
+            
         </div>
         <div class="col-md-8 mx-auto mt-2">
             <table class="table table-striped table-dark shadow">
@@ -10,15 +11,6 @@
                     <tr>
                         <td class="text-warning" [translate]="'profile.username'"></td>
                         <td id="nameSurname">{{user.userName}}</td>
-                    </tr>
-                    <tr>
-                        <td class="text-warning" [translate]="'profile.aboutme'" ></td>
-                        <div *ngIf="!user.userPermissions.aboutmeShow">
-                            <td>{{user.userProfile.userAboutme}}</td>
-                        </div>
-                        <div *ngIf="user.userPermissions.aboutmeShow">
-                            <td [translate]="'profile.hidden'">Bu bilgi gizlemiştir.</td>
-                        </div>
                     </tr>
                     <tr>
                         <td class="text-warning" [translate]="'profile.dateofregister'"></td>
@@ -35,25 +27,6 @@
                             <td>{{user.userBirthdayDate | date:'mediumDate' }}</td>
                         </div>
                         <div *ngIf="user.userPermissions.birthdateShow">
-                            <td [translate]="'profile.hidden'">Bu bilgi gizlemiştir.</td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <td class="text-warning" [translate]="'profile.totalcomment'"></td>
-                        <div *ngIf="!user.userPermissions.allCommentShow">
-                            <td>34</td>
-                        </div>
-                        <div *ngIf="user.userPermissions.allCommentShow">
-                            <td [translate]="'profile.hidden'">Bu bilgi gizlemiştir.</td>
-                        </div>
-                    </tr>
-                    <tr>
-                        <td class="text-warning" [translate]="'profile.totalfav'"> </td>
-                        
-                        <div *ngIf="!user.userPermissions.allFavShow">
-                            <td>34</td>
-                        </div>
-                        <div *ngIf="user.userPermissions.allFavShow">
                             <td [translate]="'profile.hidden'">Bu bilgi gizlemiştir.</td>
                         </div>
                     </tr>
