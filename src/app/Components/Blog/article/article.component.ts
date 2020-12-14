@@ -24,7 +24,6 @@ export class ArticleComponent implements OnInit {
   public postSeo:IPostSeo;
   public acceptCookie:string = this.cookieService.get('acceptCookie');
   public isSawThisPage:string = this.cookieService.get('isSawThisPage');
-  public isHideCookie:boolean = false;
   public isCurrentDarkMode:boolean = false;
   public commentMessage:string;
   public commentUpdateMessage:string;
@@ -43,7 +42,6 @@ export class ArticleComponent implements OnInit {
     private cookieService: CookieService,
     private route: ActivatedRoute,
     private _postService:PostService,
-    private _userService:UserService,
     private _authenticateService:AuthenticateService,
     private titleService: Title,
     private metaService: Meta,
@@ -93,13 +91,6 @@ export class ArticleComponent implements OnInit {
        setTimeout(() => { this.commentError=true;}, 10000);
      }
      grecaptcha.reset()
-  }
-  acceptsCookie() {
-    this.cookieService.set('acceptCookie','true',5);
-    this.acceptCookie = this.cookieService.get('acceptCookie');
-  }
-  hideCookie() {
-    this.isHideCookie =true;
   }
   openDarkMode() {
     this.isCurrentDarkMode = this.isCurrentDarkMode ? false : true;    

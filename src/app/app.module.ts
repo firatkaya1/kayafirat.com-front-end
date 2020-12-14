@@ -38,6 +38,7 @@ import { BrowserAnimationsModule }      from '@angular/platform-browser/animatio
 import { LinkedinComponent }            from './Components/Oauth2/linkedin/linkedin.component';
 import { ServiceWorkerModule }          from '@angular/service-worker';
 import { environment }                  from '../environments/environment';
+import { CookieComponent } from './Components/Blog/cookie/cookie.component';
 
 
 
@@ -63,7 +64,8 @@ import { environment }                  from '../environments/environment';
     AuthenticationerrorComponent,
     NotfounderrorComponent,
     GithubComponent,
-    LinkedinComponent
+    LinkedinComponent,
+    CookieComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

@@ -158,16 +158,6 @@
     </div>
 </div>
 
-<div [ngClass]=" acceptCookie ? 'd-none' : '' ">
-    <nav class="navbar  bg-dark  m-4 fixed-bottom  border border-primary" id="policiyarea" [ngClass]="isHideCookie ? 'd-none' : '' ">
-        <p class="text-right h6 p-0 m-0 text-white" id="cookiesP" [translate]="'article.cookies'"></p>
-        <input type="button" class="btn btn-outline-success" (click)="acceptsCookie()"  value="{{ 'article.cookiesAccept' | translate }}">
-        <input type="button" class="btn btn-outline-danger" (click)="hideCookie()" value="{{ 'article.cookiesDeny' | translate }}">
-        <button type="button" class="close"  (click)="hideCookie()" aria-label="Close">
-            <span aria-hidden="true" >&times;</span>
-        </button>
-    </nav>
-</div>
 
 </body>
 
