@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
           }, 5000);
         }
       },
-       error => {this.errorCode = error;});
+       error => {this.errorCode = error; grecaptcha.reset()});
 
      
     
@@ -69,8 +69,6 @@ export class RegisterComponent implements OnInit {
   }
   signUpGithub() {
     window.location.href="https://github.com/login/oauth/authorize?client_id=1766cc6e638422eeaa65";
-  }
-  signUpGoogle() {
   }
   signUpLinkedin() {
     let redirecturi:string = "http://blog.kayafirat.com/login/auth/linkedin1";
