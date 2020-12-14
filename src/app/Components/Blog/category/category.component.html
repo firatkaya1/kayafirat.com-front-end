@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" *ngIf="pages.length > 1">
             <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-center">
                     <li class="page-item" *ngFor="let p of pages;let i=index" [class.active]="pagenumber == i+1 ? true : false">

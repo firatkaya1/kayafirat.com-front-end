@@ -28,7 +28,4 @@ export class PostsComponent implements OnInit {
     return str.replace(/\s+/g,'-');
   }
 
-  
-  
-
 }

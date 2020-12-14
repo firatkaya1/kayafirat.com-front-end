@@ -77,6 +77,7 @@ export class ArticleComponent implements OnInit {
       this.commentError = false;
       setTimeout(() => { this.commentError=true;}, 10000);
     }
+    grecaptcha.reset()
  
   }
   setCommentAuthenticate(){
@@ -91,6 +92,7 @@ export class ArticleComponent implements OnInit {
        this.commentError = false;
        setTimeout(() => { this.commentError=true;}, 10000);
      }
+     grecaptcha.reset()
   }
   acceptsCookie() {
     this.cookieService.set('acceptCookie','true',5);
